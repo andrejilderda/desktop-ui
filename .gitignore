@@ -1,11 +1,13 @@
-
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+.eslintcache
+storybook-static
+build-storybook.log
 
 # dependencies
 node_modules
 
 # builds
 build
+lib
 dist
 .rpt2_cache
 

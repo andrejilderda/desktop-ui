@@ -1,5 +1,2 @@
-build/
-dist/
-node_modules/
-.snapshots/
-*.min.js
+node_modules/*.js
+docs

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a default Container 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bdnxRM euCGiU"
+    >
+      TESTING
+    </div>
+  </div>
+</body>
+`;

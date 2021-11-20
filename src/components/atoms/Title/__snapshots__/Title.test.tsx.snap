@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a default Title 1`] = `
+<body>
+  <div>
+    <h1
+      class="sc-bdnxRM icaPHF"
+    >
+      TESTING
+    </h1>
+  </div>
+</body>
+`;
