@@ -1,32 +1,32 @@
 # .github/workflows/chromatic.yml
 
 # Workflow name
-name: 'Deploy StoryBook'
+name: "Deploy StoryBook"
 
 # Event for the workflow
 on:
-    push:
-        tags:
-            - '*'
+  push:
+    tags:
+      - "*"
 
 # List of jobs
 jobs:
-    storyBook-deployment:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout 🛎️
-              uses: actions/checkout@v2.3.1
-              with:
-                  persist-credentials: false
-            - name: Install and Build 🔧
-              run: | # Install npm packages and build the Storybook files
-                  npm ci
-                  npm run build-storybook
-            - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@3.6.2
-              with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages # The branch the action should deploy to.
-                  FOLDER: build/storybook # The folder that the build-storybook script generates files.
-                  CLEAN: true # Automatically remove deleted files from the deploy branch
-                  TARGET_FOLDER: docs # The folder that we serve our Storybook files from
+  storyBook-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+      - name: Install and Build 🔧
+        run: | # Install npm packages and build the Storybook files
+          npm ci
+          npm run build-storybook
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build/storybook # The folder that the build-storybook script generates files.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+          TARGET_FOLDER: docs # The folder that we serve our Storybook files from

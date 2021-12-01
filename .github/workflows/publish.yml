@@ -12,7 +12,6 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-    
       - name: Checkout Repo
         uses: actions/checkout@master
         with:
@@ -23,12 +22,12 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12.x
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - run: npm ci
       - run: npm run release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-     
+
       - name: Create Release
         id: create_release
         uses: zendesk/action-create-release@v1
@@ -43,4 +42,3 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-      
