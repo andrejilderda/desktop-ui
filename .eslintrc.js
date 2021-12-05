@@ -18,6 +18,7 @@ module.exports = {
   plugins: ['testing-library'],
   extends: [
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:storybook/recommended',

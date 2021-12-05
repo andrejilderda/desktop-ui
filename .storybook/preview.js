@@ -1,5 +1,7 @@
+import ThemeProvider from './../src/contexts/ThemeProvider/ThemeProvider';
+
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -8,7 +10,51 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ["Docs", "Getting Started", "Components"],
+      order: ['Docs', 'Getting Started', 'Components'],
     },
   },
 };
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Global theme/OS',
+    defaultValue: 'macos',
+    toolbar: {
+      icon: 'browser',
+      items: [
+        {
+          title: 'macOS',
+          value: 'macos',
+        },
+        {
+          title: 'Windows',
+          value: 'windows',
+        },
+      ],
+      showName: true,
+    },
+  },
+  mode: {
+    name: 'Mode',
+    // description: 'Appearance',
+    defaultValue: 'auto',
+    toolbar: {
+      icon: 'contrast',
+      items: ['auto', 'light', 'dark'],
+      showName: true,
+    },
+  },
+};
+
+export const decorators = [
+  (Story, context) => (
+    <ThemeProvider
+      theme={context.globals.theme}
+      mode={context.globals.mode}
+      withGlobalStyles
+    >
+      <Story />
+    </ThemeProvider>
+  ),
+];
