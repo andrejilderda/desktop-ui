@@ -8,6 +8,18 @@ export const {
   keyframes,
   getCssText,
   theme,
+  themes,
   createTheme,
   config,
-} = generateTheme({ theme: 'macos', mode: 'light' });
+} = generateTheme([
+  {
+    theme: 'macos',
+    mode: ['light', 'dark'],
+    useWindowBlur: true,
+  },
+  {
+    theme: 'windows',
+    mode: ['light', 'dark'],
+    useWindowBlur: false,
+  },
+]);

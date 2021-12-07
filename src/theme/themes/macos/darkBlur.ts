@@ -1,4 +1,4 @@
-import dark from "./dark";
+import dark from './dark';
 
 const darkBlur = {
   theme: {

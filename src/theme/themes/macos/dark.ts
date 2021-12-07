@@ -1,11 +1,11 @@
-import base from "./base";
+import base from './base';
 
 const dark = {
   theme: {
     ...base,
     colors: {
-      foreground: "white",
-      background: "black",
+      foreground: 'white',
+      background: 'black',
     },
   },
 };

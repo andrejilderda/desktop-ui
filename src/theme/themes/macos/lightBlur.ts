@@ -1,4 +1,4 @@
-import light from "./light";
+import light from './light';
 
 const lightBlur = {
   theme: {

@@ -1,7 +1,7 @@
-import light from "./light";
-import lightBlur from "./lightBlur";
-import dark from "./dark";
-import darkBlur from "./darkBlur";
+import light from './light';
+import lightBlur from './lightBlur';
+import dark from './dark';
+import darkBlur from './darkBlur';
 
 export default {
   light: {
