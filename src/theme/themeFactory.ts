@@ -1,46 +1,50 @@
 import { createStitches } from '@stitches/react';
-import themes from './themes';
-import { GetThemeConfigType, ThemeFactory, ThemeSlug } from './types';
+import globalStyles from './globalStyles';
+import rawThemes from './themes';
+import { Theme, ThemeConfig, ThemeFactory, ThemeSlug } from './types';
 
-export const getThemeConfig = ({
+export const getRawTheme = ({
   theme: themeName,
   mode,
   windowBlur: windowBlurArg,
-}: GetThemeConfigType) => {
+}: ThemeConfig) => {
   const windowBlur = windowBlurArg ? 'default' : 'blur';
 
   // for now, only macOS has specific styles for when the window is focused
   return themeName === 'macos'
-    ? themes[themeName][mode][windowBlur]
-    : themes[themeName][mode].default;
+    ? rawThemes[themeName][mode][windowBlur]
+    : rawThemes[themeName][mode].default;
 };
 
 export const themeFactory = (config: ThemeFactory[]) => {
   const { createTheme: createStitchesTheme, ...stitches } = createStitches({});
 
   // change interface of default Stitches createTheme function, so that both the
-  // `generateTheme` and `createTheme` have the same simple interface
-  const createTheme = (props: GetThemeConfigType) =>
-    createStitchesTheme(getThemeConfig(props).theme);
+  // `generateTheme` and `createTheme` have the same simplified interface
+  const createTheme = (props: ThemeConfig) =>
+    createStitchesTheme(getRawTheme(props).theme);
 
-  const generateTheme = (props: GetThemeConfigType) => {
-    const { theme, mode, windowBlur: windowBlurArg } = props;
+  const generateTheme = ({
+    theme: name,
+    mode,
+    windowBlur: windowBlurArg,
+  }: ThemeConfig) => {
     const windowBlur = windowBlurArg || undefined;
-    const generatedTheme = createTheme({ theme, mode, windowBlur });
-    const name: ThemeSlug = `${theme}-${mode}${windowBlur ? '-blur' : ''}`;
+    const generatedTheme = createTheme({ theme: name, mode, windowBlur });
+    const slug: ThemeSlug = `${name}-${mode}${windowBlur ? '-blur' : ''}`;
     return {
       name,
-      ...props,
+      mode,
+      ...(windowBlur ? { windowBlur } : {}),
+      slug,
       theme: generatedTheme,
     };
   };
 
-  type GeneratedTheme = ReturnType<typeof generateTheme>;
-
-  const themes = config.reduce<GeneratedTheme[]>(
+  const generatedThemes = config.reduce<Theme[]>(
     (acc, { theme, mode: modeArg, useWindowBlur }) => {
       const mode = typeof modeArg === 'string' ? [modeArg] : modeArg;
-      const themeModes = mode.reduce<GeneratedTheme[]>((acc, mode) => {
+      const themeModes = mode.reduce<Theme[]>((acc, mode) => {
         const generatedTheme = generateTheme({ theme, mode });
         if (typeof generatedTheme === 'string') return acc;
 
@@ -60,19 +64,30 @@ export const themeFactory = (config: ThemeFactory[]) => {
     [],
   );
 
-  const globalStyles = stitches.globalCss({
-    html: { backgroundColor: '$background', color: '$foreground' },
-    '*': { outline: '2px solid blue', margin: 0, padding: 0 },
-  });
+  const getTheme = ({ theme: name, mode, windowBlur = false }: ThemeConfig) => {
+    const theme = generatedThemes.find(
+      ({
+        name: itemName,
+        mode: itemMode,
+        windowBlur: itemWindowBlur = false,
+      }) =>
+        itemName === name && itemMode === mode && itemWindowBlur === windowBlur,
+    )?.theme;
+    if (!theme)
+      throw new Error(
+        `No theme found for theme with name '${name}', mode '${mode}' and windowBlur ${windowBlur}`,
+      );
 
-  console.log(themes);
+    return theme;
+  };
 
   return {
     ...stitches,
     createStitchesTheme,
     createTheme,
     globalStyles,
-    themes,
+    themes: generatedThemes,
+    getTheme,
   };
 };
 

@@ -10,6 +10,7 @@ export const {
   theme,
   themes,
   createTheme,
+  getTheme,
   config,
 } = generateTheme([
   {

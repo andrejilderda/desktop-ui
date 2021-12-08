@@ -1,10 +1,11 @@
-import React, { createContext } from 'react';
-import { globalStyles, themes } from '../../../src/reactDesktop.config';
+import React, { createContext, useContext, useRef } from 'react';
+import { globalStyles } from '../../reactDesktop.config';
 import useColorMode from './hooks/useColorMode';
 import Stitches from '@stitches/react/types/stitches';
 import useApplyThemeToHTML from './hooks/useApplyTheme';
 import { ConditionalWrapper } from '../../utils/helpers';
 import { ThemeMode, ThemeName } from 'src/theme/types';
+import useTheme from './hooks/useTheme';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -25,44 +26,34 @@ const ThemeProvider = ({
   children,
   theme: themeName,
   mode: modeProp = 'auto',
-  enableWindowBlur = false,
+  enableWindowBlur = true,
   withGlobalStyles,
-  local,
+  local: localProp,
 }: ThemeProviderProps) => {
   // determine the mode automatically based on the user's light/dark system
   // preferences unless mode is explicitly provided as a prop
   const [mode] = useColorMode(modeProp);
-  useApplyThemeToHTML({ enabled: !local, themeName, mode });
-  const activeTheme = themes.find(
-    (theme) => theme.name === `${themeName}-${mode}`,
-  )?.theme;
+
+  // 1. Most applications will only use one ThemeProvider. By default the
+  //    ThemeProvider will add a className for the theme to the <html>-element,
+  //    unless a `local` prop is given or the ThemeProvider is wrapped inside
+  //    another ThemeProvider. In these cases the children are wrapped in a
+  //    <div> with the className.
+  const ThemeContext = useContext(ThemeProviderContext);
+  const local = !!ThemeContext || localProp;
+  const activeTheme = useTheme(themeName, mode, enableWindowBlur);
+  useApplyThemeToHTML(!local, activeTheme);
 
   if (withGlobalStyles) globalStyles();
 
-  // TODO: Switch to blur-theme on window blur
-  if (enableWindowBlur) console.log('window blur enabled');
-
   return (
     <ThemeProviderContext.Provider value={activeTheme}>
-      {/* 
-        By default the ThemeProvider adds the theme to the <html>-element.
-        When a `local`-prop is provided a wrapper is added with the theme
-      */}
+      {/* See 1. */}
       <ConditionalWrapper
         condition={!!local}
-        wrapper={(children) => (
-          <div className={activeTheme}>LOCAL! {children}</div>
-        )}
+        wrapper={(children) => <div className={activeTheme}>{children}</div>}
       >
-        <>
-          Theme: <br />
-          <strong>{themeName}</strong>
-          <br />
-          <br />
-          Mode: <br />
-          <strong>{mode}</strong>
-          {children}
-        </>
+        <>{children}</>
       </ConditionalWrapper>
     </ThemeProviderContext.Provider>
   );

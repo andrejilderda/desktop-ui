@@ -5,7 +5,8 @@ const darkBlur = {
     ...dark.theme,
     colors: {
       ...dark.theme.colors,
-      // overrides
+      foreground: 'white',
+      background: 'gray',
     },
   },
 };

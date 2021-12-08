@@ -1,29 +1,23 @@
+import Stitches from '@stitches/react/types/stitches';
 import { useEffect, useRef } from 'react';
-import { ThemeMode, ThemeName } from 'src/theme/types';
-import { createTheme } from '../../../../src/reactDesktop.config';
 
-interface Args {
-  enabled: boolean;
-  themeName: ThemeName;
-  mode: ThemeMode;
-}
-
-const useApplyThemeToHTML = ({ enabled, themeName, mode }: Args) => {
+// add/remove classnames of the current theme on the <html>-element
+const useApplyThemeToHTML = (enabled: boolean, theme: Stitches['theme']) => {
   const prevThemeClassName = useRef<string>();
 
   useEffect(() => {
     if (!enabled) return;
 
-    const newTheme = createTheme({ theme: themeName, mode });
-    const html = document.documentElement;
+    const html = document?.documentElement;
 
-    // add/remove classnames
-    if (prevThemeClassName.current)
+    if (html && prevThemeClassName.current)
       html.classList.remove(prevThemeClassName.current);
-    if (newTheme?.className && enabled) html.classList.add(newTheme.className);
 
-    prevThemeClassName.current = newTheme.className;
-  }, [themeName, mode, enabled]);
+    if (html && enabled && theme?.className)
+      html.classList.add(theme?.className);
+
+    prevThemeClassName.current = theme?.className;
+  }, [enabled, theme]);
 };
 
 export default useApplyThemeToHTML;

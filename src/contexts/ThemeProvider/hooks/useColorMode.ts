@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ThemeMode } from 'src/theme';
+import { ThemeMode } from 'src/theme/types';
 
 type UseColorModeArg = ThemeMode | 'auto';
 
