@@ -9,16 +9,16 @@ const useTheme = (
   mode: ThemeMode,
   windowBlurEnabled: boolean,
 ) => {
-  const windowFocused = useWindowBlurTheme(themeName, windowBlurEnabled);
+  const applyBlurTheme = useWindowBlurTheme(themeName, windowBlurEnabled);
 
   const theme = useMemo<Stitches['theme']>(
     () =>
       getTheme({
         theme: themeName,
         mode,
-        windowBlur: windowFocused,
+        windowBlur: applyBlurTheme,
       }),
-    [themeName, mode, windowFocused],
+    [themeName, mode, applyBlurTheme],
   );
 
   return theme;

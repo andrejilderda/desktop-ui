@@ -49,7 +49,7 @@ const useWindowBlurTheme = (themeName: ThemeName, enabledArg: boolean) => {
     };
   }, [enabled]);
 
-  return enabled ? focused : false;
+  return enabled ? !focused : false;
 };
 
 export default useWindowBlurTheme;

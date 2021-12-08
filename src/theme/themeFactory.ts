@@ -8,7 +8,7 @@ export const getRawTheme = ({
   mode,
   windowBlur: windowBlurArg,
 }: ThemeConfig) => {
-  const windowBlur = windowBlurArg ? 'default' : 'blur';
+  const windowBlur = windowBlurArg ? 'blur' : 'default';
 
   // for now, only macOS has specific styles for when the window is focused
   return themeName === 'macos'
@@ -21,8 +21,8 @@ export const themeFactory = (config: ThemeFactory[]) => {
 
   // change interface of default Stitches createTheme function, so that both the
   // `generateTheme` and `createTheme` have the same simplified interface
-  const createTheme = (props: ThemeConfig) =>
-    createStitchesTheme(getRawTheme(props).theme);
+  const createTheme = (slug: ThemeSlug, props: ThemeConfig) =>
+    createStitchesTheme(slug, getRawTheme(props).theme);
 
   const generateTheme = ({
     theme: name,
@@ -30,8 +30,8 @@ export const themeFactory = (config: ThemeFactory[]) => {
     windowBlur: windowBlurArg,
   }: ThemeConfig) => {
     const windowBlur = windowBlurArg || undefined;
-    const generatedTheme = createTheme({ theme: name, mode, windowBlur });
     const slug: ThemeSlug = `${name}-${mode}${windowBlur ? '-blur' : ''}`;
+    const generatedTheme = createTheme(slug, { theme: name, mode, windowBlur });
     return {
       name,
       mode,
@@ -73,6 +73,7 @@ export const themeFactory = (config: ThemeFactory[]) => {
       }) =>
         itemName === name && itemMode === mode && itemWindowBlur === windowBlur,
     )?.theme;
+
     if (!theme)
       throw new Error(
         `No theme found for theme with name '${name}', mode '${mode}' and windowBlur ${windowBlur}`,

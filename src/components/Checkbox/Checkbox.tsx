@@ -10,6 +10,22 @@ const StyledButton = styled('button', {
   borderRadius: '9999px',
   fontSize: '13px',
   border: '0',
+
+  [`.macos-dark &`]: {
+    backgroundColor: 'red',
+  },
+
+  [`.macos-dark-blur &`]: {
+    backgroundColor: 'orange',
+  },
+
+  [`.windows-light &`]: {
+    backgroundColor: 'purple',
+  },
+
+  [`.windows-dark &`]: {
+    backgroundColor: 'green',
+  },
 });
 
 const Checkbox = (props: CheckboxProps): JSX.Element => {
