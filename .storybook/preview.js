@@ -37,7 +37,6 @@ export const globalTypes = {
   },
   mode: {
     name: 'Mode',
-    // description: 'Appearance',
     defaultValue: 'auto',
     toolbar: {
       icon: 'contrast',

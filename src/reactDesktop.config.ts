@@ -12,6 +12,7 @@ export const {
   createTheme,
   getTheme,
   config,
+  createStitchesTheme,
 } = generateTheme([
   {
     theme: 'macos',

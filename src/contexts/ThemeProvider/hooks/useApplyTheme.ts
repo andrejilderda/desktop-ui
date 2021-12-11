@@ -1,22 +1,27 @@
-import Stitches from '@stitches/react/types/stitches';
 import { useEffect, useRef } from 'react';
+import { Theme } from 'src/theme/types';
 
 // add/remove classnames of the current theme on the <html>-element
-const useApplyThemeToHTML = (enabled: boolean, theme: Stitches['theme']) => {
-  const prevThemeClassName = useRef<string>();
+const useApplyThemeToHTML = (enabled: boolean, theme: Theme) => {
+  const prevClassNames = useRef<string[]>();
 
   useEffect(() => {
     if (!enabled) return;
 
+    const { baseClassName, className } = theme;
     const html = document?.documentElement;
 
-    if (html && prevThemeClassName.current)
-      html.classList.remove(prevThemeClassName.current);
+    if (html && prevClassNames.current?.length) {
+      prevClassNames.current.forEach((prevClassName) =>
+        html.classList.remove(prevClassName),
+      );
+    }
 
-    if (html && enabled && theme?.className)
-      html.classList.add(theme?.className);
+    if (html && enabled && baseClassName && className) {
+      html.classList.add(baseClassName, className);
+    }
 
-    prevThemeClassName.current = theme?.className;
+    prevClassNames.current = [baseClassName, className];
   }, [enabled, theme]);
 };
 

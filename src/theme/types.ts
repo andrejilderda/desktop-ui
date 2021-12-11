@@ -4,9 +4,16 @@ import themes from './themes';
 export type ThemeName = keyof typeof themes; // macos, windows
 export type ThemeMode = keyof typeof themes['macos']; // light, dark
 export type WindowBlur = boolean;
-type ThemeSlugWithoutBlur = `${ThemeName}-${ThemeMode}`;
-type ThemeSlugWithBlur = `${ThemeName}-${ThemeMode}-blur`;
+export type ThemeSlugWithoutBlur = `${ThemeName}-${ThemeMode}`;
+export type ThemeSlugWithBlur = `${Exclude<
+  ThemeName,
+  'windows'
+>}-${ThemeMode}-blur`;
 export type ThemeSlug = ThemeSlugWithoutBlur | ThemeSlugWithBlur;
+export type ThemeClassName =
+  | `rd-${ThemeSlugWithoutBlur}`
+  | `rd-${ThemeSlugWithBlur}`;
+export type ThemeBaseClassName = `rd-${ThemeName}`;
 
 export interface ThemeConfig {
   theme: ThemeName;
@@ -26,4 +33,6 @@ export interface Theme {
   windowBlur?: WindowBlur;
   slug: ThemeSlug;
   theme: Stitches['theme'];
+  baseClassName: string;
+  className: string;
 }

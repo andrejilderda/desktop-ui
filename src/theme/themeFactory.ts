@@ -1,7 +1,14 @@
 import { createStitches } from '@stitches/react';
 import globalStyles from './globalStyles';
 import rawThemes from './themes';
-import { Theme, ThemeConfig, ThemeFactory, ThemeSlug } from './types';
+import {
+  Theme,
+  ThemeBaseClassName,
+  ThemeClassName,
+  ThemeConfig,
+  ThemeFactory,
+  ThemeSlug,
+} from './types';
 
 export const getRawTheme = ({
   theme: themeName,
@@ -21,8 +28,8 @@ export const themeFactory = (config: ThemeFactory[]) => {
 
   // change interface of default Stitches createTheme function, so that both the
   // `generateTheme` and `createTheme` have the same simplified interface
-  const createTheme = (slug: ThemeSlug, props: ThemeConfig) =>
-    createStitchesTheme(slug, getRawTheme(props).theme);
+  const createTheme = (className: ThemeClassName, props: ThemeConfig) =>
+    createStitchesTheme(className, getRawTheme(props).theme);
 
   const generateTheme = ({
     theme: name,
@@ -31,12 +38,20 @@ export const themeFactory = (config: ThemeFactory[]) => {
   }: ThemeConfig) => {
     const windowBlur = windowBlurArg || undefined;
     const slug: ThemeSlug = `${name}-${mode}${windowBlur ? '-blur' : ''}`;
-    const generatedTheme = createTheme(slug, { theme: name, mode, windowBlur });
+    const baseClassName: ThemeBaseClassName = `rd-${name}`;
+    const className: ThemeClassName = `rd-${slug}`;
+    const generatedTheme = createTheme(className, {
+      theme: name,
+      mode,
+      windowBlur,
+    });
     return {
       name,
       mode,
       ...(windowBlur ? { windowBlur } : {}),
       slug,
+      baseClassName,
+      className,
       theme: generatedTheme,
     };
   };
@@ -72,7 +87,7 @@ export const themeFactory = (config: ThemeFactory[]) => {
         windowBlur: itemWindowBlur = false,
       }) =>
         itemName === name && itemMode === mode && itemWindowBlur === windowBlur,
-    )?.theme;
+    );
 
     if (!theme)
       throw new Error(

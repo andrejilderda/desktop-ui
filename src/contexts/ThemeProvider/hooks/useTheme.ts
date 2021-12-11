@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { getTheme } from '../../../reactDesktop.config';
-import { ThemeMode, ThemeName } from 'src/theme/types';
-import Stitches from '@stitches/react/types/stitches';
+import { Theme, ThemeMode, ThemeName } from 'src/theme/types';
 import useWindowBlurTheme from './useWindowBlurTheme';
 
 const useTheme = (
@@ -11,7 +10,7 @@ const useTheme = (
 ) => {
   const applyBlurTheme = useWindowBlurTheme(themeName, windowBlurEnabled);
 
-  const theme = useMemo<Stitches['theme']>(
+  const theme = useMemo<Theme>(
     () =>
       getTheme({
         theme: themeName,

@@ -41,17 +41,20 @@ const ThemeProvider = ({
   //    <div> with the className.
   const ThemeContext = useContext(ThemeProviderContext);
   const local = !!ThemeContext || localProp;
-  const activeTheme = useTheme(themeName, mode, enableWindowBlur);
-  useApplyThemeToHTML(!local, activeTheme);
+  const theme = useTheme(themeName, mode, enableWindowBlur);
+  const { baseClassName, theme: themeProps } = theme;
+  useApplyThemeToHTML(!local, theme);
 
   if (withGlobalStyles) globalStyles();
 
   return (
-    <ThemeProviderContext.Provider value={activeTheme}>
+    <ThemeProviderContext.Provider value={themeProps}>
       {/* See 1. */}
       <ConditionalWrapper
         condition={!!local}
-        wrapper={(children) => <div className={activeTheme}>{children}</div>}
+        wrapper={(children) => (
+          <div className={`${baseClassName} ${themeProps}`}>{children}</div>
+        )}
       >
         <>{children}</>
       </ConditionalWrapper>

@@ -2,42 +2,44 @@
 import React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { styled } from './../../reactDesktop.config';
+import rd from '../../constants/classNames';
+import type * as Stitches from '@stitches/react';
 
-type CheckboxProps = RadixCheckbox.CheckboxProps;
+type Foo = Stitches.ComponentProps<typeof CheckboxRoot>;
 
-const StyledButton = styled('button', {
-  backgroundColor: '$foreground',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  border: '0',
-
-  [`.macos-dark &`]: {
-    backgroundColor: 'red',
+const CheckboxRoot = styled(RadixCheckbox.Root, {
+  [rd['macos']]: {
+    backgroundColor: '$foreground',
+    borderRadius: '9999px',
+    fontSize: '13px',
+    border: '0',
+    outline: '2px solid red',
+    width: '20px',
+    height: '20px',
+  },
+  [rd['macos-dark']]: {
+    background: 'red !important',
+    border: '4px solid purple',
+  },
+  [rd['macos-dark-blur']]: {
+    background: 'red !important',
+    border: '4px solid green',
   },
 
-  [`.macos-dark-blur &`]: {
-    backgroundColor: 'orange',
-  },
-
-  [`.windows-light &`]: {
-    backgroundColor: 'purple',
-  },
-
-  [`.windows-dark &`]: {
-    backgroundColor: 'green',
+  [rd['windows']]: {
+    backgroundColor: 'yellow',
   },
 });
 
-const Checkbox = (props: CheckboxProps): JSX.Element => {
+const Checkbox = ({ checked, ...props }: Foo): JSX.Element => {
   return (
     <>
-      <StyledButton>Styled button</StyledButton>
-      <RadixCheckbox.Root {...props}>
+      <CheckboxRoot {...props}>
         <RadixCheckbox.Indicator>
-          {props.checked === 'indeterminate' && 'indeterminate'}
-          {props.checked === true && 'TRUE'}
+          {checked === 'indeterminate' && 'indeterminate'}
+          {checked === true && 'TRUE'}
         </RadixCheckbox.Indicator>
-      </RadixCheckbox.Root>
+      </CheckboxRoot>
     </>
   );
 };
