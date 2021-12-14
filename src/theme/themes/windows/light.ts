@@ -7,6 +7,12 @@ const light = {
     colors: {
       foreground: String(tokens.light.fill_color.text.primary),
       background: String(tokens.light.background.fill_color),
+      checkboxFill: String(tokens.light.fill_color.control_alt.secondary),
+      checkboxBorder: String(
+        tokens.light.stroke_color.control_strong_stroke.default,
+      ),
+      checkboxFillSelected: String(tokens.light.fill_color.accent.default),
+      checkboxCheck: String(tokens.light.fill_color.text_on_accent.primary),
     },
   },
 };

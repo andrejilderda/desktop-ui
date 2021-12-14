@@ -3,32 +3,62 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { styled } from 'src/reactDesktop.config';
 import type * as Stitches from '@stitches/react';
 import ThemeConsumer from 'src/contexts/ThemeProvider/ThemeConsumer';
+import { Check } from 'phosphor-react';
 
-type CheckboxProps = Stitches.ComponentProps<typeof CheckboxRoot>;
+export type CheckboxProps = Stitches.ComponentProps<typeof CheckboxRoot>;
 
 const CheckboxRoot = styled(RadixCheckbox.Root, {
-  variants: {
-    themeMode: {
-      dark: {
-        outline: '10px solid purple',
+  background: '$checkboxFill',
+  border: '$borderWidths$default solid $checkboxBorder',
+  borderRadius: '$1',
+  height: '$checkbox',
+  width: '$checkbox',
+  position: 'relative',
+
+  compoundVariants: [
+    {
+      theme: 'windows',
+      checked: true,
+      css: {
+        background: '$checkboxFillSelected',
+        border: 'none',
       },
     },
-    theme: {
-      macos: {
-        background: 'green',
-      },
+  ],
+
+  variants: {
+    // needed to trigger compoundVariants & make Stitches infer types correctly
+    theme: {},
+    themeMode: {},
+    checked: {
+      true: {},
+      false: {},
+      indeterminate: {},
     },
   },
 });
 
-const Checkbox = ({ checked }: CheckboxProps): JSX.Element => {
+const StyledIndicator = styled(RadixCheckbox.Indicator, {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+const StyledCheck = styled(Check, {
+  position: 'absolute',
+
+  color: '$checkboxCheck',
+});
+
+const Checkbox = ({ checked, ...props }: CheckboxProps): JSX.Element => {
   return (
-    <ThemeConsumer forwardProps={['mode', 'theme']}>
-      <CheckboxRoot>
-        <RadixCheckbox.Indicator>
-          {checked === 'indeterminate' && 'indeterminate'}
-          {checked === true && 'TRUE'}
-        </RadixCheckbox.Indicator>
+    <ThemeConsumer>
+      <CheckboxRoot checked={checked} {...props}>
+        <StyledIndicator>
+          <StyledCheck />
+        </StyledIndicator>
+        {/* {checked === 'indeterminate' && 'indeterminate'}
+        {checked === true && 'TRUE'} */}
       </CheckboxRoot>
     </ThemeConsumer>
   );

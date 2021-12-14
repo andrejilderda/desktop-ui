@@ -5,10 +5,12 @@ type ForwardPropsItem = 'theme' | 'mode' | 'windowBlur';
 
 interface ThemeConsumerProps {
   children: ReactElement;
-  forwardProps?: ForwardPropsItem[];
+  forwardProps?: ForwardPropsItem[] | boolean;
 }
 
 const ThemeConsumer = ({ children, forwardProps = [] }: ThemeConsumerProps) => {
+  if (forwardProps === false) return children;
+
   const theme = useContext(ThemeProviderContext);
   if (!theme)
     throw new Error(

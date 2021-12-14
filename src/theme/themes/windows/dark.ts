@@ -7,6 +7,11 @@ const dark = {
     colors: {
       foreground: String(tokens.dark.fill_color.text.primary),
       background: String(tokens.dark.background.fill_color),
+      checkboxFill: String(tokens.dark.fill_color.control_alt.secondary),
+      checkboxBorder: String(
+        tokens.dark.stroke_color.control_strong_stroke.default,
+      ),
+      checkboxFillSelected: String(tokens.dark.fill_color.accent.default),
     },
   },
 };
