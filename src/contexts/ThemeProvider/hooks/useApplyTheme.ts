@@ -2,13 +2,15 @@ import { useEffect, useRef } from 'react';
 import { Theme } from 'src/theme/types';
 
 // add/remove classnames of the current theme on the <html>-element
-const useApplyThemeToHTML = (enabled: boolean, theme: Theme) => {
+const useApplyThemeToHTML = (
+  enabled: boolean,
+  { baseClassName, theme }: Theme,
+) => {
   const prevClassNames = useRef<string[]>();
 
   useEffect(() => {
     if (!enabled) return;
 
-    const { baseClassName, className } = theme;
     const html = document?.documentElement;
 
     if (html && prevClassNames.current?.length) {
@@ -17,12 +19,12 @@ const useApplyThemeToHTML = (enabled: boolean, theme: Theme) => {
       );
     }
 
-    if (html && enabled && baseClassName && className) {
-      html.classList.add(baseClassName, className);
+    if (html && enabled && baseClassName && theme) {
+      html.classList.add(baseClassName, theme);
     }
 
-    prevClassNames.current = [baseClassName, className];
-  }, [enabled, theme]);
+    prevClassNames.current = [baseClassName, theme];
+  }, [enabled, theme, baseClassName]);
 };
 
 export default useApplyThemeToHTML;
