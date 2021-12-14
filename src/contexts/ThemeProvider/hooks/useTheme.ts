@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { getTheme } from '../../../reactDesktop.config';
+import { getTheme } from 'src/reactDesktop.config';
 import { Theme, ThemeMode, ThemeName } from 'src/theme/types';
 import useWindowBlurTheme from './useWindowBlurTheme';
 

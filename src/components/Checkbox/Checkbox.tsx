@@ -1,8 +1,8 @@
 import React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { styled } from './../../reactDesktop.config';
+import { styled } from 'src/reactDesktop.config';
 import type * as Stitches from '@stitches/react';
-import ThemeConsumer from '../../contexts/ThemeProvider/ThemeConsumer';
+import ThemeConsumer from 'src/contexts/ThemeProvider/ThemeConsumer';
 
 type CheckboxProps = Stitches.ComponentProps<typeof CheckboxRoot>;
 

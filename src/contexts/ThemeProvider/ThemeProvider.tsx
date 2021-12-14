@@ -1,10 +1,8 @@
 import React, { createContext, useContext } from 'react';
-import { globalStyles } from '../../reactDesktop.config';
-import useColorMode from './hooks/useColorMode';
-import useApplyThemeToHTML from './hooks/useApplyTheme';
-import { ConditionalWrapper } from '../../utils/helpers';
+import { globalStyles } from 'src/reactDesktop.config';
+import { ConditionalWrapper } from 'src/utils/helpers';
 import { Theme, ThemeMode, ThemeName } from 'src/theme/types';
-import useTheme from './hooks/useTheme';
+import { useColorMode, useTheme, useApplyThemeToHTML } from './hooks';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
