@@ -30,7 +30,9 @@ const base = {
     7: '92px',
   },
   letterSpacings: {},
-  sizes: {},
+  sizes: {
+    checkbox: '20px',
+  },
   borderWidths: {
     default: '1px',
     card_rest: '$default',
@@ -50,7 +52,13 @@ const base = {
     inactive_windows: '$default',
     active_windows: '$default',
   },
-  radii: {},
+  radii: {
+    1: '3px',
+    2: '4px',
+    3: '7px',
+    round: '50%',
+    pill: '9999px',
+  },
   shadows: {
     // see layering:
     // https://docs.microsoft.com/en-us/windows/apps/design/signature-experiences/layering
