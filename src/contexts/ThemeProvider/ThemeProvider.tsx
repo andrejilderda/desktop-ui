@@ -1,10 +1,9 @@
-import React, { createContext, useContext, useRef } from 'react';
+import React, { createContext, useContext } from 'react';
 import { globalStyles } from '../../reactDesktop.config';
 import useColorMode from './hooks/useColorMode';
-import Stitches from '@stitches/react/types/stitches';
 import useApplyThemeToHTML from './hooks/useApplyTheme';
 import { ConditionalWrapper } from '../../utils/helpers';
-import { ThemeMode, ThemeName } from 'src/theme/types';
+import { Theme, ThemeMode, ThemeName } from 'src/theme/types';
 import useTheme from './hooks/useTheme';
 
 interface ThemeProviderProps {
@@ -17,9 +16,7 @@ interface ThemeProviderProps {
   local?: boolean;
 }
 
-export const ThemeProviderContext = createContext<
-  Stitches['theme'] | undefined
->(undefined);
+export const ThemeProviderContext = createContext<Theme | undefined>(undefined);
 ThemeProviderContext.displayName = 'ThemeProviderContext';
 
 const ThemeProvider = ({
@@ -48,7 +45,7 @@ const ThemeProvider = ({
   if (withGlobalStyles) globalStyles();
 
   return (
-    <ThemeProviderContext.Provider value={themeProps}>
+    <ThemeProviderContext.Provider value={theme}>
       {/* See 1. */}
       <ConditionalWrapper
         condition={!!local}

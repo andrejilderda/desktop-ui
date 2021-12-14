@@ -36,3 +36,11 @@ export interface Theme {
   baseClassName: string;
   className: string;
 }
+
+// props that are automatically passed to components via
+// ThemeConsumer for applying variants
+export interface ThemeComponentProps {
+  theme: ThemeName;
+  themeMode: ThemeMode;
+  themeWindowBlur: boolean;
+}
