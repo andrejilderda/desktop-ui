@@ -1,11 +1,16 @@
 import React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { styled } from 'src/reactDesktop.config';
+import { css, styled } from 'src/reactDesktop.config';
 import type * as Stitches from '@stitches/react';
 import ThemeConsumer from 'src/contexts/ThemeProvider/ThemeConsumer';
-import { Check } from 'phosphor-react';
+import { Check, Minus } from 'phosphor-react';
 
-export type CheckboxProps = Stitches.ComponentProps<typeof CheckboxRoot>;
+export type CheckboxProps = Stitches.ComponentProps<typeof RadixCheckbox.Root>;
+
+const selectedStyles = {
+  background: '$checkboxFillSelected',
+  border: 'none',
+};
 
 const CheckboxRoot = styled(RadixCheckbox.Root, {
   background: '$checkboxFill',
@@ -17,20 +22,26 @@ const CheckboxRoot = styled(RadixCheckbox.Root, {
 
   compoundVariants: [
     {
-      theme: 'windows',
-      checked: true,
+      $theme: 'windows',
+      $checked: true,
       css: {
-        background: '$checkboxFillSelected',
-        border: 'none',
+        ...selectedStyles,
+      },
+    },
+    {
+      $theme: 'windows',
+      $checked: 'indeterminate',
+      css: {
+        ...selectedStyles,
       },
     },
   ],
 
   variants: {
     // needed to trigger compoundVariants & make Stitches infer types correctly
-    theme: {},
-    themeMode: {},
-    checked: {
+    $theme: {},
+    $themeMode: {},
+    $checked: {
       true: {},
       false: {},
       indeterminate: {},
@@ -50,15 +61,28 @@ const StyledCheck = styled(Check, {
   color: '$checkboxCheck',
 });
 
-const Checkbox = ({ checked, ...props }: CheckboxProps): JSX.Element => {
+const StyledMinus = styled(Minus, {
+  position: 'absolute',
+
+  color: '$checkboxCheck',
+});
+
+const Checkbox = ({
+  checked,
+  onCheckedChange,
+  ...props
+}: CheckboxProps): JSX.Element => {
   return (
     <ThemeConsumer>
-      <CheckboxRoot checked={checked} {...props}>
+      <CheckboxRoot
+        checked={checked}
+        onCheckedChange={onCheckedChange}
+        $checked={checked}
+        {...props}
+      >
         <StyledIndicator>
-          <StyledCheck />
+          {checked === 'indeterminate' ? <StyledMinus /> : <StyledCheck />}
         </StyledIndicator>
-        {/* {checked === 'indeterminate' && 'indeterminate'}
-        {checked === true && 'TRUE'} */}
       </CheckboxRoot>
     </ThemeConsumer>
   );
