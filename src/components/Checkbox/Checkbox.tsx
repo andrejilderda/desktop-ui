@@ -22,15 +22,15 @@ const CheckboxRoot = styled(RadixCheckbox.Root, {
 
   compoundVariants: [
     {
-      $theme: 'windows',
-      $checked: true,
+      _theme: 'windows',
+      _checked: true,
       css: {
         ...selectedStyles,
       },
     },
     {
-      $theme: 'windows',
-      $checked: 'indeterminate',
+      _theme: 'windows',
+      _checked: 'indeterminate',
       css: {
         ...selectedStyles,
       },
@@ -39,9 +39,10 @@ const CheckboxRoot = styled(RadixCheckbox.Root, {
 
   variants: {
     // needed to trigger compoundVariants & make Stitches infer types correctly
-    $theme: {},
-    $themeMode: {},
-    $checked: {
+    _theme: {},
+    _themeMode: {},
+    _themeWindowBlur: {},
+    _checked: {
       true: {},
       false: {},
       indeterminate: {},
@@ -77,7 +78,7 @@ const Checkbox = ({
       <CheckboxRoot
         checked={checked}
         onCheckedChange={onCheckedChange}
-        $checked={checked}
+        _checked={checked}
         {...props}
       >
         <StyledIndicator>

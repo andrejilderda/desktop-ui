@@ -25,16 +25,16 @@ const ThemeConsumer = ({ children, forwardProps = [] }: ThemeConsumerProps) => {
 
   // add theme properties to child component
   const themeProps = {
-    $theme: theme.name,
-    $themeMode: theme.mode,
-    $themeWindowBlur: theme.windowBlur,
+    _theme: theme.name,
+    _themeMode: theme.mode,
+    _themeWindowBlur: theme.windowBlur,
   };
 
   // map the values of the props to forward to the actual theme values
   const themePropsMap: Record<ForwardPropsItem, keyof typeof themeProps> = {
-    theme: '$theme',
-    mode: '$themeMode',
-    windowBlur: '$themeWindowBlur',
+    theme: '_theme',
+    mode: '_themeMode',
+    windowBlur: '_themeWindowBlur',
   };
 
   // forward all of the above themeProps by default, unless forwardProps is specified
