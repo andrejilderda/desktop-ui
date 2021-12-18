@@ -1,9 +1,10 @@
 import React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { css, styled } from 'src/reactDesktop.config';
+import { styled, css } from 'src/reactDesktop.config';
 import type * as Stitches from '@stitches/react';
 import ThemeConsumer from 'src/contexts/ThemeProvider/ThemeConsumer';
 import { Check, Minus } from 'phosphor-react';
+import focusableVariants from 'src/styles/focusableVariants';
 
 export type CheckboxProps = Stitches.ComponentProps<typeof RadixCheckbox.Root>;
 
@@ -12,7 +13,7 @@ const selectedStyles = {
   border: 'none',
 };
 
-const CheckboxRoot = styled(RadixCheckbox.Root, {
+const CheckboxRoot = styled(RadixCheckbox.Root, focusableVariants, {
   background: '$checkboxFill',
   border: '$borderWidths$default solid $checkboxBorder',
   borderRadius: '$1',
@@ -50,7 +51,7 @@ const CheckboxRoot = styled(RadixCheckbox.Root, {
   },
 });
 
-const StyledIndicator = styled(RadixCheckbox.Indicator, {
+const StyledIndicator = styled(RadixCheckbox.Indicator, focusableVariants, {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

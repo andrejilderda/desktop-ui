@@ -51,6 +51,7 @@ const base = {
     dialog: '$default',
     inactive_windows: '$default',
     active_windows: '$default',
+    focusStroke: '2px solid $colors$focusOutline',
   },
   radii: {
     1: '3px',
