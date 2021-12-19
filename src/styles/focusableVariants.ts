@@ -1,8 +1,6 @@
-import { css } from 'src/reactDesktop.config';
-
-const focusableVariants = css({
+const focusableVariants = {
   variants: {
-    _theme: {
+    theme: {
       windows: {
         '&:focus-visible': {
           outline: '$borderStyles$focusStroke',
@@ -11,6 +9,6 @@ const focusableVariants = css({
       },
     },
   },
-});
+};
 
 export default focusableVariants;

@@ -1,5 +1,10 @@
-import Stitches from '@stitches/react/types/stitches';
+import type * as Stitches from '@stitches/react';
+import StitchesReact from '@stitches/react/types/stitches';
+import { config } from 'src/reactDesktop.config';
 import themes from './themes';
+
+// https://stitches.dev/docs/typescript#type-a-css-object
+export type CSS = Stitches.CSS<typeof config>;
 
 export type ThemeName = keyof typeof themes; // macos, windows
 export type ThemeMode = keyof typeof themes['macos']; // light, dark
@@ -32,15 +37,14 @@ export interface Theme {
   mode: ThemeMode;
   windowBlur?: WindowBlur;
   slug: ThemeSlug;
-  theme: Stitches['theme'];
+  theme: StitchesReact['theme'];
   baseClassName: string;
   className: string;
 }
 
-// props that are automatically passed to components via
-// ThemeConsumer for applying variants
+// props that are automatically passed to createStyles for variants
 export interface ThemeComponentProps {
   theme: ThemeName;
-  themeMode: ThemeMode;
-  themeWindowBlur: boolean;
+  mode: ThemeMode;
+  windowBlur: boolean;
 }

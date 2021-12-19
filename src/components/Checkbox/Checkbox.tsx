@@ -1,92 +1,34 @@
 import React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { styled, css } from 'src/reactDesktop.config';
 import type * as Stitches from '@stitches/react';
-import ThemeConsumer from 'src/contexts/ThemeProvider/ThemeConsumer';
 import { Check, Minus } from 'phosphor-react';
-import focusableVariants from 'src/styles/focusableVariants';
+
+import useStyles from './Checkbox.styles';
 
 export type CheckboxProps = Stitches.ComponentProps<typeof RadixCheckbox.Root>;
-
-const selectedStyles = {
-  background: '$checkboxFillSelected',
-  border: 'none',
-};
-
-const CheckboxRoot = styled(RadixCheckbox.Root, focusableVariants, {
-  background: '$checkboxFill',
-  border: '$borderWidths$default solid $checkboxBorder',
-  borderRadius: '$1',
-  height: '$checkbox',
-  width: '$checkbox',
-  position: 'relative',
-
-  compoundVariants: [
-    {
-      _theme: 'windows',
-      _checked: true,
-      css: {
-        ...selectedStyles,
-      },
-    },
-    {
-      _theme: 'windows',
-      _checked: 'indeterminate',
-      css: {
-        ...selectedStyles,
-      },
-    },
-  ],
-
-  variants: {
-    // needed to trigger compoundVariants & make Stitches infer types correctly
-    _theme: {},
-    _themeMode: {},
-    _themeWindowBlur: {},
-    _checked: {
-      true: {},
-      false: {},
-      indeterminate: {},
-    },
-  },
-});
-
-const StyledIndicator = styled(RadixCheckbox.Indicator, focusableVariants, {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
-
-const StyledCheck = styled(Check, {
-  position: 'absolute',
-
-  color: '$checkboxCheck',
-});
-
-const StyledMinus = styled(Minus, {
-  position: 'absolute',
-
-  color: '$checkboxCheck',
-});
 
 const Checkbox = ({
   checked,
   onCheckedChange,
   ...props
 }: CheckboxProps): JSX.Element => {
+  const styles = useStyles({ checked });
+
   return (
-    <ThemeConsumer>
-      <CheckboxRoot
-        checked={checked}
-        onCheckedChange={onCheckedChange}
-        _checked={checked}
-        {...props}
-      >
-        <StyledIndicator>
-          {checked === 'indeterminate' ? <StyledMinus /> : <StyledCheck />}
-        </StyledIndicator>
-      </CheckboxRoot>
-    </ThemeConsumer>
+    <RadixCheckbox.Root
+      checked={checked}
+      onCheckedChange={onCheckedChange}
+      className={styles.root}
+      {...props}
+    >
+      <RadixCheckbox.Indicator className={styles.indicator}>
+        {checked === 'indeterminate' ? (
+          <Minus className={styles.minus} />
+        ) : (
+          <Check className={styles.check} />
+        )}
+      </RadixCheckbox.Indicator>
+    </RadixCheckbox.Root>
   );
 };
 

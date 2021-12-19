@@ -1,6 +1,7 @@
-import Stitches from '@stitches/react/types/stitches';
 import { createContext } from 'react';
+import { Theme } from 'src/theme/types';
 
-export const ThemeProviderContext = createContext<
-  Stitches['theme'] | undefined
->(undefined);
+const ThemeProviderContext = createContext<Theme | undefined>(undefined);
+ThemeProviderContext.displayName = 'ThemeProviderContext';
+
+export default ThemeProviderContext;

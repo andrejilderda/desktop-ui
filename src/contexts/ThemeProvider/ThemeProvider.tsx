@@ -1,8 +1,9 @@
-import React, { createContext, useContext } from 'react';
+import React, { useContext } from 'react';
 import { globalStyles } from 'src/reactDesktop.config';
 import { ConditionalWrapper } from 'src/utils/helpers';
-import { Theme, ThemeMode, ThemeName } from 'src/theme/types';
+import { ThemeMode, ThemeName } from 'src/theme/types';
 import { useColorMode, useTheme, useApplyThemeToHTML } from './hooks';
+import ThemeProviderContext from './ThemeProviderContext';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -13,9 +14,6 @@ interface ThemeProviderProps {
   enableWindowBlur?: boolean;
   local?: boolean;
 }
-
-export const ThemeProviderContext = createContext<Theme | undefined>(undefined);
-ThemeProviderContext.displayName = 'ThemeProviderContext';
 
 const ThemeProvider = ({
   children,
@@ -56,7 +54,5 @@ const ThemeProvider = ({
     </ThemeProviderContext.Provider>
   );
 };
-
-ThemeProviderContext.displayName = 'ThemeProviderContext';
 
 export default ThemeProvider;
