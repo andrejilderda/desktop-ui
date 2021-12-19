@@ -1,9 +1,17 @@
 const base = {
   space: {
-    // 1: '5px',
+    // Windows guidelines recommend spacing increments of 4px
+    // https://docs.microsoft.com/en-us/windows/apps/design/layout/alignment-margin-padding#general-recommendations
+    1: '4px',
+    2: '8px',
+    3: '12px',
+    4: '16px',
+    5: '20px',
+    6: '24px',
   },
   fonts: {
-    // untitled: 'Untitled Sans, apple-system, sans-serif',
+    system:
+      '"Segoe UI Variable", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", system-ui, sans-serif',
   },
   // see typography
   // https://docs.microsoft.com/en-us/windows/apps/design/signature-experiences/typography
@@ -17,8 +25,12 @@ const base = {
     7: '68px',
   },
   fontWeights: {
-    400: '400',
-    600: '600',
+    // * values are aligned with macOS
+    300: '300', // Light
+    350: '350', // Semilight
+    400: '400', // Regular*
+    600: '600', // Semibold
+    700: '700', // Bold*
   },
   lineHeights: {
     1: '16px',
@@ -32,6 +44,7 @@ const base = {
   letterSpacings: {},
   sizes: {
     checkbox: '20px',
+    radio: '18px',
   },
   borderWidths: {
     default: '1px',
