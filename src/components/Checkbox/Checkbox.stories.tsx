@@ -12,8 +12,10 @@ export default {
 export const Default = ({
   checked,
   ...props
-}: CheckboxProps & { checked: CheckedState }) => {
-  const [checkedState, setCheckedState] = useState<CheckedState>(checked);
+}: CheckboxProps & { checked?: CheckedState }) => {
+  const [checkedState, setCheckedState] = useState<CheckedState>(
+    checked || false,
+  );
   const onCheckedChange = (value: CheckedState) => {
     setCheckedState(value);
     action('onCheckedChange')('checked', value);
@@ -30,6 +32,7 @@ export const Default = ({
 
 export const Checked = () => <Default defaultChecked={true} checked={true} />;
 export const Indeterminate = () => <Default checked="indeterminate" />;
+export const WithLabel = () => <Default label="Label text" />;
 export const WithinForm = () => (
   <form>
     <Default checked="indeterminate" />

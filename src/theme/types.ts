@@ -48,3 +48,5 @@ export interface ThemeComponentProps {
   mode: ThemeMode;
   windowBlur: boolean;
 }
+
+export type ComponentStyles = Record<string, CSS | CSS[]>;

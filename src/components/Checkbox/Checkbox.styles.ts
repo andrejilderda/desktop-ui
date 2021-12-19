@@ -1,16 +1,17 @@
 import createStyles from 'src/theme/createStyles';
 import focusableVariants from 'src/styles/focusableVariants';
+import { ComponentStyles } from 'src/theme/types';
 
 const selectedStyles = {
   background: '$checkboxFillSelected',
   border: 'none',
 };
 
-const styles = {
-  indicator: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+const styles: ComponentStyles = {
+  wrapper: {
+    display: 'grid',
+    gridTemplateColumns: '$checkbox auto',
+    gap: '$2',
   },
 
   root: [
@@ -20,8 +21,10 @@ const styles = {
       border: '$borderWidths$default solid $checkboxBorder',
       borderRadius: '$1',
       height: '$checkbox',
-      width: '$checkbox',
+      transform: 'translateY(0.1em)',
+      fontSize: 'inherit',
       position: 'relative',
+      width: '$checkbox',
 
       compoundVariants: [
         {
@@ -49,6 +52,14 @@ const styles = {
       },
     },
   ],
+
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexShrink: 0,
+  },
+
   check: {
     position: 'absolute',
 
