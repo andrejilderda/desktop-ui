@@ -19,7 +19,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme/OS',
-    defaultValue: 'macos',
+    defaultValue: 'windows',
     toolbar: {
       icon: 'browser',
       items: [

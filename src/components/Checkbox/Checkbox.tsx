@@ -20,7 +20,7 @@ const Checkbox = ({
   label,
   ...props
 }: CheckboxProps): JSX.Element => {
-  const styles = useStyles({ checked });
+  const styles = useStyles({ checked, disabled: props.disabled });
   const id = useId(idProp);
 
   return (
@@ -28,22 +28,33 @@ const Checkbox = ({
       condition={!!label}
       wrapper={(children) => <div className={styles.wrapper}>{children}</div>}
     >
-      <RadixCheckbox.Root
-        id={id}
-        checked={checked}
-        onCheckedChange={onCheckedChange}
-        className={styles.root}
-        {...props}
-      >
-        <RadixCheckbox.Indicator className={styles.indicator}>
-          {checked === 'indeterminate' ? (
-            <Minus className={styles.minus} />
-          ) : (
-            <Check className={styles.check} />
-          )}
-        </RadixCheckbox.Indicator>
-      </RadixCheckbox.Root>
-      {label && <label htmlFor={id}>{label}</label>}
+      <>
+        <div className={styles.checkboxWrapper}>
+          {/* zero-width space character for aligning the checkbox properly (thanks to Adam Wathan) */}
+          &#8203;
+          <RadixCheckbox.Root
+            id={id}
+            checked={checked}
+            onCheckedChange={onCheckedChange}
+            className={styles.root}
+            data-checked={checked !== false ? checked : null}
+            {...props}
+          >
+            <RadixCheckbox.Indicator className={styles.indicator}>
+              {checked === 'indeterminate' ? (
+                <Minus className={styles.minus} />
+              ) : (
+                <Check className={styles.check} />
+              )}
+            </RadixCheckbox.Indicator>
+          </RadixCheckbox.Root>
+        </div>
+        {label && (
+          <label htmlFor={id} className={styles.label}>
+            {label}
+          </label>
+        )}
+      </>
     </ConditionalWrapper>
   );
 };

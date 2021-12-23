@@ -164,7 +164,7 @@ const tokens = {
     fill_color: {
       text: {
         primary: 'rgb(255, 255, 255)',
-        secondary: 'rgba(255, 255, 255, 0.79)',
+        secondary: 'rgba(0, 0, 0, 0.5)',
         tertiary: 'rgba(255, 255, 255, 0.54)',
         disabled: 'rgba(255, 255, 255, 0.36)',
       },
@@ -197,7 +197,7 @@ const tokens = {
         secondary: 'rgba(0, 0, 0, 0.1)',
         tertiary: 'rgba(255, 255, 255, 0.04)',
         quarternary: 'rgba(255, 255, 255, 0.07)',
-        disabled: 'rgb(255, 255, 255)',
+        disabled: 'rgba(255, 255, 255, 0)',
       },
       subtle: {
         transparent: 'rgb(255, 255, 255)',
