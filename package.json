@@ -81,5 +81,10 @@
     "phosphor-react": "^1.3.1",
     "rooks": "^5.8.0",
     "use-window-focus": "^1.3.0"
+  },
+  "cca": {
+    "type": "custom",
+    "templatesDirPath": "./.cca",
+    "templateName": "Custom"
   }
 }
