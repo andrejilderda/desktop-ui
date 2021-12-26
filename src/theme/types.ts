@@ -46,7 +46,7 @@ export interface Theme {
 export interface ThemeComponentProps {
   theme: ThemeName;
   mode: ThemeMode;
-  windowBlur: boolean;
+  windowBlur: boolean | undefined;
 }
 
 export type ComponentStyles = Record<string, CSS | CSS[]>;

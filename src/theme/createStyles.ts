@@ -28,7 +28,10 @@ const extendToString =
 const createStyles =
   <T extends string>(
     componentName: string,
-    namedCssObject: Record<string, CSS | CSS[]>,
+    namedStylesObject: Record<
+      string,
+      CSS | CSS[] | ((obj: ThemeComponentProps) => CSS | CSS[])
+    >,
   ) =>
   (variantProps?: { [key: string]: unknown }) => {
     const themeProvider = useContext(ThemeProviderContext);
@@ -40,11 +43,22 @@ const createStyles =
 
     const { name: theme, mode, windowBlur } = themeProvider;
 
-    return Object.entries(namedCssObject).reduce<CreateStyleValue<T>>(
-      (acc, [key, cssObject]) => {
-        const generatedCss = css(
-          ...(Array.isArray(cssObject) ? cssObject : [cssObject]),
-        )({
+    return Object.entries(namedStylesObject).reduce<CreateStyleValue<T>>(
+      (acc, [key, stylesObject]) => {
+        let temp: CSS[];
+
+        if (typeof stylesObject === 'function') {
+          const styles = stylesObject({
+            theme,
+            mode,
+            windowBlur,
+            ...variantProps,
+          });
+          temp = Array.isArray(styles) ? styles : [styles];
+        } else if (Array.isArray(stylesObject)) temp = stylesObject;
+        else temp = [stylesObject];
+
+        const generatedCss = css(...temp)({
           theme,
           mode,
           windowBlur,
