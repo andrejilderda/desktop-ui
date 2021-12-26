@@ -1,8 +1,12 @@
+import { pseudo } from 'src/constants/styles';
+
+const { focusVisible } = pseudo;
+
 const focusableVariants = {
   variants: {
     theme: {
       windows: {
-        '&:focus-visible, .pseudo-focus-visible &': {
+        [focusVisible]: {
           outline: '$borderStyles$focusStroke',
           outlineOffset: '2px',
         },

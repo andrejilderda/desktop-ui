@@ -1,3 +1,5 @@
+import { pseudo } from 'src/constants/styles';
+
 // can be used by at least:
 // - checkbox
 // - radio
@@ -29,7 +31,7 @@ const controlColors = {
     },
   },
 
-  '&:hover, .pseudo-hover &': {
+  [pseudo.hover]: {
     '&:not([disabled])': {
       $$fill: '$colors$controlFillHover',
 
@@ -39,7 +41,7 @@ const controlColors = {
     },
   },
 
-  '&:active, .pseudo-active &': {
+  [pseudo.active]: {
     '&:not([disabled])': {
       $$fill: '$colors$controlFillActive',
       $$border: '$colors$controlBorderActive',
