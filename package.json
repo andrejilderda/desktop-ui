@@ -14,7 +14,8 @@
     "lint": "eslint --fix '*/**/*.{js,ts,tsx}' --verbose",
     "prepare": "husky install",
     "release": "npm run build && npm publish",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "chromatic": "npx chromatic"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.23.0",
     "babel-loader": "^8.2.2",
+    "chromatic": "^6.3.3",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
