@@ -12,14 +12,6 @@ const controlColors = {
   color: '$$textOnAccentColor',
   background: '$$fill',
 
-  '&:hover:not([disabled])': {
-    $$fill: '$colors$controlFillHover',
-
-    '&[data-checked]': {
-      $$fill: '$colors$controlFillHoverChecked',
-    },
-  },
-
   '&[disabled]': {
     $$fill: '$colors$controlFillDisabled',
     $$border: '$colors$controlBorderDisabled',
@@ -37,7 +29,17 @@ const controlColors = {
     },
   },
 
-  '&:active': {
+  '&:hover, .pseudo-hover &': {
+    '&:not([disabled])': {
+      $$fill: '$colors$controlFillHover',
+
+      '&[data-checked]': {
+        $$fill: '$colors$controlFillHoverChecked',
+      },
+    },
+  },
+
+  '&:active, .pseudo-active &': {
     '&:not([disabled])': {
       $$fill: '$colors$controlFillActive',
       $$border: '$colors$controlBorderActive',
