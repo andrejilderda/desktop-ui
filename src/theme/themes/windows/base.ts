@@ -24,14 +24,6 @@ const base = {
     6: '40px',
     7: '68px',
   },
-  fontWeights: {
-    // * values are aligned with macOS
-    300: '300', // Light
-    350: '350', // Semilight
-    400: '400', // Regular*
-    600: '600', // Semibold
-    700: '700', // Bold*
-  },
   lineHeights: {
     1: '16px',
     2: '20px',
@@ -40,6 +32,14 @@ const base = {
     5: '36px',
     6: '52px',
     7: '92px',
+  },
+  fontWeights: {
+    // * values are aligned with macOS
+    300: '300', // Light
+    350: '350', // Semilight
+    400: '400', // Regular*
+    600: '600', // Semibold
+    700: '700', // Bold*
   },
   letterSpacings: {},
   sizes: {

@@ -7,6 +7,17 @@ export default {
   component: Button,
 } as Meta;
 
-export const Default = ({ ...props }: ButtonProps) => (
-  <Button {...props}>Nothing here yet…</Button>
+export const Default = ({ children, ...props }: Partial<ButtonProps>) => (
+  <Button {...props}>{children ? children : 'Default button'}</Button>
 );
+
+export const Accent = () => <Default variant="accent">Accent color</Default>;
+export const Disabled = () => <Default disabled>Disabled color</Default>;
+
+export const AsChildProp = ({ ...props }: ButtonProps) => (
+  <Button {...props} asChild>
+    <a href="https://www.example.com">As anchor element</a>
+  </Button>
+);
+
+AsChildProp.storyName = 'As anchor (asChild-prop)';
