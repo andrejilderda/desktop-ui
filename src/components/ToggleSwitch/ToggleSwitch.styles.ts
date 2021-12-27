@@ -62,6 +62,7 @@ const styles = {
         },
 
         '&[data-state="checked"]': {
+          $$fill: win[mode].fill_color.text_on_accent.primary,
           transform: 'translate(calc(-100% - 3px), -50%)',
           left: '100%',
         },

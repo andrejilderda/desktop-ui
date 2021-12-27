@@ -164,7 +164,7 @@ const tokens = {
     fill_color: {
       text: {
         primary: 'rgb(255, 255, 255)',
-        secondary: 'rgba(255, 255, 255, 0.5)',
+        secondary: 'rgba(255, 255, 255, 0.79)',
         tertiary: 'rgba(255, 255, 255, 0.54)',
         disabled: 'rgba(255, 255, 255, 0.36)',
       },
