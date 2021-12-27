@@ -8,7 +8,7 @@ const focusableVariants = {
       windows: {
         [focusVisible]: {
           outline: '$borderStyles$focusStroke',
-          outlineOffset: '2px',
+          outlineOffset: '1px',
         },
       },
     },

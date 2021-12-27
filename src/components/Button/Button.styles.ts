@@ -80,26 +80,6 @@ const styles = {
           variant: {},
           theme: {
             windows: {
-              // t.light.elevation.accent_control.border
-              // t.light.elevation.control.border
-              // t.light.fill_color.accent.default
-              // t.light.fill_color.accent.disabled
-              // t.light.fill_color.accent.secondary
-              // t.light.fill_color.accent.tertiary
-              // t.light.fill_color.control.default
-              // t.light.fill_color.control.disabled
-              // t.light.fill_color.control.secondary
-              // t.light.fill_color.control.tertiary
-              // t.light.fill_color.text_on_accent.disabled
-              // t.light.fill_color.text_on_accent.primary
-              // t.light.fill_color.text_on_accent.secondary
-              // t.light.fill_color.text.disabled
-              // t.light.fill_color.text.primary
-              // t.light.fill_color.text.secondary
-              // t.light.stroke_color.control_stroke.default
-              // t.light.stroke_color.control_stroke.on_accent_default
-              // t.light.stroke_color.focus_stroke.inner
-              // t.light.stroke_color.focus_stroke.outer
               // accent
               $$fill: win[mode].fill_color.control.default,
               // $$border: ,

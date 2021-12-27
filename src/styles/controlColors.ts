@@ -18,13 +18,13 @@ const controlColors = {
     $$fill: '$colors$controlFillDisabled',
     $$border: '$colors$controlBorderDisabled',
 
-    '&[data-checked]': {
+    '&[data-state="checked"], &[data-state="indeterminate"]': {
       $$fill: '$colors$controlFillDisabledChecked',
       $$border: '$colors$controlBorderDisabledChecked',
     },
   },
 
-  '&[data-checked]': {
+  '&[data-state="checked"], &[data-state="indeterminate"]': {
     '&:not([disabled])': {
       $$fill: '$colors$controlFillChecked',
       $$border: '$colors$controlBorderChecked',
@@ -35,7 +35,7 @@ const controlColors = {
     '&:not([disabled])': {
       $$fill: '$colors$controlFillHover',
 
-      '&[data-checked]': {
+      '&[data-state="checked"], &[data-state="indeterminate"]': {
         $$fill: '$colors$controlFillHoverChecked',
       },
     },
@@ -46,7 +46,7 @@ const controlColors = {
       $$fill: '$colors$controlFillActive',
       $$border: '$colors$controlBorderActive',
 
-      '&[data-checked]': {
+      '&[data-state="checked"], &[data-state="indeterminate"]': {
         $$fill: '$colors$controlFillActiveChecked',
         $$border: '$colors$controlBorderActiveChecked',
         $$textOnAccentColor: '$colors$controlTextOnAccentColorActiveChecked',

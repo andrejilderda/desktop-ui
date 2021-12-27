@@ -56,6 +56,7 @@ const styles: ComponentStyles = {
   minus: { position: 'absolute' },
   label: {
     alignSelf: 'center',
+    userSelect: 'none',
   },
 };
 

@@ -2,7 +2,7 @@ import { css } from '@stitches/react';
 import { useContext } from 'react';
 import { classNamePrefix } from 'src/constants/styles';
 import ThemeProviderContext from 'src/contexts/ThemeProvider/ThemeProviderContext';
-import { CSS, ThemeComponentProps } from './types';
+import { CSS, StylesFunction, ThemeComponentProps } from './types';
 
 type CreateStyleValue<T extends string> = Record<
   T,
@@ -28,10 +28,7 @@ const extendToString =
 const createStyles =
   <T extends string>(
     componentName: string,
-    namedStylesObject: Record<
-      string,
-      CSS | CSS[] | ((obj: ThemeComponentProps) => CSS | CSS[])
-    >,
+    namedStylesObject: Record<string, CSS | CSS[] | StylesFunction>,
   ) =>
   (variantProps?: { [key: string]: unknown }) => {
     const themeProvider = useContext(ThemeProviderContext);
@@ -49,6 +46,7 @@ const createStyles =
 
         if (typeof stylesObject === 'function') {
           const styles = stylesObject({
+            classPrefix: `.${classNamePrefix}-${componentName}`,
             theme,
             mode,
             windowBlur,

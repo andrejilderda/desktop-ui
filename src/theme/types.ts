@@ -50,3 +50,6 @@ export interface ThemeComponentProps {
 }
 
 export type ComponentStyles = Record<string, CSS | CSS[]>;
+
+export type StylesFunctionArgs = ThemeComponentProps & { classPrefix: string };
+export type StylesFunction = (obj: StylesFunctionArgs) => CSS | CSS[];
