@@ -6,6 +6,7 @@ import { Check, Minus } from 'phosphor-react';
 import useStyles from './Checkbox.styles';
 import { useId } from 'src/hooks/useId';
 import { ConditionalWrapper } from 'src/utils/helpers';
+import Label from '../Label';
 
 export type CheckboxProps = Stitches.ComponentProps<
   typeof RadixCheckbox.Root
@@ -26,7 +27,11 @@ const Checkbox = ({
   return (
     <ConditionalWrapper
       condition={!!label}
-      wrapper={(children) => <div className={styles.wrapper}>{children}</div>}
+      wrapper={(children) => (
+        <Label className={styles.wrapper} asChild>
+          <div>{children}</div>
+        </Label>
+      )}
     >
       <>
         <div className={styles.checkboxWrapper}>
@@ -49,11 +54,7 @@ const Checkbox = ({
             </RadixCheckbox.Indicator>
           </RadixCheckbox.Root>
         </div>
-        {label && (
-          <label htmlFor={id} className={styles.label}>
-            {label}
-          </label>
-        )}
+        {label && <span className={styles.label}>{label}</span>}
       </>
     </ConditionalWrapper>
   );

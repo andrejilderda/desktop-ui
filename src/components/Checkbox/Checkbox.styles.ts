@@ -8,8 +8,7 @@ const styles: ComponentStyles = {
     $$color: 'text$checkboxFill',
     color: '$$color',
 
-    display: 'flex',
-    gridTemplateColumns: '$checkbox auto',
+    display: 'inline-flex',
     alignItems: 'flex-start',
     gap: '$2',
     fontSize: '$2',
