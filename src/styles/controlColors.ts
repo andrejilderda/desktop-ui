@@ -12,7 +12,7 @@ const controlColors = {
 
   borderColor: '$$border',
   color: '$$textOnAccentColor',
-  background: '$$fill',
+  backgroundColor: '$$fill',
 
   '&[disabled]': {
     $$fill: '$colors$controlFillDisabled',

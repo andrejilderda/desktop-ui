@@ -49,7 +49,7 @@ export interface ThemeComponentProps {
   windowBlur: boolean | undefined;
 }
 
-export type ComponentStyles = Record<string, CSS | CSS[]>;
+export type ComponentStyles = Record<string, CSS | CSS[] | StylesFunction>;
 
 export type StylesFunctionArgs = ThemeComponentProps & { classPrefix: string };
 export type StylesFunction = (obj: StylesFunctionArgs) => CSS | CSS[];

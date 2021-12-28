@@ -1,11 +1,11 @@
 import controlColors from 'src/styles/controlColors';
 import createStyles from 'src/theme/createStyles';
-import { StylesFunctionArgs, CSS } from 'src/theme/types';
+import { StylesFunctionArgs, CSS, ComponentStyles } from 'src/theme/types';
 import win from 'src/theme/themes/windows/tokens';
 import focusableVariants from 'src/styles/focusableVariants';
 import { pseudo } from 'src/constants/styles';
 
-const styles = {
+const styles: ComponentStyles = {
   root: ({ classPrefix }: StylesFunctionArgs): CSS[] => [
     {
       all: 'unset',
@@ -16,6 +16,8 @@ const styles = {
       position: 'relative',
       WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
       width: 40,
+      transition: 'background-color 150ms',
+      willChange: 'background-color',
       ...controlColors,
 
       [pseudo.active]: {

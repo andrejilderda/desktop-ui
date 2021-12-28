@@ -10,7 +10,6 @@ export type ToggleSwitchProps = Stitches.ComponentProps<
 
 const ToggleSwitch = ({
   id: idProp,
-  checked,
   ...props
 }: ToggleSwitchProps): JSX.Element => {
   const styles = useStyles();
