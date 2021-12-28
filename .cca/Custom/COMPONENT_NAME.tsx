@@ -9,7 +9,7 @@ export type COMPONENT_NAMEProps = {
   children: ReactNode;
 };
 
-const COMPONENT_NAME = ({ children, ...props }: COMPONENT_NAMEProps): JSX.Element => {
+const COMPONENT_NAME = ({ children, ...props }: COMPONENT_NAMEProps) => {
   const styles = useStyles();
 
   return <div className={styles.wrapper}>{children}</div>;

@@ -20,7 +20,7 @@ const Checkbox = ({
   onCheckedChange,
   label,
   ...props
-}: CheckboxProps): JSX.Element => {
+}: CheckboxProps) => {
   const styles = useStyles({ checked, disabled: props.disabled });
   const id = useId(idProp);
 
