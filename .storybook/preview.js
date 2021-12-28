@@ -2,6 +2,8 @@ import ThemeProvider from './../src/contexts/ThemeProvider/ThemeProvider';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  backgrounds: { disable: true },
+  viewport: { disable: true },
   controls: {
     matchers: {
       color: /(background|color)$/i,
