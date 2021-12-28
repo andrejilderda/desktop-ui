@@ -1,10 +1,10 @@
 import createStyles from 'src/theme/createStyles';
-import { ThemeComponentProps, CSS } from 'src/theme/types';
+import { ThemeComponentProps, CSS, ComponentStyles } from 'src/theme/types';
 import win from 'src/theme/themes/windows/tokens';
 import focusableVariants from 'src/styles/focusableVariants';
 import { pseudo } from 'src/constants/styles';
 
-const styles = {
+const styles: ComponentStyles = {
   element: ({ mode }: ThemeComponentProps): CSS[] => {
     return [
       {
