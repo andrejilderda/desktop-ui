@@ -10,18 +10,13 @@ export type ButtonProps = {
   asChild?: boolean;
 };
 
-const ButtonComp = ({ asChild, ...props }: ButtonProps): JSX.Element => {
-  const Comp = asChild ? Slot : 'button';
-  return <Comp {...props} />;
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = 'default', asChild, ...props }: ButtonProps, forwardedRef) => {
+    const styles = useStyles({ variant });
+    const Element = asChild ? Slot : 'button';
 
-const Button = ({
-  variant = 'default',
-  ...props
-}: ButtonProps): JSX.Element => {
-  const styles = useStyles({ variant });
-
-  return <ButtonComp className={styles.element} {...props} />;
-};
+    return <Element className={styles.element} {...props} ref={forwardedRef} />;
+  },
+);
 
 export default Button;
