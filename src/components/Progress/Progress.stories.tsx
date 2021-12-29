@@ -20,6 +20,18 @@ export const BarDeterminate = () => (
 );
 BarDeterminate.storyName = 'Bar - determinate';
 
+export const BarStatus = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    Default
+    <BaseBar value={50} />
+    Paused
+    <BaseBar value={50} status="paused" />
+    Error
+    <BaseBar value={50} status="error" />
+  </div>
+);
+BarStatus.storyName = 'Bar - statuses';
+
 export const BarIndeterminate = () => <BaseBar />;
 BarIndeterminate.storyName = 'Bar - indeterminate';
 

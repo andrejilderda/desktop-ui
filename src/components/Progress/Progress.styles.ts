@@ -40,11 +40,43 @@ const styles: ComponentStyles = {
         animation: `2s linear running infinite ${indeterminateBar}`,
       },
     },
+
+    variants: {
+      theme: {},
+      status: {},
+    },
+
+    compoundVariants: [
+      {
+        theme: 'windows',
+        status: 'paused',
+        css: {
+          $$track: win[mode].fill_color.system.caution,
+        },
+      },
+      {
+        theme: 'windows',
+        status: 'error',
+        css: {
+          $$track: win[mode].fill_color.system.critical,
+        },
+      },
+    ],
   }),
 
-  ringWrapper: {
+  ringWrapper: ({ mode }: StylesFunctionArgs): CSS => ({
+    $$stroke: win[mode].fill_color.accent.default,
     height: 16,
     width: 16,
+
+    stroke: '$$stroke',
+    transform: 'rotate(-90deg)',
+    overflow: 'visible',
+
+    '&[data-state="indeterminate"]': {
+      transformOrigin: 'center',
+      animation: `2s linear running infinite ${indeterminateRailRotation}`,
+    },
 
     variants: {
       size: {
@@ -59,35 +91,13 @@ const styles: ComponentStyles = {
         },
       },
     },
-  },
-
-  ringIndicator: ({ mode }: StylesFunctionArgs): CSS => ({
-    $$stroke: win[mode].fill_color.accent.default,
-
-    stroke: '$$stroke',
-    height: '100%',
-    width: '100%',
-    transform: 'rotate(-90deg)',
-    overflow: 'visible',
-
-    '&[data-state="indeterminate"]': {
-      transformOrigin: 'center',
-      animation: `2s linear running infinite ${indeterminateRailRotation}`,
-    },
   }),
 
   ring: {
-    variants: {
-      theme: {
-        windows: {},
-      },
-      value: {
-        null: {
-          strokeDasharray: '360 100',
-          transformOrigin: 'center',
-          animation: `2s linear running infinite ${indeterminateRailDash}`,
-        },
-      },
+    '&[data-state="indeterminate"]': {
+      strokeDasharray: '360 100',
+      transformOrigin: 'center',
+      animation: `2s linear running infinite ${indeterminateRailDash}`,
     },
   },
 };

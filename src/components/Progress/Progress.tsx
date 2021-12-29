@@ -7,6 +7,7 @@ export interface ProgressProps extends ProgressPrimitive.ProgressProps {
   indeterminate?: boolean;
   size?: 16 | 32 | 64;
   variant?: 'bar' | 'ring';
+  status?: 'paused' | 'error';
 }
 
 const Progress = ({
@@ -15,8 +16,9 @@ const Progress = ({
   value = null,
   variant = 'bar',
   active,
+  status,
 }: ProgressProps) => {
-  const styles = useStyles({ size, value });
+  const styles = useStyles({ size, status });
 
   if (active === false) return null;
 
@@ -30,15 +32,15 @@ const Progress = ({
           />
         </ProgressPrimitive.Root>
       ) : (
-        <ProgressPrimitive.Root className={styles.ringWrapper} value={value}>
-          <ProgressPrimitive.Indicator asChild>
-            <svg
-              aria-live="polite"
-              aria-busy="true"
-              className={styles.ringIndicator}
-              viewBox="0 0 32 32"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+        <ProgressPrimitive.Root value={value} asChild>
+          <svg
+            aria-live="polite"
+            aria-busy="true"
+            className={styles.ringWrapper}
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ProgressPrimitive.Indicator asChild>
               <circle
                 className={styles.ring}
                 fill="none"
@@ -51,8 +53,8 @@ const Progress = ({
                   !indeterminate ? `${value}px 100px` : undefined
                 }
               ></circle>
-            </svg>
-          </ProgressPrimitive.Indicator>
+            </ProgressPrimitive.Indicator>
+          </svg>
         </ProgressPrimitive.Root>
       )}
     </>
