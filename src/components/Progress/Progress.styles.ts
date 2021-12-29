@@ -1,13 +1,48 @@
 import createStyles from 'src/theme/createStyles';
 import { ComponentStyles, StylesFunctionArgs, CSS } from 'src/theme/types';
 import {
-  indeterminateSpinnerDash,
-  indeterminateSpinnerRotation,
+  indeterminateBar,
+  indeterminateRailDash,
+  indeterminateRailRotation,
 } from 'src/styles/animations';
 import win from 'src/theme/themes/windows/tokens';
 
 const styles: ComponentStyles = {
-  wrapper: {
+  rail: ({ mode }: StylesFunctionArgs): CSS => ({
+    $$rail: win[mode].stroke_color.control_strong_stroke.default,
+
+    alignItems: 'center',
+    display: 'flex',
+    height: 1,
+    background: '$$rail',
+    borderRadius: '$pill',
+  }),
+
+  track: ({ mode }: StylesFunctionArgs): CSS => ({
+    $$track: win[mode].fill_color.accent.default,
+
+    height: 3,
+    background: '$$track',
+    borderRadius: '$pill',
+
+    '&[data-state="indeterminate"]': {
+      background: 'transparent',
+      overflow: 'hidden',
+      width: '100%',
+
+      '&:after': {
+        content: '',
+        background: '$$track',
+        display: 'block',
+        height: 3,
+        position: 'relative',
+        width: '53%',
+        animation: `2s linear running infinite ${indeterminateBar}`,
+      },
+    },
+  }),
+
+  ringWrapper: {
     height: 16,
     width: 16,
 
@@ -26,21 +61,34 @@ const styles: ComponentStyles = {
     },
   },
 
-  indeterminateSpinner: ({ mode }: StylesFunctionArgs): CSS => ({
+  ringIndicator: ({ mode }: StylesFunctionArgs): CSS => ({
     $$stroke: win[mode].fill_color.accent.default,
 
-    transformOrigin: 'center',
     stroke: '$$stroke',
-    animation: `2s linear running infinite ${indeterminateSpinnerRotation}`,
     height: '100%',
     width: '100%',
+    transform: 'rotate(-90deg)',
+    overflow: 'visible',
+
+    '&[data-state="indeterminate"]': {
+      transformOrigin: 'center',
+      animation: `2s linear running infinite ${indeterminateRailRotation}`,
+    },
   }),
 
-  circle: {
-    strokeDasharray: 360,
-    strokeDashoffset: 360,
-    transformOrigin: 'center',
-    animation: `2s linear running infinite ${indeterminateSpinnerDash}`,
+  ring: {
+    variants: {
+      theme: {
+        windows: {},
+      },
+      value: {
+        null: {
+          strokeDasharray: '360 100',
+          transformOrigin: 'center',
+          animation: `2s linear running infinite ${indeterminateRailDash}`,
+        },
+      },
+    },
   },
 };
 

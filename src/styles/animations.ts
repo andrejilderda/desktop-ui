@@ -1,6 +1,28 @@
 import { keyframes } from 'src/reactDesktop.config';
 
-export const indeterminateSpinnerRotation = keyframes({
+export const indeterminateBar = keyframes({
+  '0%': {
+    width: '40%',
+    transform: 'translateX(-100%)',
+    left: '0',
+  },
+  '50%': {
+    left: '100%',
+    transform: 'translateX(0%)',
+  },
+  '50.1%': {
+    width: '60%',
+    transform: 'translateX(-100%)',
+    left: '0',
+  },
+  '100%': {
+    left: '100%',
+    width: '60%',
+    transform: 'translateX(0%)',
+  },
+});
+
+export const indeterminateRailRotation = keyframes({
   '0%': {
     transform: 'rotate3d(0, 0, 1, -105deg)',
   },
@@ -10,28 +32,28 @@ export const indeterminateSpinnerRotation = keyframes({
   },
 });
 
-export const indeterminateSpinnerDash = keyframes({
+export const indeterminateRailDash = keyframes({
   '0%': {
-    strokeDashoffset: 360,
-    strokeDasharray: 359,
+    strokeDashoffset: 100,
+    strokeDasharray: '100 100',
     transform: 'rotate3d(0, 0, 1, 0deg)',
   },
 
   '33%': {
-    strokeDashoffset: 320,
-    strokeDasharray: 360,
-    transform: 'rotate3d(0, 0, 1, 90deg)',
+    strokeDashoffset: 62,
+    strokeDasharray: '100 100',
+    transform: 'rotate3d(0, 0, 1, 80deg)',
   },
 
   '66%': {
-    strokeDashoffset: 320,
-    strokeDasharray: 360,
-    transform: 'rotate3d(0, 0, 1, 180deg)',
+    strokeDashoffset: 62,
+    strokeDasharray: '100 100',
+    transform: 'rotate3d(0, 0, 1, 160deg)',
   },
 
   '100%': {
-    strokeDashoffset: 360,
-    strokeDasharray: 359,
+    strokeDashoffset: 100,
+    strokeDasharray: '100 100',
     transform: 'rotate3d(0, 0, 1, 360deg)',
   },
 });
