@@ -1,7 +1,7 @@
-import { css } from '@stitches/react';
 import { useContext } from 'react';
 import { classNamePrefix } from 'src/constants/styles';
 import ThemeProviderContext from 'src/contexts/ThemeProvider/ThemeProviderContext';
+import { css } from 'src/reactDesktop.config';
 import { CSS, StylesFunction, ThemeComponentProps } from './types';
 
 type CreateStyleValue<T extends string> = Record<

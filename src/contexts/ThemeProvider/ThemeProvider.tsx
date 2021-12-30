@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { globalStyles } from 'src/reactDesktop.config';
+import globalStyles from 'src/theme/globalStyles';
 import { ConditionalWrapper } from 'src/utils/helpers';
 import { ThemeMode, ThemeName } from 'src/theme/types';
 import { useColorMode, useTheme, useApplyThemeToHTML } from './hooks';

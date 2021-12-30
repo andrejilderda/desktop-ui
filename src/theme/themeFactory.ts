@@ -1,5 +1,4 @@
 import { createStitches } from '@stitches/react';
-import globalStyles from './globalStyles';
 import rawThemes from './themes';
 import {
   Theme,
@@ -24,7 +23,9 @@ export const getRawTheme = ({
 };
 
 export const themeFactory = (config: ThemeFactory[]) => {
-  const { createTheme: createStitchesTheme, ...stitches } = createStitches({});
+  const { createTheme: createStitchesTheme, ...stitches } = createStitches({
+    prefix: 'rd',
+  });
 
   // change interface of default Stitches createTheme function, so that both the
   // `generateTheme` and `createTheme` have the same simplified interface
@@ -101,7 +102,6 @@ export const themeFactory = (config: ThemeFactory[]) => {
     ...stitches,
     createStitchesTheme,
     createTheme,
-    globalStyles,
     themes: generatedThemes,
     getTheme,
   };

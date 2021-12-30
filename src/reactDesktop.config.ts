@@ -4,7 +4,6 @@ export const {
   styled,
   css,
   globalCss,
-  globalStyles,
   keyframes,
   getCssText,
   theme,
