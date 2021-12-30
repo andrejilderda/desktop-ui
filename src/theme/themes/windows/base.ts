@@ -61,7 +61,6 @@ const base = {
     card_pressed: '$default',
     tooltip: '$default',
     flyout: '$default',
-    dialog: '$default',
     inactive_windows: '$default',
     active_windows: '$default',
     focusStroke: '2px solid $colors$focusOutline',

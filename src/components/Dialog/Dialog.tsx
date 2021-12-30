@@ -1,45 +1,18 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import type * as Stitches from '@stitches/react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import useStyles from './Dialog.styles';
 
-const Dialog = DialogPrimitive.Root;
-
-const DialogTrigger = React.forwardRef<unknown, DialogTriggerProps>(
-  function DialogTrigger(
-    props: Stitches.ComponentProps<typeof DialogPrimitive.Trigger>,
-    forwardedRef: any,
-  ) {
-    const styles = useStyles();
-
-    return (
-      <DialogPrimitive.Trigger
-        className={styles.trigger}
-        {...props}
-        ref={forwardedRef}
-      />
-    );
-  },
-);
-
-const DialogPortal = (
-  props: Stitches.ComponentProps<typeof DialogPrimitive.Portal>,
-) => {
-  const styles = useStyles();
-
-  return <DialogPrimitive.Portal className={styles.portal} {...props} />;
-};
-
-const DialogOverlay = React.forwardRef<unknown, DialogOverlayProps>(
+const DialogOverlay = React.forwardRef<HTMLDivElement, DialogOverlayProps>(
   function DialogOverlay(
     props: Stitches.ComponentProps<typeof DialogPrimitive.Overlay>,
-    forwardedRef: any,
+    forwardedRef: React.ForwardedRef<HTMLDivElement>,
   ) {
     const styles = useStyles();
 
     return (
       <DialogPrimitive.Overlay
-        className={styles.overlay}
+        className={`${styles.base} ${styles.overlay}`}
         {...props}
         ref={forwardedRef}
       />
@@ -47,12 +20,17 @@ const DialogOverlay = React.forwardRef<unknown, DialogOverlayProps>(
   },
 );
 
-const DialogContent = React.forwardRef<unknown, DialogContentProps>(
+interface DialogContentProps
+  extends Stitches.ComponentProps<typeof DialogPrimitive.Content> {
+  size?: 'standard' | 'min' | 'max';
+}
+
+const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
   function DialogContent(
-    props: Stitches.ComponentProps<typeof DialogPrimitive.Content>,
-    forwardedRef: any,
+    { size = 'standard', ...props }: DialogContentProps,
+    forwardedRef: React.ForwardedRef<HTMLDivElement>,
   ) {
-    const styles = useStyles();
+    const styles = useStyles({ size });
 
     return (
       <DialogPrimitive.Content
@@ -64,10 +42,20 @@ const DialogContent = React.forwardRef<unknown, DialogContentProps>(
   },
 );
 
-const DialogTitle = React.forwardRef<unknown, DialogTitleProps>(
+interface DialogFooterProps {
+  children: ReactNode;
+}
+
+const DialogFooter = (props: DialogFooterProps) => {
+  const styles = useStyles();
+
+  return <div className={styles.footer} {...props} />;
+};
+
+const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
   function DialogTitle(
     props: Stitches.ComponentProps<typeof DialogPrimitive.Title>,
-    forwardedRef: any,
+    forwardedRef: React.ForwardedRef<HTMLHeadingElement>,
   ) {
     const styles = useStyles();
 
@@ -81,48 +69,54 @@ const DialogTitle = React.forwardRef<unknown, DialogTitleProps>(
   },
 );
 
-const DialogDescription = React.forwardRef<unknown, DialogDescriptionProps>(
-  function DialogDescription(
-    props: Stitches.ComponentProps<typeof DialogPrimitive.Description>,
-    forwardedRef: any,
-  ) {
-    const styles = useStyles();
+const DialogDescription = React.forwardRef<
+  HTMLParagraphElement,
+  DialogDescriptionProps
+>(function DialogDescription(
+  props: Stitches.ComponentProps<typeof DialogPrimitive.Description>,
+  forwardedRef: React.ForwardedRef<HTMLParagraphElement>,
+) {
+  const styles = useStyles();
 
-    return (
-      <DialogPrimitive.Description
-        className={styles.description}
-        {...props}
-        ref={forwardedRef}
-      />
-    );
-  },
-);
+  return (
+    <DialogPrimitive.Description
+      className={styles.description}
+      {...props}
+      ref={forwardedRef}
+    />
+  );
+});
 
-const DialogClose = React.forwardRef<unknown, DialogCloseProps>(
-  function DialogClose(
-    props: Stitches.ComponentProps<typeof DialogPrimitive.Close>,
-    forwardedRef: any,
-  ) {
-    const styles = useStyles();
+// const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>(
+//   function DialogClose(
+//     props: Stitches.ComponentProps<typeof DialogPrimitive.Close>,
+//     forwardedRef: React.ForwardedRef<HTMLButtonElement>,
+//   ) {
+//     const styles = useStyles();
 
-    return (
-      <DialogPrimitive.Close
-        className={styles.close}
-        {...props}
-        ref={forwardedRef}
-      />
-    );
-  },
-);
+//     return (
+//       <DialogPrimitive.Close
+//         className={styles.close}
+//         {...props}
+//         ref={forwardedRef}
+//       />
+//     );
+//   },
+// );
+
+const Dialog = DialogPrimitive.Root;
+const DialogTrigger = DialogPrimitive.Trigger;
+const DialogPortal = DialogPrimitive.Portal;
 
 const Root = Dialog;
 const Trigger = DialogTrigger;
 const Portal = DialogPortal;
 const Overlay = DialogOverlay;
 const Content = DialogContent;
+const Footer = DialogFooter;
 const Title = DialogTitle;
 const Description = DialogDescription;
-const Close = DialogClose;
+// const Close = DialogClose;
 const { createDialogScope, LabelWarningProvider } = DialogPrimitive;
 
 export {
@@ -133,18 +127,20 @@ export {
   DialogPortal,
   DialogOverlay,
   DialogContent,
+  DialogFooter,
   DialogTitle,
   DialogDescription,
-  DialogClose,
+  // DialogClose,
   //
   Root,
   Trigger,
   Portal,
   Overlay,
   Content,
+  Footer,
   Title,
   Description,
-  Close,
+  // Close,
   //
   LabelWarningProvider,
 };
@@ -153,10 +149,10 @@ type DialogProps = DialogPrimitive.DialogProps;
 type DialogTriggerProps = DialogPrimitive.DialogTriggerProps;
 type DialogPortalProps = DialogPrimitive.DialogPortalProps;
 type DialogOverlayProps = DialogPrimitive.DialogOverlayProps;
-type DialogContentProps = DialogPrimitive.DialogContentProps;
+// type DialogContentProps = DialogPrimitive.DialogContentProps;
 type DialogTitleProps = DialogPrimitive.DialogTitleProps;
 type DialogDescriptionProps = DialogPrimitive.DialogDescriptionProps;
-type DialogCloseProps = DialogPrimitive.DialogCloseProps;
+// type DialogCloseProps = DialogPrimitive.DialogCloseProps;
 
 export type {
   DialogProps,
@@ -166,5 +162,5 @@ export type {
   DialogContentProps,
   DialogTitleProps,
   DialogDescriptionProps,
-  DialogCloseProps,
+  // DialogCloseProps,
 };
