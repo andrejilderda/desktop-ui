@@ -34,7 +34,6 @@ const styles: ComponentStyles = {
     boxShadow: '$dialog',
     color: '$$text',
     outline: '1px solid $$outlineColor',
-    overflow: 'hidden',
     padding: '$6',
     userSelect: 'none',
 
@@ -82,6 +81,7 @@ const styles: ComponentStyles = {
     background: '$$bgFooter',
     display: 'flex',
     justifyContent: 'flex-end',
+    borderRadius: '0 0 $3 $3',
     gap: '$2',
     margin: '$6 -$6 -$6',
     padding: '$6',
