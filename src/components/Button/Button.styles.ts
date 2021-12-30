@@ -5,7 +5,7 @@ import focusableVariants from 'src/styles/focusableVariants';
 import { pseudo } from 'src/constants/styles';
 
 const styles: ComponentStyles = {
-  element: ({ mode }: ThemeComponentProps): CSS[] => {
+  base: ({ mode }: ThemeComponentProps): CSS[] => {
     return [
       {
         all: 'unset',
@@ -17,6 +17,7 @@ const styles: ComponentStyles = {
         fontSize: '$2',
         lineHeight: '$2',
         padding: '6px $5',
+        textAlign: 'center',
 
         '&[disabled]': {
           $$fill: '$$fillDisabled',

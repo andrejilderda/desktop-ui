@@ -19,7 +19,14 @@ const extendToString =
   (originalToString: () => string, componentName: string, key: string) =>
   (...args: any[any]) => {
     const toString = originalToString.apply(this, args);
-    return `${classNamePrefix}-${componentName}-${key} ${toString}`;
+
+    // don't append key if name is 'base', f.e.  base: { ... } › .rd-button
+    const componentElement =
+      key === 'base'
+        ? `${classNamePrefix}-${componentName}`
+        : `${classNamePrefix}-${componentName}-${key}`;
+
+    return `${componentElement} ${toString}`;
   };
 
 // creates styles using Stitches' css-method with props that are retrieved from

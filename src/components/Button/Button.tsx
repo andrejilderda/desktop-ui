@@ -15,7 +15,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const styles = useStyles({ variant });
     const Element = asChild ? Slot : 'button';
 
-    return <Element className={styles.element} {...props} ref={forwardedRef} />;
+    return <Element className={styles.base} {...props} ref={forwardedRef} />;
   },
 );
 
