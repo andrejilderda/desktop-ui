@@ -9,6 +9,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
+    'storybook-addon-designs',
   ],
   webpackFinal: async (config) => {
     config.resolve.modules = [
