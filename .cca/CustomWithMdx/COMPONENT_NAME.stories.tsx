@@ -1,10 +1,16 @@
 import React from 'react';
 import { ComponentStory, Meta } from '@storybook/react';
 import COMPONENT_NAME, { COMPONENT_NAMEProps } from './COMPONENT_NAME';
+import mdx from './COMPONENT_NAME.mdx';
 
 export default {
   title: 'Components/COMPONENT_NAME',
   component: COMPONENT_NAME,
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 } as Meta<typeof COMPONENT_NAME>;
 
 const Template: ComponentStory<typeof COMPONENT_NAME> = (args) => (
