@@ -1,23 +1,35 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
-import Button, { ButtonProps } from './Button';
+import { ComponentStory, Meta } from '@storybook/react';
+import Button from './Button';
+import mdx from './Button.mdx';
 
 export default {
   title: 'Components/Button',
   component: Button,
-} as Meta;
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+} as Meta<typeof Button>;
 
-export const Default = ({ children, ...props }: Partial<ButtonProps>) => (
-  <Button {...props}>{children ? children : 'Default button'}</Button>
+const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
+  <Button {...args}>{children ? children : 'Default button'}</Button>
 );
 
-export const Accent = () => <Default variant="accent">Accent color</Default>;
-export const Disabled = () => <Default disabled>Disabled color</Default>;
+export const Default = Template.bind({});
+Default.args = { variant: 'default' };
 
-export const AsChildProp = ({ ...props }: ButtonProps) => (
-  <Button {...props} asChild>
-    <a href="https://www.example.com">As anchor element</a>
-  </Button>
-);
+export const Accent = Template.bind({});
+Accent.args = { variant: 'accent' };
+
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: true };
+
+export const AsChildProp = Template.bind({});
+AsChildProp.args = {
+  asChild: true,
+  children: <a href="https://www.example.com">As anchor element</a>,
+};
 
 AsChildProp.storyName = 'As anchor (asChild-prop)';
