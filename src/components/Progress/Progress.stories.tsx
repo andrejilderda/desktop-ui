@@ -17,7 +17,7 @@ BarDeterminate.storyName = 'Bar - determinate';
 
 export const BarStatus = Template.bind({});
 BarStatus.args = {
-  value: 100,
+  value: 66,
   status: 'paused',
 };
 BarStatus.storyName = 'Bar - statuses';

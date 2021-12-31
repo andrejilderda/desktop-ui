@@ -1,10 +1,31 @@
-import { Story } from '@storybook/addon-docs';
-import { COMPONENT_NAME } from './COMPONENT_NAME';
+import { Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { Figma } from 'storybook-addon-designs/blocks';
+import { COMPONENT_NAME, Default } from './COMPONENT_NAME';
 
 # COMPONENT_NAME
 
 Add Markdown here
 
+<!-- inline -->
+
 <Story name="COMPONENT_NAME" id="components-component_name--default" />
-<ArgsTable story="COMPONENT_NAME" />
-<ArgsTable of={COMPONENT_NAME} />
+
+<!-- canvas -->
+
+<Canvas
+  style={{ backgroundColor: 'var(--rd-colors-background)' }}
+  withSource="open"
+>
+  <Story id="components-test--default" />
+</Canvas>
+
+<ArgsTable story={'^'} />
+
+<!--
+<Source of={Button} />
+<Props of={Button} />
+-->
+
+## Design reference
+
+<Figma url="https://www.figma.com/..." />

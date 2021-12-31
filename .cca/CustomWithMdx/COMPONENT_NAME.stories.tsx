@@ -11,6 +11,14 @@ export default {
       page: mdx,
     },
   },
+  argTypes: {
+    // testProp: {
+    //   table: { disable: true }, // hide from argsTable
+    // },
+    // className: {
+    //   control: { disable: true }, // disable control in ArgsTable
+    // },
+  },
 } as Meta<typeof COMPONENT_NAME>;
 
 const Template: ComponentStory<typeof COMPONENT_NAME> = (args) => (
