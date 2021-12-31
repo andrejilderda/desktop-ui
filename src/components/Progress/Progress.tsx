@@ -3,22 +3,25 @@ import * as ProgressPrimitive from '@radix-ui/react-progress';
 import useStyles from './Progress.styles';
 
 export interface ProgressProps extends ProgressPrimitive.ProgressProps {
+  /** set to a null to make loader indeterminate */
+  value: ProgressPrimitive.ProgressProps['value'];
   active?: boolean;
-  indeterminate?: boolean;
-  size?: 16 | 32 | 64;
   variant?: 'bar' | 'ring';
-  status?: 'paused' | 'error';
+  /** only applicable to ring */
+  size?: 16 | 32 | 64;
+  /** only applicable to ring */
+  status?: 'default' | 'paused' | 'error';
 }
 
 const Progress = ({
   size = 16,
-  indeterminate,
   value = null,
   variant = 'bar',
   active,
-  status,
+  status = 'default',
 }: ProgressProps) => {
   const styles = useStyles({ size, status });
+  const isIndeterminate = !value && value !== 0;
 
   if (active === false) return null;
 
@@ -50,7 +53,7 @@ const Progress = ({
                 cy="16"
                 r="16"
                 strokeDasharray={
-                  !indeterminate ? `${value}px 100px` : undefined
+                  !isIndeterminate ? `${value}px 100px` : undefined
                 }
               ></circle>
             </ProgressPrimitive.Indicator>

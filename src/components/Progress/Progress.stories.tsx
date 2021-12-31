@@ -1,64 +1,40 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
-import Progress, { ProgressProps } from './Progress';
+import { ComponentStory, Meta } from '@storybook/react';
+import Progress from './Progress';
 
 export default {
   title: 'Components/Progress',
   component: Progress,
-} as Meta;
+} as Meta<typeof Progress>;
 
-const BaseBar = (props: ProgressProps) => <Progress {...props} />;
-
-export const BarDeterminate = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-    <BaseBar value={0} />
-    <BaseBar value={25} />
-    <BaseBar value={50} />
-    <BaseBar value={75} />
-    <BaseBar value={100} />
-  </div>
+const Template: ComponentStory<typeof Progress> = (args) => (
+  <Progress {...args} />
 );
+
+export const BarDeterminate = Template.bind({});
+BarDeterminate.args = { value: 20 };
 BarDeterminate.storyName = 'Bar - determinate';
 
-export const BarStatus = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-    Default
-    <BaseBar value={50} />
-    Paused
-    <BaseBar value={50} status="paused" />
-    Error
-    <BaseBar value={50} status="error" />
-  </div>
-);
+export const BarStatus = Template.bind({});
+BarStatus.args = {
+  value: 100,
+  status: 'paused',
+};
 BarStatus.storyName = 'Bar - statuses';
 
-export const BarIndeterminate = () => <BaseBar />;
+export const BarIndeterminate = Template.bind({});
+BarIndeterminate.args = {};
 BarIndeterminate.storyName = 'Bar - indeterminate';
 
 // Ring
-const BaseRing = (props: ProgressProps) => (
-  <Progress {...props} variant="ring" />
-);
-
-export const RingDeterminate = () => (
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <BaseRing value={0} />
-    <BaseRing value={25} />
-    <BaseRing value={50} />
-    <BaseRing value={75} />
-    <BaseRing value={100} />
-  </div>
-);
+export const RingDeterminate = Template.bind({});
+RingDeterminate.args = { variant: 'ring', value: 66 };
 RingDeterminate.storyName = 'Ring - determinate';
 
-export const RingIndeterminate = () => <BaseRing indeterminate />;
+export const RingIndeterminate = Template.bind({});
+RingIndeterminate.args = { variant: 'ring', value: null };
 RingIndeterminate.storyName = 'Ring - indeterminate';
 
-export const Sizes = () => (
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <BaseRing size={16} value={66} />
-    <BaseRing size={32} value={66} />
-    <BaseRing size={64} value={66} />
-  </div>
-);
-Sizes.storyName = 'Ring - sizes';
+export const RingSizes = Template.bind({});
+RingSizes.args = { variant: 'ring', value: 66, size: 64 };
+RingSizes.storyName = 'Ring - sizes';
