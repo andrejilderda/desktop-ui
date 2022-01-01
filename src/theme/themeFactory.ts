@@ -1,4 +1,5 @@
 import { createStitches } from '@stitches/react';
+import { classNamePrefix } from 'src/constants/styles';
 import rawThemes from './themes';
 import {
   Theme,
@@ -24,7 +25,7 @@ export const getRawTheme = ({
 
 export const themeFactory = (config: ThemeFactory[]) => {
   const { createTheme: createStitchesTheme, ...stitches } = createStitches({
-    prefix: 'rd',
+    prefix: classNamePrefix,
   });
 
   // change interface of default Stitches createTheme function, so that both the

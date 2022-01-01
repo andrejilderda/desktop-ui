@@ -3,6 +3,7 @@ import { ThemeComponentProps, CSS, ComponentStyles } from 'src/theme/types';
 import win from 'src/theme/themes/windows/tokens';
 import focusableVariants from 'src/styles/focusableVariants';
 import { pseudo } from 'src/constants/styles';
+import { composeVars } from 'src/utils/helpers';
 
 const styles: ComponentStyles = {
   base: ({ mode }: ThemeComponentProps): CSS[] => {
@@ -10,33 +11,78 @@ const styles: ComponentStyles = {
       {
         all: 'unset',
         cursor: 'default',
-        backgroundColor: '$$fill',
-        border: '$$borderDisabled',
-        color: '$$text',
-        userSelect: 'none',
         fontSize: '$2',
         lineHeight: '$2',
-        padding: '6px $5',
+        padding: '5px $5 7px',
         textAlign: 'center',
+        userSelect: 'none',
+
+        backgroundColor: '$$fill',
+        borderColor: '$$border',
+        color: '$$text',
 
         '&[disabled]': {
-          $$fill: '$$fillDisabled',
-          $$border: '$$borderDisabled',
+          backgroundColor: composeVars(['$$fillDisabled', '$$fill']),
+          borderColor: composeVars(['$$borderDisabled', '$$border']),
+          color: composeVars(['$$textDisabled', '$$text']),
+        },
+
+        '&:not([disabled])': {
+          boxShadow:
+            'inset 0px $$elevationY 0px 0px $$elevationStroke, inset 0px 0px 0px 1px $$stroke',
         },
 
         [pseudo.hover]: {
           '&:not([disabled])': {
-            $$fill: '$$fillHover',
-            $$border: '$$borderHover',
-            // $$text: '$$textHover',
+            backgroundColor: composeVars(['$$fillHover', '$$fill']),
+            color: composeVars(['$$textHover', '$$text']),
           },
         },
 
         [pseudo.active]: {
           '&:not([disabled])': {
-            $$fill: '$$fillActive',
-            $$border: '$$borderActive',
-            $$text: '$$textActive',
+            backgroundColor: composeVars(['$$fillActive', '$$fill']),
+            color: composeVars(['$$textActive', '$$text']),
+            boxShadow: `inset 0px $$elevationY 0px 0px ${composeVars([
+              '$$elevationStrokeActive',
+              '$$elevationStroke',
+            ])}, inset 0px 0px 0px 1px ${composeVars([
+              '$$strokeActive',
+              '$$stroke',
+            ])}`,
+          },
+        },
+
+        variants: {
+          mode: {},
+          variant: {},
+          theme: {
+            windows: {
+              $$elevationY: '-1px',
+
+              // fill
+              $$fill: win[mode].fill_color.control.default,
+              $$fillHover: win[mode].fill_color.control.secondary,
+              $$fillDisabled: win[mode].fill_color.accent.disabled,
+              $$fillActive: win[mode].fill_color.control.tertiary,
+
+              // stroke
+              $$stroke: win[mode].stroke_color.control_stroke.default,
+              $$strokeActive: win[mode].stroke_color.control_stroke.default,
+              $$strokeDisabled: 'transparent',
+
+              // elevationStroke
+              $$elevationStroke:
+                win[mode].stroke_color.control_stroke.secondary,
+              $$elevationStrokeActive: 'transparent',
+
+              // text
+              $$text: win[mode].fill_color.text.primary,
+              $$textActive: win[mode].fill_color.text.secondary,
+              $$textDisabled: win[mode].fill_color.text.disabled,
+
+              borderRadius: '4px',
+            },
           },
         },
 
@@ -45,73 +91,49 @@ const styles: ComponentStyles = {
             theme: 'windows',
             variant: 'accent',
             css: {
+              // fill
               $$fill: win[mode].fill_color.accent.default,
-              $$border: '',
-              $$text: win[mode].fill_color.text_on_accent.primary,
-
               $$fillHover: win[mode].fill_color.accent.secondary,
+              $$fillActive: win[mode].fill_color.accent.tertiary,
+              $$fillDisabled: `${win[mode].fill_color.accent.disabled}`,
+
               $$stroke:
                 win[mode].stroke_color.control_stroke['on accent default'],
-              $$bottomStroke:
+
+              $$elevationStroke:
                 win[mode].stroke_color.control_stroke['on accent secondary'],
 
-              $$fillActive: win[mode].fill_color.accent.tertiary,
-              $$borderActive: '',
+              // text
+              $$text: win[mode].fill_color.text_on_accent.primary,
               $$textActive: win[mode].fill_color.text_on_accent.secondary,
-
-              $$fillDisabled: `${win[mode].fill_color.accent.disabled}`,
-              $$borderDisabled: 'none',
               $$textDisabled: win[mode].fill_color.text_on_accent.disabled,
-
-              borderRadius: '4px',
-              '&:not([disabled])': {
+            },
+          },
+          // this is a strange exception in the spec for the accent disabled
+          // button, which has an extra outline, compared to the standard variant
+          {
+            theme: 'windows',
+            mode: 'dark',
+            variant: 'accent',
+            css: {
+              $$elevationStrokeDisabled: win[mode].fill_color.control.disabled,
+              '&[disabled]': {
                 boxShadow:
-                  'inset 0px -1px 0px 0px  rgba(0, 0, 0, 0.4), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.08)',
+                  '0px 0px 0px 1px $$fillDisabled, inset 0px 0 0px 1px $$elevationStrokeDisabled',
               },
-
-              [pseudo.active]: {
-                borderColor: 'transparent',
-                boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.08)',
-              },
+            },
+          },
+          {
+            theme: 'windows',
+            mode: 'dark',
+            variant: 'default',
+            css: {
+              // for the standard button in dark mode the elevation is inverted: in
+              // stead of shadow at the bottom there is a highlight at the top
+              $$elevationY: '1px',
             },
           },
         ],
-
-        variants: {
-          variant: {},
-          theme: {
-            windows: {
-              // accent
-              $$fill: win[mode].fill_color.control.default,
-              // $$border: ,
-              $$text: win[mode].fill_color.text.primary,
-
-              $$fillHover: win[mode].fill_color.control.secondary,
-              $$stroke: win[mode].stroke_color.control_stroke.secondary,
-              $$bottomStroke: win[mode].stroke_color.control_stroke.default,
-              // $$borderHover: 'unset',
-              // $$textHover: '',
-              $$fillActive: win[mode].fill_color.control.tertiary,
-              $$borderActive: '',
-              $$textActive: win[mode].fill_color.text.secondary,
-
-              $$fillDisabled: win[mode].fill_color.accent.disabled,
-              $$borderDisabled: 'none',
-              $$textDisabled: win[mode].fill_color.text.disabled,
-
-              borderRadius: '4px',
-              '&:not([disabled])': {
-                boxShadow:
-                  'inset 0px -1px 0px 0px $$bottomStroke, inset 0px 0px 0px 1px $$stroke',
-              },
-
-              [pseudo.active]: {
-                $$stroke: 'rgba(0, 0, 0, 0.08)',
-                $$bottomStroke: 'transparent',
-              },
-            },
-          },
-        },
       },
       focusableVariants,
     ];

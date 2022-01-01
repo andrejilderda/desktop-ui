@@ -11,6 +11,14 @@ export default {
       page: mdx,
     },
   },
+  argTypes: {
+    className: {
+      control: { disable: true },
+    },
+    asChild: {
+      control: { disable: true },
+    },
+  },
 } as Meta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
