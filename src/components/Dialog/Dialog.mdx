@@ -1,0 +1,53 @@
+import {
+  Canvas,
+  Story,
+  ArgsTable,
+  Source,
+  Props,
+  Primary,
+} from '@storybook/addon-docs';
+import { Figma } from 'storybook-addon-designs/blocks';
+import * as Dialog from './Dialog';
+
+# Dialog
+
+<Canvas style={{ backgroundColor: 'var(--rd-colors-background)' }}>
+  <Story
+    name="foo"
+    id="components-dialog--default"
+    inline={false}
+    height={400}
+  />
+</Canvas>
+
+## Design reference
+
+<Figma url="https://www.figma.com/file/EooAijYel5ATF7hrxwbMqW/Windows-UI-(Community)?node-id=31787%3A95791" />
+
+### `Dialog.Trigger`
+
+<ArgsTable of={Dialog.Trigger} />
+
+### `Dialog.Portal`
+
+<ArgsTable of={Dialog.Portal} />
+
+### `Dialog.Overlay`
+
+<ArgsTable of={Dialog.Overlay} />
+
+### `Dialog.Content`
+
+<ArgsTable of={Dialog.Content} />
+
+### `Dialog.Footer`
+
+<ArgsTable of={Dialog.Footer} />
+
+### `Dialog.Title`
+
+<ArgsTable of={Dialog.Title} />
+
+### `Dialog.Description`
+
+<ArgsTable of={Dialog.Description} />

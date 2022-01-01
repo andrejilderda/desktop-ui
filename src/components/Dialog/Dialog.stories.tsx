@@ -1,20 +1,25 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { ComponentStory, Meta } from '@storybook/react';
+import mdx from './Dialog.mdx';
 import * as Dialog from './Dialog';
 import Button from '../Button';
 
 export default {
   title: 'Components/Dialog',
   component: Dialog.Root,
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
   argTypes: {
     size: {
-      options: ['standard', 'min', 'max'],
-      control: { type: 'radio' },
+      control: false,
     },
   },
 } as Meta;
 
-const Template: Story<Dialog.DialogContentProps> = ({
+const Template: ComponentStory<typeof Dialog.Root & typeof Dialog.Content> = ({
   size,
 }: Dialog.DialogContentProps) => {
   const [open, setOpen] = React.useState(true);
