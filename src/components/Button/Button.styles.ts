@@ -13,7 +13,7 @@ const styles: ComponentStyles = {
         cursor: 'default',
         fontSize: '$2',
         lineHeight: '$2',
-        padding: '5px $5 7px',
+        padding: '6px $5',
         textAlign: 'center',
         userSelect: 'none',
 
