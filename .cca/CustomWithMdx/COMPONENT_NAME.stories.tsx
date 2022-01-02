@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, Meta } from '@storybook/react';
-import COMPONENT_NAME, { COMPONENT_NAMEProps } from './COMPONENT_NAME';
+import COMPONENT_NAME from './COMPONENT_NAME';
 import mdx from './COMPONENT_NAME.mdx';
 
 export default {

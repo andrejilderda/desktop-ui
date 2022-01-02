@@ -4,7 +4,7 @@ import { pseudo } from 'src/constants/styles';
 // import focusableVariants from 'src/styles/focusableVariants';
 
 const styles: ComponentStyles = {
-  wrapper: {},
+  base: {},
   fn: ({ classPrefix, mode }: StylesFunctionArgs): CSS[] => {},
 };
 

@@ -12,7 +12,7 @@ export type COMPONENT_NAMEProps = {
 const COMPONENT_NAME = ({ children, ...props }: COMPONENT_NAMEProps) => {
   const styles = useStyles();
 
-  return <div className={styles.wrapper}>{children}</div>;
+  return <div className={styles.base}>{children}</div>;
 };
 
 export default COMPONENT_NAME;
