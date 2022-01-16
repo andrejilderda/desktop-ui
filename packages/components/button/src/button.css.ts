@@ -7,6 +7,7 @@ import vars from 'lib/themes/globalTheme.css';
 import { assignTokensToVars } from 'lib/utils/helpers';
 import windowsVars from './themes/button.windows.css';
 import createUseVarFn from 'lib/utils/createUseVarFn';
+import themes from 'lib/themes/themes.css';
 
 const useVar = createUseVarFn(componentName);
 
@@ -23,6 +24,7 @@ export const buttonStyle = style([
           'fill-active',
           'fill-hover',
           'fill-disabled',
+          'focus-outline',
           'stroke',
           'stroke-active',
           'text',
@@ -49,6 +51,7 @@ export const buttonStyle = style([
     backgroundColor: useVar`--fill`,
     color: useVar`--text`,
     fontSize: useVar`--font-size`,
+    outlineColor: useVar`--focus-outline`,
 
     selectors: {
       '&[disabled]': {
@@ -76,6 +79,12 @@ export const buttonStyle = style([
 
       [`${selectors.windows}`]: {
         borderRadius: '4px',
+      },
+
+      [`.${themes.windows.light} ${pseudo.focusVisible},
+      .${themes.windows.dark} ${pseudo.focusVisible}`]: {
+        outline: `2px solid ${useVar`--focus-outline`}`,
+        outlineOffset: '1px',
       },
 
       [windowsVars.light.selector]: { vars: windowsVars.light.vars },

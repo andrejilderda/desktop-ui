@@ -7,6 +7,7 @@ const buttonVars = assignTokensToVars(componentName, 'windows', {
   '--elevation-y': '-1px',
   '--elevation-stroke-active': 'transparent',
   '--padding': '6px 20px',
+  '--focus-outline': 'stroke_color.focus_stroke.outer',
 
   // fill
   '--fill': 'fill_color.control.default',
