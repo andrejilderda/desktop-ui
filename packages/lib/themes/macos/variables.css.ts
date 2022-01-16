@@ -9,6 +9,7 @@ export const variables = {
     system: 'system-ui, BlinkMacSystemFont, sans-serif',
   },
 };
+
 const globalColors: Record<string, TokenNames> = {
   background: 'windows.windowBackground',
 };

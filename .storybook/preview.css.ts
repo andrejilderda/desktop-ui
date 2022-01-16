@@ -1,6 +1,6 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-import { vars } from '../packages/lib/themes/theme.css';
+import { vars } from '../packages/lib/themes/globalTheme.css';
 
 export const sideBySide = style({
   display: 'flex',

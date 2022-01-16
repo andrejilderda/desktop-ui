@@ -3,7 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 import { componentName } from '.';
 import selectors from 'lib/constants/selectors';
 import { classNamePrefix, pseudo } from 'lib/constants/styles';
-import { vars } from 'lib/themes/theme.css';
+import { vars } from 'lib/themes/globalTheme.css';
 import { assignTokensToVars } from 'lib/utils/helpers';
 import windowsVars from './themes/button.windows.css';
 import createUseVarFn from 'lib/utils/createUseVarFn';

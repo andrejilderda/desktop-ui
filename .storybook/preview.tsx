@@ -4,8 +4,8 @@ import {
   classNamePrefix,
   pseudoWrapperClassNames,
 } from '../packages/lib/constants/styles';
+import { vars } from '../packages/lib/themes/globalTheme.css';
 import { themes } from '../packages/lib/themes/themes.css';
-import { vars } from '../packages/lib/themes/theme.css';
 import { storybookPreview } from './preview.css';
 import ThemeProvider from './../src/contexts/ThemeProvider/ThemeProvider';
 

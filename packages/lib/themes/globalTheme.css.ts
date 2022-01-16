@@ -13,4 +13,4 @@ export const themeContract = createGlobalThemeContract(
     `${classNamePrefix}-${path.join('-').replace('.', '_')}`,
 );
 
-export const vars = { ...themeContract };
+export const vars = themeContract;

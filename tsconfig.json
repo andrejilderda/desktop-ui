@@ -17,10 +17,8 @@
     "jsx": "react-jsx",
     "declaration": true,
     "outDir": "./lib",
-    "paths": {
-      "lib/*": ["packages/lib/*"]
-    }
+    "paths": { "lib/*": ["packages/lib/*"] }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["src/**/*", "./packages", "*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }
