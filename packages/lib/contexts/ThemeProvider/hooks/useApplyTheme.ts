@@ -10,13 +10,13 @@ const useApplyThemeToHTML = (
   const themeClassNames = Object.values(themeClassNamesObj);
 
   useEffect(() => {
-    if (!enabled) return;
-
     const html = document?.documentElement;
 
     if (html && prevClassNames.current?.length) {
       html.classList.remove(...prevClassNames.current);
     }
+
+    if (!enabled) return;
 
     if (html && enabled && themeClassNames) {
       html.classList.add(...themeClassNames);
