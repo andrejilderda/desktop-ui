@@ -1,4 +1,4 @@
-import ThemeProvider from '../ThemeProvider';
+import LegacyThemeProvider from '../ThemeProvider';
 
 describe('ThemeProvider', () => {
   test.todo('ThemeProvider nesting');
