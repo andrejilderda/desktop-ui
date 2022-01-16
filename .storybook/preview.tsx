@@ -1,14 +1,13 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   classNamePrefix,
   pseudoWrapperClassNames,
 } from '../packages/lib/constants/styles';
-import { vars } from '../packages/lib/themes/globalTheme.css';
 import ThemeProvider from '../packages/lib/contexts/ThemeProvider/ThemeProvider';
-import { themes } from '../packages/lib/themes/themes.css';
-import { storybookPreview } from './preview.css';
+import { ThemeName, ThemeMode } from '../packages/lib/types';
 import LegacyThemeProvider from './../src/contexts/ThemeProvider/ThemeProvider';
+import { storybookPreview } from './preview.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -113,47 +112,42 @@ const StoryWrapper = ({
   return <div className={pseudoWrapperClassNames[pseudoState]}>{story}</div>;
 };
 
-const ThemeProviders = ({ children, theme, mode }) => (
-  <LegacyThemeProvider theme={theme} mode={mode} withGlobalStyles>
-    <ThemeProvider theme={theme} mode={mode} withGlobalStyles>
-      {children}
-    </ThemeProvider>
-  </LegacyThemeProvider>
+const ThemeProviders = ({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+  theme: ThemeName;
+  mode: ThemeMode;
+  local?: boolean;
+}) => (
+  // <LegacyThemeProvider {...props}>
+  <ThemeProvider {...props} withGlobalStyles>
+    {children}
+  </ThemeProvider>
+  // </LegacyThemeProvider>
 );
 
 export const decorators = [
   (Story, context) => {
     const { theme, mode, pseudo } = context.globals;
-    const activeTheme = themes[theme][mode];
-    const lightTheme = themes[theme].light;
-    const darkTheme = themes[theme].dark;
-    const themeClassName = `${classNamePrefix}-${theme}`;
     const themeProviderProps = { theme, mode };
 
     if (mode === 'side-by-side' || mode === 'stacked')
       return (
         <div className={storybookPreview({ layout: mode })}>
-          <ThemeProviders {...themeProviderProps} mode="light">
-            <div className={clsx(themeClassName, lightTheme)}>
-              <StoryWrapper story={<Story />} pseudoState={pseudo} />
-            </div>
+          <ThemeProviders {...themeProviderProps} mode="light" local>
+            <StoryWrapper story={<Story />} pseudoState={pseudo} />
           </ThemeProviders>
-          <ThemeProviders {...themeProviderProps} mode="dark">
-            <div className={clsx(themeClassName, darkTheme)}>
-              <StoryWrapper story={<Story />} pseudoState={pseudo} />
-            </div>
+          <ThemeProviders {...themeProviderProps} mode="dark" local>
+            <StoryWrapper story={<Story />} pseudoState={pseudo} />
           </ThemeProviders>
         </div>
       );
 
     return (
       <div
-        className={clsx(
-          themeClassName,
-          activeTheme,
-          storybookPreview(),
-          pseudoWrapperClassNames[pseudo],
-        )}
+        className={clsx(storybookPreview(), pseudoWrapperClassNames[pseudo])}
       >
         <ThemeProviders {...themeProviderProps}>
           <StoryWrapper story={<Story />} pseudoState={pseudo} />

@@ -2,6 +2,7 @@ import { componentName } from './../index';
 import { assignTokensToVars } from 'lib/utils/helpers';
 
 const buttonVars = assignTokensToVars(componentName, 'windows', {
+  '--font-size': '14px',
   '--stroke-disabled': 'transparent',
   '--elevation-y': '-1px',
   '--elevation-stroke-active': 'transparent',

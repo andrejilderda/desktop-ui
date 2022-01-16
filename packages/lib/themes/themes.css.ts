@@ -1,7 +1,9 @@
 import windows from './windows/theme.css';
 import macos from './macos/theme.css';
 
-export const themes = {
+const themes = {
   windows,
   macos,
 };
+
+export default themes;

@@ -1,7 +1,9 @@
 import { createContext } from 'react';
-import { Theme } from 'src/theme/types';
+import { ThemeClassNames } from './hooks/useThemeClassName';
 
-const ThemeProviderContext = createContext<Theme | undefined>(undefined);
+const ThemeProviderContext = createContext<ThemeClassNames | undefined>(
+  undefined,
+);
 ThemeProviderContext.displayName = 'ThemeProviderContext';
 
 export default ThemeProviderContext;

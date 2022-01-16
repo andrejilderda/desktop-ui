@@ -1,6 +1,11 @@
 import useApplyThemeToHTML from './useApplyTheme';
 import useColorMode from './useColorMode';
-import useTheme from './useTheme';
+import useThemeClassName from './useThemeClassName';
 import useWindowBlurTheme from './useWindowBlurTheme';
 
-export { useApplyThemeToHTML, useColorMode, useTheme, useWindowBlurTheme };
+export {
+  useApplyThemeToHTML,
+  useColorMode,
+  useThemeClassName,
+  useWindowBlurTheme,
+};

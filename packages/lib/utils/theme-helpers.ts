@@ -1,3 +1,4 @@
+import { ThemeContract } from 'lib/themes/globalTheme.css';
 import tokens from 'lib/themes/tokens';
 import { ThemeName } from 'lib/types';
 import { NestedObjKeys } from 'lib/types/flat';
@@ -16,7 +17,9 @@ export const getLightDarkColors = (
   const themeTokensLight = tokens[theme].light;
   const themeTokensDark = tokens[theme].dark;
 
-  return Object.entries(colors).reduce(
+  return Object.entries(colors).reduce<
+    Record<'light' | 'dark', ThemeContract['colors']>
+  >(
     (acc, [key, tokenName]) => {
       const lightValue = get(themeTokensLight, tokenName);
       const darkValue = get(themeTokensDark, tokenName);
@@ -35,6 +38,9 @@ export const getLightDarkColors = (
         },
       };
     },
-    { light: {}, dark: {} },
+    {
+      light: {} as ThemeContract['colors'],
+      dark: {} as ThemeContract['colors'],
+    },
   );
 };

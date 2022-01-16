@@ -2,7 +2,7 @@ import { StyleWithSelectors } from '@vanilla-extract/css/dist/declarations/src/t
 import { Nullable } from 'ts-toolbelt/out/Object/Nullable';
 import { classNamePrefix } from 'lib/constants/styles';
 import tokens from 'lib/themes/tokens';
-import { themes } from 'lib/themes/themes.css';
+import themes from 'lib/themes/themes.css';
 import { ThemeMode, ThemeName } from 'lib/types';
 import { NestedObjKeys } from 'lib/types/flat';
 import { get } from 'lodash';

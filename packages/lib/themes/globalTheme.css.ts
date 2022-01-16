@@ -2,7 +2,20 @@ import { createGlobalThemeContract } from '@vanilla-extract/css';
 import { classNamePrefix } from 'lib/constants/styles';
 import { variables, colors } from './windows/variables.css';
 
-export const themeContract = createGlobalThemeContract(
+export type ThemeContract = {
+  colors: {
+    background: string;
+    foreground: string;
+  };
+  'font-family': { system: string };
+};
+
+export type GlobalColorTokens<T extends string> = Record<
+  keyof ThemeContract['colors'],
+  T
+>;
+
+const vars = createGlobalThemeContract<ThemeContract>(
   {
     colors: {
       ...colors.light,
@@ -13,4 +26,4 @@ export const themeContract = createGlobalThemeContract(
     `${classNamePrefix}-${path.join('-').replace('.', '_')}`,
 );
 
-export const vars = themeContract;
+export default vars;

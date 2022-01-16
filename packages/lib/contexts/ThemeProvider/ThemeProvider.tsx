@@ -1,7 +1,8 @@
+import React, { useContext } from 'react';
+import clsx from 'clsx';
 import Wrap from 'lib/components/Wrap';
 import { ThemeMode, ThemeName } from 'lib/types';
-import React, { useContext } from 'react';
-import { useColorMode, useTheme, useApplyThemeToHTML } from './hooks';
+import { useColorMode, useThemeClassName, useApplyThemeToHTML } from './hooks';
 import ThemeProviderContext from './ThemeProviderContext';
 
 interface ThemeProviderProps {
@@ -14,7 +15,7 @@ interface ThemeProviderProps {
   local?: boolean;
 }
 
-const LegacyThemeProvider = ({
+const ThemeProvider = ({
   children,
   theme: themeName,
   mode: modeProp = 'auto',
@@ -33,25 +34,25 @@ const LegacyThemeProvider = ({
   //    <div> with the className.
   const ThemeContext = useContext(ThemeProviderContext);
   const local = !!ThemeContext || localProp;
-  const theme = useTheme(themeName, mode, enableWindowBlur);
-  const { baseClassName, theme: themeProps } = theme;
-  useApplyThemeToHTML(!local, theme);
+  // const theme = useTheme(themeName, mode, enableWindowBlur);
+  const classNames = useThemeClassName(themeName, mode);
+  useApplyThemeToHTML(!local, classNames);
 
   // if (withGlobalStyles) globalStyles();
 
   return (
-    <ThemeProviderContext.Provider value={theme}>
+    <ThemeProviderContext.Provider value={classNames}>
       {/* See 1. */}
       <Wrap
         if={!!local}
         with={(children) => (
-          <div className={`${baseClassName} ${themeProps}`}>{children}</div>
+          <div className={clsx(Object.values(classNames))}>{children}</div>
         )}
       >
-        <>{children}</>
+        {children}
       </Wrap>
     </ThemeProviderContext.Provider>
   );
 };
 
-export default LegacyThemeProvider;
+export default ThemeProvider;
