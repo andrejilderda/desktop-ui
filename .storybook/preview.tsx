@@ -5,9 +5,10 @@ import {
   pseudoWrapperClassNames,
 } from '../packages/lib/constants/styles';
 import { vars } from '../packages/lib/themes/globalTheme.css';
+import ThemeProvider from '../packages/lib/contexts/ThemeProvider/ThemeProvider';
 import { themes } from '../packages/lib/themes/themes.css';
 import { storybookPreview } from './preview.css';
-import ThemeProvider from './../src/contexts/ThemeProvider/ThemeProvider';
+import LegacyThemeProvider from './../src/contexts/ThemeProvider/ThemeProvider';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -112,6 +113,14 @@ const StoryWrapper = ({
   return <div className={pseudoWrapperClassNames[pseudoState]}>{story}</div>;
 };
 
+const ThemeProviders = ({ children, theme, mode }) => (
+  <LegacyThemeProvider theme={theme} mode={mode} withGlobalStyles>
+    <ThemeProvider theme={theme} mode={mode} withGlobalStyles>
+      {children}
+    </ThemeProvider>
+  </LegacyThemeProvider>
+);
+
 export const decorators = [
   (Story, context) => {
     const { theme, mode, pseudo } = context.globals;
@@ -119,28 +128,21 @@ export const decorators = [
     const lightTheme = themes[theme].light;
     const darkTheme = themes[theme].dark;
     const themeClassName = `${classNamePrefix}-${theme}`;
+    const themeProviderProps = { theme, mode };
 
     if (mode === 'side-by-side' || mode === 'stacked')
       return (
         <div className={storybookPreview({ layout: mode })}>
-          <ThemeProvider
-            theme={context.globals.theme}
-            mode="light"
-            withGlobalStyles
-          >
+          <ThemeProviders {...themeProviderProps} mode="light">
             <div className={clsx(themeClassName, lightTheme)}>
               <StoryWrapper story={<Story />} pseudoState={pseudo} />
             </div>
-          </ThemeProvider>
-          <ThemeProvider
-            theme={context.globals.theme}
-            mode="dark"
-            withGlobalStyles
-          >
+          </ThemeProviders>
+          <ThemeProviders {...themeProviderProps} mode="dark">
             <div className={clsx(themeClassName, darkTheme)}>
               <StoryWrapper story={<Story />} pseudoState={pseudo} />
             </div>
-          </ThemeProvider>
+          </ThemeProviders>
         </div>
       );
 
@@ -153,13 +155,9 @@ export const decorators = [
           pseudoWrapperClassNames[pseudo],
         )}
       >
-        <ThemeProvider
-          theme={context.globals.theme}
-          mode={context.globals.mode}
-          withGlobalStyles
-        >
+        <ThemeProviders {...themeProviderProps}>
           <StoryWrapper story={<Story />} pseudoState={pseudo} />
-        </ThemeProvider>
+        </ThemeProviders>
       </div>
     );
   },
