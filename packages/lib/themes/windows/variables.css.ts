@@ -1,14 +1,16 @@
 import { NestedObjKeys } from 'lib/types/flat';
 import { getLightDarkColors } from 'lib/utils/theme-helpers';
-import { GlobalColorTokens } from '../globalTheme.css';
+import { GlobalColorTokens, ThemeContract } from '../globalTheme.css';
 import tokens from './tokens';
 
 type TokenNames = NestedObjKeys<typeof tokens.light>;
 
-export const variables = {
-  'font-family': {
-    system:
-      '"Segoe UI Variable", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", system-ui, sans-serif',
+export const variables: Omit<ThemeContract, 'colors'> = {
+  typography: {
+    fonts: {
+      system:
+        '"Segoe UI Variable", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", system-ui, sans-serif',
+    },
   },
 };
 

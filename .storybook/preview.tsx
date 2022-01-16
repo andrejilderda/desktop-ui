@@ -121,11 +121,11 @@ const ThemeProviders = ({
   mode: ThemeMode;
   local?: boolean;
 }) => (
-  // <LegacyThemeProvider {...props}>
-  <ThemeProvider {...props} withGlobalStyles>
-    {children}
-  </ThemeProvider>
-  // </LegacyThemeProvider>
+  <LegacyThemeProvider {...props} withGlobalStyles>
+    <ThemeProvider {...props} withGlobalStyles>
+      {children}
+    </ThemeProvider>
+  </LegacyThemeProvider>
 );
 
 export const decorators = [

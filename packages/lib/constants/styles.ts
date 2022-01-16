@@ -16,3 +16,5 @@ export const pseudo = {
   active: `.${pseudoWrapperClassNames.active} &, &:active`,
   focusVisible: `.${pseudoWrapperClassNames.focusVisible} &, &:focus-visible`,
 };
+
+export const globalStylesClassName = `${classNamePrefix}-global-styles`;

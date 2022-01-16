@@ -7,7 +7,7 @@ export type ThemeContract = {
     background: string;
     foreground: string;
   };
-  'font-family': { system: string };
+  typography: { fonts: { system: string } };
 };
 
 export type GlobalColorTokens<T extends string> = Record<

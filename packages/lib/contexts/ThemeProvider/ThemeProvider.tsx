@@ -4,6 +4,7 @@ import Wrap from 'lib/components/Wrap';
 import { ThemeMode, ThemeName } from 'lib/types';
 import { useColorMode, useThemeClassName, useApplyThemeToHTML } from './hooks';
 import ThemeProviderContext from './ThemeProviderContext';
+import '../../styles/globalStyles.css';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -36,7 +37,7 @@ const ThemeProvider = ({
   const local = !!ThemeContext || localProp;
   // const theme = useTheme(themeName, mode, enableWindowBlur);
   const classNames = useThemeClassName(themeName, mode);
-  useApplyThemeToHTML(!local, classNames);
+  useApplyThemeToHTML(!local, classNames, withGlobalStyles);
 
   // if (withGlobalStyles) globalStyles();
 

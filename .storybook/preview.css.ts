@@ -8,7 +8,7 @@ export const sideBySide = style({
 
 export const storybookPreview = recipe({
   base: {
-    fontFamily: vars['font-family'].system,
+    fontFamily: vars.typography.fonts.system,
     display: 'flex',
     flex: 1,
   },

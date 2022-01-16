@@ -39,7 +39,7 @@ export const buttonStyle = style([
 
     all: 'unset',
     cursor: 'default',
-    fontFamily: vars['font-family'].system,
+    fontFamily: vars.typography.fonts.system,
 
     lineHeight: useVar`--line-height`,
     padding: useVar`--padding`,
