@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { globalStylesClassName } from 'lib/constants/styles';
 import { ThemeClassNames } from './useThemeClassName';
 
@@ -8,36 +8,33 @@ const useApplyThemeToHTML = (
   themeClassNamesObj: ThemeClassNames,
   withGlobalStyles = false,
 ) => {
-  const prevClassNames = useRef<string[]>();
-  const themeClassNames = Object.values(themeClassNamesObj);
+  const [prevClassNames, setPrevClassNames] = useState<string[]>();
+  const themeClassNames = useMemo(
+    () => Object.values(themeClassNamesObj),
+    [themeClassNamesObj],
+  );
   const withGlobalStylesClassName = withGlobalStyles
     ? globalStylesClassName
     : undefined;
 
+  const html = document?.documentElement;
+
+  if (prevClassNames?.length) {
+    html.classList.remove(
+      ...prevClassNames,
+      withGlobalStylesClassName as string,
+    );
+  }
+
+  if (enabled)
+    html.classList.add(...themeClassNames, withGlobalStylesClassName as string);
+
   useEffect(() => {
-    const html = document?.documentElement;
-
-    if (html && prevClassNames.current?.length) {
-      html.classList.remove(
-        ...prevClassNames.current,
-        withGlobalStylesClassName as string,
-      );
-    }
-
-    if (!enabled) return;
-
-    if (html && enabled && themeClassNames) {
-      html.classList.add(
-        ...themeClassNames,
-        withGlobalStylesClassName as string,
-      );
-    }
-
-    prevClassNames.current = [
+    setPrevClassNames([
       ...themeClassNames,
       withGlobalStylesClassName as string,
-    ];
-  }, [enabled, themeClassNames, withGlobalStylesClassName]);
+    ]);
+  }, [themeClassNames, withGlobalStylesClassName]);
 };
 
 export default useApplyThemeToHTML;
