@@ -1,0 +1,16 @@
+{
+  "name": "button",
+  "version": "0.0.0",
+  "author": "Andre Jilderda",
+  "description": "Button description",
+  "main": "dist/button.es.js",
+  "module": "dist/button.es.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "lint": "eslint ./src",
+    "tsc": "tsc"
+  },
+  "types": "./src/button.d.ts"
+}

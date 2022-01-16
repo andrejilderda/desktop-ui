@@ -7,19 +7,24 @@
   "author": "Andre Jilderda",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "dev": "npm run storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o build/storybook -s ./stories/assets",
-    "lint": "eslint --fix '*/**/*.{js,ts,tsx}' --verbose",
     "prepare": "husky install",
     "release": "npm run build && npm publish",
-    "build": "rollup -c",
-    "chromatic": "npx chromatic"
+    "chromatic": "npx chromatic",
+    "build": "lerna run build",
+    "build:watch": "lerna run build:watch",
+    "lint": "lerna run lint",
+    "test": "jest && yarn tsc",
+    "test:watch": "jest --watch",
+    "tsc": "lerna run tsc",
+    "postinstall": "yarn build",
+    "update": "yarn upgrade --latest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajilderda/react-desktop.git"
+    "url": "git+https://github.com/andrejilderda/react-desktop.git"
   },
   "keywords": [
     "react",
@@ -28,14 +33,12 @@
     "components"
   ],
   "bugs": {
-    "url": "https://github.com/ajilderda/react-desktop/issues"
+    "url": "https://github.com/andrejilderda/react-desktop/issues"
   },
-  "homepage": "https://github.com/ajilderda/react-desktop#readme",
+  "homepage": "https://github.com/andrejilderda/react-desktop#readme",
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@changesets/cli": "^2.16.0",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
     "@storybook/addon-a11y": "^6.4.9",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
@@ -45,34 +48,46 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
+    "@types/flat": "^5.0.2",
     "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.178",
+    "@types/react-dom": "17.0.11",
+    "@types/react": "17.0.38",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.23.0",
+    "@vanilla-extract/css": "^1.6.8",
+    "@vanilla-extract/sprinkles": "^1.3.3",
+    "@vanilla-extract/vite-plugin": "^3.1.2",
     "babel-loader": "^8.2.2",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "chromatic": "^6.3.3",
-    "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-storybook": "^0.5.3",
     "eslint-plugin-testing-library": "^4.4.0",
+    "eslint": "^7.26.0",
     "husky": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "lerna": "^4.0.0",
     "prettier": "2.5.0",
-    "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "rollup": "^2.48.0",
-    "rollup-plugin-cleaner": "^1.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.30.0",
+    "react": "^17.0.2",
     "storybook-addon-designs": "^6.2.0",
     "ts-jest": "^26.5.6",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "vite": "^2.7.12",
+    "clsx": "^1.1.1",
+    "flat": "^5.0.2",
+    "lodash": "^4.17.21",
+    "ts-toolbelt": "^9.6.0",
+    "@vanilla-extract/webpack-plugin": "2.1.5",
+    "vite-dts": "^1.0.3"
   },
   "peerDependencies": {
     "react": ">=17.0.1",
@@ -88,7 +103,8 @@
     "@stitches/react": "^1.2.6",
     "phosphor-react": "^1.3.1",
     "rooks": "^5.8.0",
-    "use-window-focus": "^1.3.0"
+    "use-window-focus": "^1.3.0",
+    "@vanilla-extract/recipes": "^0.2.3"
   },
   "cca": {
     "type": "custom",
