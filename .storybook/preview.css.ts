@@ -37,5 +37,11 @@ globalStyle(`${storybookPreview()} > div`, {
   display: 'flex',
   flexDirection: 'column',
   background: vars.colors.background,
+});
+
+globalStyle(`${storybookPreview()} > div > div`, {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
   gap: '12px',
 });
