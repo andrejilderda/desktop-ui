@@ -16,6 +16,7 @@ const styles: ComponentStyles = {
     height: 1,
     background: '$$rail',
     borderRadius: '$pill',
+    width: '100%',
   }),
 
   track: ({ mode }: StylesFunctionArgs): CSS => ({

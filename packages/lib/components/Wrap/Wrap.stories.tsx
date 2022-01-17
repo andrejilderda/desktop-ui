@@ -3,7 +3,7 @@ import { ComponentStory, Meta } from '@storybook/react';
 import Wrap from './Wrap';
 
 export default {
-  title: 'Components/Wrap',
+  title: 'Utils/Wrap',
   component: Wrap,
   argTypes: {
     // testProp: {

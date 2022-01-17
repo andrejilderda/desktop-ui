@@ -24,23 +24,32 @@ export const storybookPreview = recipe({
   },
 });
 
-globalStyle('.sb-show-main.sb-main-padded', {
-  padding: 0,
+globalStyle(`.sb-story-wrapper`, {
+  display: 'flex',
+  width: '100%',
+  alignItems: 'start',
+  justifyItems: 'start',
 });
 
-globalStyle('.sb-show-main.sb-main-padded .rd-windows', {
-  padding: 10,
+globalStyle(`.sb-preview-side-by-side, .sb-preview-stacked`, {
+  margin: '-1rem',
 });
 
-globalStyle(`${storybookPreview()} > div`, {
+globalStyle(`.sb-preview-side-by-side > div, .sb-preview-stacked > div`, {
+  padding: '1rem',
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
   background: vars.colors.background,
 });
 
-globalStyle(`${storybookPreview()} > div > div`, {
+globalStyle(`${storybookPreview()} .sb-story-wrapper--all-pseudo-states`, {
+  gap: '12px',
+});
+
+globalStyle(`${storybookPreview()} .sb-preview-side-by-side`, {
   flex: 1,
+  alignItems: 'start',
   display: 'flex',
   flexDirection: 'column',
   gap: '12px',

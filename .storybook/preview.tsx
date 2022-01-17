@@ -98,18 +98,23 @@ const StoryWrapper = ({
   story: React.ReactNode;
   pseudoState?: keyof typeof pseudoWrapperClassNames | 'all';
 }) => {
+  const classNames = clsx('sb-story-wrapper', storybookPreview(), {
+    [pseudoWrapperClassNames[pseudoState]]: pseudoState !== 'all',
+    'sb-story-wrapper--all-pseudo-states': pseudoState === 'all',
+  });
+
   if (pseudoState === 'all') {
     return (
-      <>
+      <div className={classNames}>
         <div className={pseudoWrapperClassNames['default']}>{story}</div>
         <div className={pseudoWrapperClassNames['hover']}>{story}</div>
         <div className={pseudoWrapperClassNames['active']}>{story}</div>
         <div className={pseudoWrapperClassNames['focusVisible']}>{story}</div>
-      </>
+      </div>
     );
   }
 
-  return <div className={pseudoWrapperClassNames[pseudoState]}>{story}</div>;
+  return <div className={classNames}>{story}</div>;
 };
 
 const ThemeProviders = ({
@@ -135,7 +140,12 @@ export const decorators = [
 
     if (mode === 'side-by-side' || mode === 'stacked')
       return (
-        <div className={storybookPreview({ layout: mode })}>
+        <div
+          className={clsx(
+            `sb-preview-${mode}`,
+            storybookPreview({ layout: mode }),
+          )}
+        >
           <ThemeProviders {...themeProviderProps} mode="light" local>
             <StoryWrapper story={<Story />} pseudoState={pseudo} />
           </ThemeProviders>
@@ -146,13 +156,9 @@ export const decorators = [
       );
 
     return (
-      <div
-        className={clsx(storybookPreview(), pseudoWrapperClassNames[pseudo])}
-      >
-        <ThemeProviders {...themeProviderProps}>
-          <StoryWrapper story={<Story />} pseudoState={pseudo} />
-        </ThemeProviders>
-      </div>
+      <ThemeProviders {...themeProviderProps}>
+        <StoryWrapper story={<Story />} pseudoState={pseudo} />
+      </ThemeProviders>
     );
   },
 ];
