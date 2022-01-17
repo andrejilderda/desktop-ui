@@ -3,7 +3,7 @@ import themes from 'lib/themes/themes.css';
 import selectors from 'lib/constants/selectors';
 import { classNamePrefix, pseudo } from 'lib/constants/styles';
 import vars from 'lib/themes/globalTheme.css';
-import { createUseVarFn } from 'lib/utils';
+import createUseVarFn from 'lib/utils/createUseVarFn';
 import component_nameVars from './themes/index';
 import { componentName } from '.';
 

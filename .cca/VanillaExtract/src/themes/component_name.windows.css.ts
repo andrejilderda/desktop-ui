@@ -1,5 +1,5 @@
 import { componentName } from '../index';
-import { assignTokensToVars } from 'lib/utils';
+import { assignTokensToVars } from 'lib/utils/helpers';
 
 const component_nameVars = assignTokensToVars(componentName, 'windows', {
   '--fill': 'fill_color.control.default',

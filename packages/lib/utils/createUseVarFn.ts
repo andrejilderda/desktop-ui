@@ -16,20 +16,20 @@ import { classNamePrefix } from 'lib/constants/styles';
  * // with fallback
  * borderColor: useVar`--border-disabled, --border`,
  */
-const createUseVarFn = (componentName: string) => ([
-  localVar,
-]: TemplateStringsArray) => {
-  const varName = (name: string) =>
-    `--${classNamePrefix}-${componentName}-${name}`;
+const createUseVarFn =
+  (componentName: string) =>
+  ([localVar]: TemplateStringsArray) => {
+    const varName = (name: string) =>
+      `--${classNamePrefix}-${componentName}-${name}`;
 
-  const splitVariables = (localVar as string)
-    .replaceAll(/--/g, '')
-    .split(/, /i);
-  const [variable, fallback] = splitVariables;
+    const splitVariables = (localVar as string)
+      .replaceAll(/--/g, '')
+      .split(/, /i);
+    const [variable, fallback] = splitVariables;
 
-  return fallback
-    ? `var(${varName(variable)}, var(${varName(fallback)}))`
-    : `var(${varName(variable)})`;
-};
+    return fallback
+      ? `var(${varName(variable)}, var(${varName(fallback)}))`
+      : `var(${varName(variable)})`;
+  };
 
 export default createUseVarFn;
