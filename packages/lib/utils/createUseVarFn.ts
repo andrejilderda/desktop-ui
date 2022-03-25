@@ -16,7 +16,7 @@ import { classNamePrefix } from 'lib/constants/styles';
  * // with fallback
  * borderColor: useVar`--border-disabled, --border`,
  */
-const createUseVarFn =
+export const createUseVarFn =
   (componentName: string) =>
   ([localVar]: TemplateStringsArray) => {
     const varName = (name: string) =>
@@ -31,5 +31,3 @@ const createUseVarFn =
       ? `var(${varName(variable)}, var(${varName(fallback)}))`
       : `var(${varName(variable)})`;
   };
-
-export default createUseVarFn;

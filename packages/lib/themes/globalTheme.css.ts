@@ -15,7 +15,7 @@ export type GlobalColorTokens<T extends string> = Record<
   T
 >;
 
-const vars = createGlobalThemeContract<ThemeContract>(
+export const vars = createGlobalThemeContract<ThemeContract>(
   {
     colors: {
       ...colors.light,
@@ -25,5 +25,3 @@ const vars = createGlobalThemeContract<ThemeContract>(
   (_value: string | null, path: string[]) =>
     `${classNamePrefix}-${path.join('-').replace('.', '_')}`,
 );
-
-export default vars;

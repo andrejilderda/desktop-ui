@@ -1,4 +1,4 @@
-const tokens = {
+export const tokens = {
   base: {
     gray: {
       light: 'rgb(204, 204, 204)',
@@ -307,5 +307,3 @@ const tokens = {
     },
   },
 };
-
-export default tokens;

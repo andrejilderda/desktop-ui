@@ -1,11 +1,11 @@
-import createStyles from 'src/theme/createStyles';
+import { createStyles } from 'src/theme/createStyles';
 import { ComponentStyles, StylesFunctionArgs, CSS } from 'src/theme/types';
 import {
   indeterminateBar,
   indeterminateRailDash,
   indeterminateRailRotation,
 } from 'src/styles/animations';
-import win from 'src/theme/themes/windows/tokens';
+import { tokens as win } from 'src/theme/themes/windows/tokens';
 
 const styles: ComponentStyles = {
   rail: ({ mode }: StylesFunctionArgs): CSS => ({

@@ -1,7 +1,7 @@
-import windowsTokens from './windows/tokens';
-import macosTokens from './macos/tokens';
+import { tokens as windowsTokens } from './windows/tokens';
+import { tokens as macosTokens } from './macos/tokens';
 
-export default {
+export const tokens = {
   windows: windowsTokens,
   macos: macosTokens,
 };

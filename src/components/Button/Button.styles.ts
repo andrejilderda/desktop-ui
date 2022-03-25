@@ -1,7 +1,7 @@
-import createStyles from 'src/theme/createStyles';
+import { createStyles } from 'src/theme/createStyles';
 import { ThemeComponentProps, CSS, ComponentStyles } from 'src/theme/types';
-import win from 'src/theme/themes/windows/tokens';
-import focusableVariants from 'src/styles/focusableVariants';
+import { tokens as win } from 'src/theme/themes/windows/tokens';
+import { focusableVariants } from 'src/styles/focusableVariants';
 import { pseudo } from 'src/constants/styles';
 import { composeVars } from 'src/utils/helpers';
 

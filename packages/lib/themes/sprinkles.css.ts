@@ -1,7 +1,7 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
 import { pseudo } from 'lib/constants/styles';
-import vars from 'lib/themes/globalTheme.css';
-import themes from 'lib/themes/themes.css';
+import { vars } from 'lib/themes/globalTheme.css';
+import { themes } from 'lib/themes/themes.css';
 
 const themeProperties = defineProperties({
   conditions: {

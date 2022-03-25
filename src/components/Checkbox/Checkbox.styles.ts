@@ -1,5 +1,5 @@
-import createStyles from 'src/theme/createStyles';
-import focusableVariants from 'src/styles/focusableVariants';
+import { createStyles } from 'src/theme/createStyles';
+import { focusableVariants } from 'src/styles/focusableVariants';
 import { ComponentStyles } from 'src/theme/types';
 import controlColors from 'src/styles/controlColors';
 

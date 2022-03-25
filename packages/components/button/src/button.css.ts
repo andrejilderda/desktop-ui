@@ -1,13 +1,13 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import { componentName } from '.';
-import selectors from 'lib/constants/selectors';
+import { selectors } from 'lib/constants/selectors';
 import { classNamePrefix, pseudo } from 'lib/constants/styles';
-import vars from 'lib/themes/globalTheme.css';
+import { vars } from 'lib/themes/globalTheme.css';
 import { assignTokensToVars } from 'lib/utils/helpers';
 import windowsVars from './themes/button.windows.css';
-import createUseVarFn from 'lib/utils/createUseVarFn';
-import themes from 'lib/themes/themes.css';
+import { createUseVarFn } from 'lib/utils/createUseVarFn';
+import { themes } from 'lib/themes/themes.css';
 
 const useVar = createUseVarFn(componentName);
 

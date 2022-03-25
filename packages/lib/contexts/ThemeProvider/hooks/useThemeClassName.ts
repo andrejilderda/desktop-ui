@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { ThemeBaseClassName, ThemeMode, ThemeName } from 'lib/types';
-import themes from 'lib/themes/themes.css';
+import { themes } from 'lib/themes/themes.css';
 import { ThemeClassName } from 'src/theme/types';
 import { classNamePrefix } from 'lib/constants/styles';
 // import useWindowBlurTheme from './useWindowBlurTheme';

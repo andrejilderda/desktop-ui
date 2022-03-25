@@ -1,6 +1,6 @@
-import themes from 'lib/themes/themes.css';
+import { themes } from 'lib/themes/themes.css';
 
-export default {
+export const selectors = {
   windows: {
     toString: () => `.${themes.windows.light} &, .${themes.windows.dark} &`,
     light: `.${themes.windows.light} &`,

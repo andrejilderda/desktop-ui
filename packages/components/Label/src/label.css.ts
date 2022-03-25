@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
-import selectors from 'lib/constants/selectors';
+import { selectors } from 'lib/constants/selectors';
 import { classNamePrefix } from 'lib/constants/styles';
-import createUseVarFn from 'lib/utils/createUseVarFn';
+import { createUseVarFn } from 'lib/utils/createUseVarFn';
 import labelVars from './themes/index';
 import { componentName } from '.';
 

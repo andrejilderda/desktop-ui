@@ -1,8 +1,8 @@
 import controlColors from 'src/styles/controlColors';
-import createStyles from 'src/theme/createStyles';
+import { createStyles } from 'src/theme/createStyles';
 import { StylesFunctionArgs, CSS, ComponentStyles } from 'src/theme/types';
-import win from 'src/theme/themes/windows/tokens';
-import focusableVariants from 'src/styles/focusableVariants';
+import { tokens as win } from 'src/theme/themes/windows/tokens';
+import { focusableVariants } from 'src/styles/focusableVariants';
 import { pseudo } from 'src/constants/styles';
 
 const styles: ComponentStyles = {

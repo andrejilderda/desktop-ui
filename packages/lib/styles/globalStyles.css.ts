@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css';
 import { globalStylesClassName } from 'lib/constants/styles';
-import vars from 'lib/themes/globalTheme.css';
+import { vars } from 'lib/themes/globalTheme.css';
 
 globalStyle(`.${globalStylesClassName}`, {
   backgroundColor: vars.colors.background,

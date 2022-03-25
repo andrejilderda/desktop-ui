@@ -1,7 +1,7 @@
 import { NestedObjKeys } from 'lib/types/flat';
 import { getLightDarkColors } from 'lib/utils/theme-helpers';
 import { GlobalColorTokens, ThemeContract } from '../globalTheme.css';
-import tokens from './tokens';
+import { tokens } from './tokens';
 
 type TokenNames = NestedObjKeys<typeof tokens.light>;
 
@@ -20,5 +20,3 @@ const globalColors: GlobalColorTokens<TokenNames> = {
 };
 
 export const colors = getLightDarkColors('windows', globalColors);
-
-export default variables;

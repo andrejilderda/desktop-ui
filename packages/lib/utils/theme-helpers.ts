@@ -1,5 +1,5 @@
 import { ThemeContract } from 'lib/themes/globalTheme.css';
-import tokens from 'lib/themes/tokens';
+import { tokens } from 'lib/themes/tokens';
 import { ThemeName } from 'lib/types';
 import { NestedObjKeys } from 'lib/types/flat';
 import { get } from 'lodash';

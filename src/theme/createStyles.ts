@@ -32,7 +32,7 @@ const extendToString =
 // creates styles using Stitches' css-method with props that are retrieved from
 // the theming context so that variants are properly applied. Props can be
 // passed to the returned function for variants based on other values.
-const createStyles =
+export const createStyles =
   <T extends string>(
     componentName: string,
     namedStylesObject: Record<string, CSS | CSS[] | StylesFunction>,
@@ -88,5 +88,3 @@ const createStyles =
       {} as CreateStyleValue<T>,
     );
   };
-
-export default createStyles;
