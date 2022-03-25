@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { selectors } from 'lib/constants/selectors';
 import { classNamePrefix } from 'lib/constants/styles';
-import { createUseVarFn } from 'lib/utils/createUseVarFn';
 import labelVars from './themes/index';
 import { componentName } from '.';
+import { createUtils } from 'lib/utils';
 
-const useVar = createUseVarFn(componentName);
+const { useVar } = createUtils(componentName);
 
 export const labelStyle = style([
   {

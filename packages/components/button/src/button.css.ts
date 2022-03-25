@@ -2,42 +2,35 @@ import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import { componentName } from '.';
 import { selectors } from 'lib/constants/selectors';
-import { classNamePrefix, pseudo } from 'lib/constants/styles';
+import { pseudo } from 'lib/constants/styles';
 import { vars } from 'lib/themes/globalTheme.css';
 import { assignTokensToVars } from 'lib/utils/helpers';
-import windowsVars from './themes/button.windows.css';
-import { createUseVarFn } from 'lib/utils/createUseVarFn';
+import { buttonVars } from './themes';
 import { themes } from 'lib/themes/themes.css';
+import { createUtils } from 'lib/utils';
 
-const useVar = createUseVarFn(componentName);
+const { useVar, initialVars } = createUtils(componentName);
 
 export const buttonStyle = style([
   {
-    vars: {
-      ...Object.fromEntries(
-        [
-          'border',
-          'border-disabled',
-          'elevation-stroke',
-          'elevation-stroke-active',
-          'fill',
-          'fill-active',
-          'fill-hover',
-          'fill-disabled',
-          'focus-outline',
-          'stroke',
-          'stroke-active',
-          'text',
-          'text-active',
-          'text-hover',
-          'text-disabled',
-          'font-size',
-        ].map((key) => [
-          `--${classNamePrefix}-${componentName}-${key}`,
-          'initial',
-        ]),
-      ),
-    },
+    vars: initialVars([
+      'border',
+      'border-disabled',
+      'elevation-stroke',
+      'elevation-stroke-active',
+      'fill',
+      'fill-active',
+      'fill-hover',
+      'fill-disabled',
+      'focus-outline',
+      'stroke',
+      'stroke-active',
+      'text',
+      'text-active',
+      'text-hover',
+      'text-disabled',
+      'font-size',
+    ]),
 
     all: 'unset',
     cursor: 'default',
@@ -77,6 +70,7 @@ export const buttonStyle = style([
         boxShadow: `inset 0px ${useVar`--elevation-y`} 0px 0px ${useVar`--elevation-stroke-active, --elevation-stroke`}, inset 0px 0px 0px 1px ${useVar`--stroke-active, --stroke`}`,
       },
 
+      // Windows
       [`${selectors.windows}`]: {
         borderRadius: '4px',
       },
@@ -91,6 +85,7 @@ export const buttonStyle = style([
       [windowsVars.dark.selector]: {
         vars: {
           ...windowsVars.dark.vars,
+          ...buttonVars.windows.dark.vars,
           '--rd-button-elevation-y': '1px',
         },
       },

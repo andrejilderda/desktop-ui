@@ -3,22 +3,15 @@ import { themes } from 'lib/themes/themes.css';
 import { selectors } from 'lib/constants/selectors';
 import { classNamePrefix, pseudo } from 'lib/constants/styles';
 import { vars }from 'lib/themes/globalTheme.css';
-import { createUseVarFn } from 'lib/utils/createUseVarFn';
+import { createUtils } from 'lib/utils';
 import component_nameVars from './themes/index';
 import { componentName } from '.';
 
-const useVar = createUseVarFn(componentName);
+const { useVar, resetVars } = createUtils(componentName);
 
 export const component_nameStyle = style([
   {
-    vars: {
-      ...Object.fromEntries(
-        ['fill'].map((key) => [
-          `--${classNamePrefix}-${componentName}-${key}`,
-          'initial',
-        ]),
-      ),
-    },
+    vars: resetVars(['fill'])
 
     background: useVar`--fill`,
     backgroundColor: useVar`--fill-active, --fill`,

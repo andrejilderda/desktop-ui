@@ -5,16 +5,17 @@ import { classNamePrefix } from 'lib/constants/styles';
  * creating references to local variables (or rather CSS custom properties),
  * optionally with a fallback.
  *
- * @param {TemplateStringsArray} [localVar]
- * @return {*}
  * @example
  * const useVar = createUseVarFn(componentName);
  * ...
  * // without fallback
  * fontSize: useVar`--font-size`,
  *
- * // with fallback
+ * // with custom property as fallback
  * borderColor: useVar`--border-disabled, --border`,
+ 
+ * // with default value as fallback
+ * borderColor: useVar`--border-disabled, 2px solid red`,
  */
 export const createUseVarFn =
   (componentName: string) =>
@@ -22,12 +23,25 @@ export const createUseVarFn =
     const varName = (name: string) =>
       `--${classNamePrefix}-${componentName}-${name}`;
 
-    const splitVariables = (localVar as string)
-      .replaceAll(/--/g, '')
+    const splitVariablesRaw = (localVar as string).split(/, /i);
+    // remove var dashes (--) from beginning of var-name for further processing:
+    // fe. --foo--bar, --baz-quux › foo--bar, baz-quux
+    const splitVariablesClean = (localVar as string)
+      ?.trim()
+      .replaceAll(/^--|(?!,)\s*--/g, '')
       .split(/, /i);
-    const [variable, fallback] = splitVariables;
+
+    const [variableClean, fallbackClean] = splitVariablesClean;
+    const [, fallbackRaw] = splitVariablesRaw;
+
+    // determine whether fallback is a var-name (starting with '--') or another
+    // property (f.e. '12px')
+    const fallback = fallbackRaw?.trim().match(/^--/)
+      ? `var(${varName(fallbackRaw)})`
+      : fallbackClean;
+    console.log(splitVariablesClean);
 
     return fallback
-      ? `var(${varName(variable)}, var(${varName(fallback)}))`
-      : `var(${varName(variable)})`;
+      ? `var(${varName(variableClean)}, ${fallback})`
+      : `var(${varName(variableClean)})`;
   };
