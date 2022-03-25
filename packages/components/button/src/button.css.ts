@@ -5,9 +5,9 @@ import { selectors } from 'lib/constants/selectors';
 import { pseudo } from 'lib/constants/styles';
 import { vars } from 'lib/themes/globalTheme.css';
 import { assignTokensToVars } from 'lib/utils/helpers';
-import { buttonVars } from './themes';
 import { themes } from 'lib/themes/themes.css';
 import { createUtils } from 'lib/utils';
+import { windows } from './themes/button.windows.css';
 
 const { useVar, initialVars } = createUtils(componentName);
 
@@ -81,11 +81,12 @@ export const buttonStyle = style([
         outlineOffset: '1px',
       },
 
-      [windowsVars.light.selector]: { vars: windowsVars.light.vars },
-      [windowsVars.dark.selector]: {
+      [windows.light.selector]: {
+        vars: windows.light.vars,
+      },
+      [windows.dark.selector]: {
         vars: {
-          ...windowsVars.dark.vars,
-          ...buttonVars.windows.dark.vars,
+          ...windows.dark.vars,
           '--rd-button-elevation-y': '1px',
         },
       },
@@ -94,17 +95,18 @@ export const buttonStyle = style([
 ]);
 
 // Variant: accent
-const accentVars = assignTokensToVars('button', 'windows', {
-  fill: 'fill_color.accent.default',
-  'fill-hover': 'fill_color.accent.secondary',
-  'fill-active': 'fill_color.accent.tertiary',
-  'fill-disabled': 'fill_color.accent.disabled',
-  stroke: 'stroke_color.control_stroke.on accent default',
-  'elevation-stroke': 'stroke_color.control_stroke.on accent secondary',
+const accentVars = assignTokensToVars(componentName, 'windows', {
+  '--fill': 'fill_color.accent.default',
+  '--fill-hover': 'fill_color.accent.secondary',
+  '--fill-active': 'fill_color.accent.tertiary',
+  '--fill-disabled': 'fill_color.accent.disabled',
+  '--stroke': 'stroke_color.control_stroke.on accent default',
+  '--elevation-stroke': 'stroke_color.control_stroke.on accent secondary',
   // text
-  text: 'fill_color.text_on_accent.primary',
-  'text-active': 'fill_color.text_on_accent.secondary',
-  'text-disabled': 'fill_color.text_on_accent.disabled',
+  '--text': 'fill_color.text_on_accent.primary',
+  '--text-hover': 'fill_color.text_on_accent.primary',
+  '--text-active': 'fill_color.text_on_accent.secondary',
+  '--text-disabled': 'fill_color.text_on_accent.disabled',
 });
 
 export const buttonRecipe = recipe({
@@ -112,9 +114,6 @@ export const buttonRecipe = recipe({
 
   variants: {
     variant: {
-      default: {
-        vars: {},
-      },
       accent: {
         selectors: {
           [accentVars.dark.selector]: { vars: accentVars.dark.vars },

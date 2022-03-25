@@ -1,7 +1,7 @@
 import { componentName } from './../index';
 import { assignTokensToVars } from 'lib/utils/helpers';
 
-const buttonVars = assignTokensToVars(componentName, 'windows', {
+export const windows = assignTokensToVars(componentName, 'windows', {
   '--font-size': '14px',
   '--stroke-disabled': 'transparent',
   '--elevation-y': '-1px',
@@ -24,8 +24,7 @@ const buttonVars = assignTokensToVars(componentName, 'windows', {
 
   // text
   '--text': 'fill_color.text.primary',
+  '--text-hover': 'fill_color.text.primary',
   '--text-active': 'fill_color.text.secondary',
   '--text-disabled': 'fill_color.text.disabled',
 });
-
-export default buttonVars;
