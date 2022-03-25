@@ -9,7 +9,7 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button = ({ label, variants = {}, ...props }: ButtonProps) => {
+export const Button = ({ label, variants = {}, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
@@ -19,5 +19,3 @@ const Button = ({ label, variants = {}, ...props }: ButtonProps) => {
     </button>
   );
 };
-
-export default Button;

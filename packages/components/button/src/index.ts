@@ -1,3 +1,1 @@
-export { default } from './Button';
-
-export const componentName = 'button';
+export { Button } from './Button';

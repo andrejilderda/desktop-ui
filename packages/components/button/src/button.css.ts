@@ -1,13 +1,13 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-import { componentName } from '.';
 import { selectors } from 'lib/constants/selectors';
 import { pseudo } from 'lib/constants/styles';
 import { vars } from 'lib/themes/globalTheme.css';
-import { assignTokensToVars } from 'lib/utils/helpers';
+import { assignTokensToVars } from 'lib/utils/helpers.css';
 import { themes } from 'lib/themes/themes.css';
 import { createUtils } from 'lib/utils';
 import { windows } from './themes/button.windows.css';
+import { componentName } from './index.css';
 
 const { useVar, initialVars } = createUtils(componentName);
 

@@ -112,6 +112,11 @@ export function assignTokensToVars(
     >
   >,
 ): Record<'light' | 'dark', { selector: string; vars: {} }> {
+  console.log('');
+  console.log('');
+  console.log(componentName);
+  console.log('');
+
   const resolveValues = (mode: ThemeMode) => {
     return Object.entries(vars).reduce((acc, [key, value]) => {
       const themeTokens = tokens[theme][mode];

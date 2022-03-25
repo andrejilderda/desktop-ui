@@ -1,5 +1,5 @@
-import { componentName } from './../index';
-import { assignTokensToVars } from 'lib/utils/helpers';
+import { componentName } from './../index.css';
+import { assignTokensToVars } from 'lib/utils/helpers.css';
 
 export const windows = assignTokensToVars(componentName, 'windows', {
   '--font-size': '14px',

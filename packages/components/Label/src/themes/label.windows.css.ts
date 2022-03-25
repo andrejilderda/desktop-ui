@@ -1,8 +1,6 @@
-import { componentName } from '../index';
-import { assignTokensToVars } from 'lib/utils/helpers';
+import { componentName } from './../index.css';
+import { assignTokensToVars } from 'lib/utils/helpers.css';
 
-const labelVars = assignTokensToVars(componentName, 'windows', {
+export const windows = assignTokensToVars(componentName, 'windows', {
   '--text': 'fill_color.text.primary',
 });
-
-export default labelVars;

@@ -1,22 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { selectors } from 'lib/constants/selectors';
-import { classNamePrefix } from 'lib/constants/styles';
-import labelVars from './themes/index';
-import { componentName } from '.';
+import { labelVars } from './themes/index';
 import { createUtils } from 'lib/utils';
+import { componentName } from './index.css';
 
-const { useVar } = createUtils(componentName);
+const { useVar, initialVars } = createUtils(componentName);
 
 export const labelStyle = style([
   {
-    vars: {
-      ...Object.fromEntries(
-        ['font-size', 'line-height'].map((key) => [
-          `--${classNamePrefix}-${componentName}-${key}`,
-          'initial',
-        ]),
-      ),
-    },
+    vars: initialVars(['font-size', 'line-height']),
 
     userSelect: 'none',
 

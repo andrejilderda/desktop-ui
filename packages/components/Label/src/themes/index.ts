@@ -1,5 +1,5 @@
-import windows from './label.windows.css';
+import { windows } from './label.windows.css';
 
-export default {
+export const labelVars = {
   windows,
 };
