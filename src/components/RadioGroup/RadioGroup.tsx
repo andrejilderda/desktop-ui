@@ -1,7 +1,7 @@
 import React from 'react';
 import type * as Stitches from '@stitches/react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import Label from '../Label';
+import Label from 'components/Label/src/index';
 
 import useStyles from './RadioGroup.styles';
 import { useId } from 'src/hooks/useId';

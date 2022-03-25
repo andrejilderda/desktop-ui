@@ -1,4 +1,3 @@
-import React from 'react';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import * as styles from './label.css';
 import clsx from 'clsx';

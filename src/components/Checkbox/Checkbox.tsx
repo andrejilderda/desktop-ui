@@ -6,7 +6,7 @@ import { Check, Minus } from 'phosphor-react';
 import useStyles from './Checkbox.styles';
 import { useId } from 'src/hooks/useId';
 import { ConditionalWrapper } from 'src/utils/helpers';
-import Label from '../Label';
+import Label from 'components/Label/src/index';
 
 export type CheckboxProps = Stitches.ComponentProps<
   typeof RadixCheckbox.Root
