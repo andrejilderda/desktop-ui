@@ -3,9 +3,8 @@ import { themes } from 'lib/themes/themes.css';
 import { selectors } from 'lib/constants/selectors';
 import { pseudo } from 'lib/constants/styles';
 import { createUtils } from 'lib/utils';
-import component_nameVars from './themes/index';
-
-export const componentName = 'component_name';
+import { component_nameVars } from './themes/index';
+import { componentName } from './index.css';
 
 const { useVar, initialVars } = createUtils(componentName);
 

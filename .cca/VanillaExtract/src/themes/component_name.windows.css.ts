@@ -1,9 +1,8 @@
-import { componentName } from '../index';
-import { assignTokensToVars } from 'lib/utils/helpers';
+import { componentName } from './../index.css';
+import { assignTokensToVars } from 'lib/utils/helpers.css';
 
-const component_nameVars = assignTokensToVars(componentName, 'windows', {
+export const component_nameVars = assignTokensToVars(componentName, 'windows', {
   '--fill': 'fill_color.control.default',
   '--fill-hover': 'fill_color.control.secondary',
 });
 
-export default component_nameVars;
