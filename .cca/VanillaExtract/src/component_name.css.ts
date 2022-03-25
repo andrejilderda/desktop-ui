@@ -11,7 +11,7 @@ const { useVar, resetVars } = createUtils(componentName);
 
 export const component_nameStyle = style([
   {
-    vars: resetVars(['fill'])
+    vars: resetVars(['fill']),
 
     background: useVar`--fill`,
     backgroundColor: useVar`--fill-active, --fill`,

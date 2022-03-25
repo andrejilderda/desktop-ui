@@ -39,7 +39,6 @@ export const createUseVarFn =
     const fallback = fallbackRaw?.trim().match(/^--/)
       ? `var(${varName(fallbackRaw)})`
       : fallbackClean;
-    console.log(splitVariablesClean);
 
     return fallback
       ? `var(${varName(variableClean)}, ${fallback})`

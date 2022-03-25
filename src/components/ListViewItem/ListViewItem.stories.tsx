@@ -5,7 +5,7 @@ import mdx from './ListViewItem.mdx';
 import { Phone } from 'phosphor-react';
 
 export default {
-  title: 'Components/ListViewItem',
+  title: 'Legacy/ListViewItem',
   component: ListViewItem,
   parameters: {
     docs: {

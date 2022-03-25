@@ -6,7 +6,7 @@ import { CheckedState } from '@radix-ui/react-checkbox';
 import { styled } from 'src/reactDesktop.config';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Legacy/Checkbox',
   component: Checkbox,
 } as Meta;
 

@@ -5,7 +5,7 @@ import * as Dialog from './Dialog';
 import Button from '../Button';
 
 export default {
-  title: 'Components/Dialog',
+  title: 'Legacy/Dialog',
   component: Dialog.Root,
   parameters: {
     docs: {

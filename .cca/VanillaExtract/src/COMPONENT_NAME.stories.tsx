@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, Meta } from '@storybook/react';
-import COMPONENT_NAME from './COMPONENT_NAME';
+import { COMPONENT_NAME } from './COMPONENT_NAME';
 
 export default {
   title: 'Components/COMPONENT_NAME',

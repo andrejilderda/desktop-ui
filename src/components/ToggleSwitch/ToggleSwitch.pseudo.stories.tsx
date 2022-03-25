@@ -5,7 +5,7 @@ import Pseudo from '../../../.storybook/components/Pseudo';
 import { Default } from './ToggleSwitch.stories';
 
 export default {
-  title: 'Components/ToggleSwitch/Pseudo',
+  title: 'Legacy/ToggleSwitch/Pseudo',
   component: ToggleSwitch,
 } as Meta;
 

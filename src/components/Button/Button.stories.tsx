@@ -4,7 +4,7 @@ import Button from './Button';
 import mdx from './Button.mdx';
 
 export default {
-  title: 'Components/Button',
+  title: 'Legacy/Button',
   component: Button,
   parameters: {
     docs: {

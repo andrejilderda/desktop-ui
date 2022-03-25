@@ -5,7 +5,7 @@ import Pseudo from '../../../.storybook/components/Pseudo';
 import { Default } from './Button.stories';
 
 export default {
-  title: 'Components/Button/Pseudo',
+  title: 'Legacy/Button/Pseudo',
   component: Button,
 } as Meta;
 

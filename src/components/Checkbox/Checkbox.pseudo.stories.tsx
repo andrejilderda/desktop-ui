@@ -5,7 +5,7 @@ import Pseudo from './../../../.storybook/components/Pseudo';
 import { Default } from './Checkbox.stories';
 
 export default {
-  title: 'Components/Checkbox/Pseudo',
+  title: 'Legacy/Checkbox/Pseudo',
   component: Checkbox,
 } as Meta;
 
