@@ -1,5 +1,7 @@
-import { windows } from './label.windows.css';
+import * as windows from './label.windows.css';
+import * as macos from './label.macos.css';
 
-export const labelVars = {
+export const styles = {
   windows,
+  macos
 };

@@ -5,10 +5,7 @@ import clsx from 'clsx';
 export type LabelProps = LabelPrimitive.LabelProps;
 
 export const Label = ({ className, ...props }: LabelProps) => (
-  <LabelPrimitive.Root
-    className={clsx(className, styles.labelStyle)}
-    {...props}
-  />
+  <LabelPrimitive.Root className={clsx(styles.label, className)} {...props} />
 );
 
 export const useLabelContext = LabelPrimitive.useLabelContext;
