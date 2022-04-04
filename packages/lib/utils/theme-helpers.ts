@@ -1,5 +1,5 @@
 import { ThemeContract } from 'lib/themes/globalTheme.css';
-import { tokens } from 'lib/themes/tokens';
+import { colorTokens } from 'lib/themes/colorTokens';
 import { ThemeName } from 'lib/types';
 import { NestedObjKeys } from 'lib/types/flat';
 import { get } from 'lodash';
@@ -11,11 +11,13 @@ export const getLightDarkColors = (
   theme: ThemeName,
   colors: Record<
     string,
-    NestedObjKeys<typeof tokens.windows.light | typeof tokens.macos.light>
+    NestedObjKeys<
+      typeof colorTokens.windows.light | typeof colorTokens.macos.light
+    >
   >,
 ) => {
-  const themeTokensLight = tokens[theme].light;
-  const themeTokensDark = tokens[theme].dark;
+  const themeTokensLight = colorTokens[theme].light;
+  const themeTokensDark = colorTokens[theme].dark;
 
   return Object.entries(colors).reduce<
     Record<'light' | 'dark', ThemeContract['colors']>

@@ -1,4 +1,4 @@
-export const tokens = {
+export const colors = {
   base: {
     gray: {
       light: 'rgb(204, 204, 204)',

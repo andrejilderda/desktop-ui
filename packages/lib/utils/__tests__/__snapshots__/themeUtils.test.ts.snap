@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`themeUtils should prefix custom properties 1`] = `
+Object {
+  "selectors": Object {
+    ".theme_windows-light__2tecqm0 &, .theme_windows-dark__2tecqm1 &": Object {
+      "vars": Object [
+        Object {
+          "--rd-componentName---size": "16px",
+        },
+      ],
+    },
+  },
+}
+`;

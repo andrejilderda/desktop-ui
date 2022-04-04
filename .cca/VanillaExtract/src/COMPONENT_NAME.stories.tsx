@@ -8,8 +8,6 @@ export default {
   argTypes: {
     // testProp: {
     //   table: { disable: true }, // hide from argsTable
-    // },
-    // className: {
     //   control: { disable: true }, // disable control in ArgsTable
     // },
   },

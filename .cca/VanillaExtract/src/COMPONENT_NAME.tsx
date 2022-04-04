@@ -8,5 +8,5 @@ export type COMPONENT_NAMEProps = {
 };
 
 export const COMPONENT_NAME = ({ children, ...props }: COMPONENT_NAMEProps) => {
-  return <div className={styles.component_nameStyle}>{children}</div>;
+  return <div className={styles.root}>{children}</div>;
 };

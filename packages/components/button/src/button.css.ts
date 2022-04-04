@@ -9,7 +9,7 @@ import { createUtils } from 'lib/utils';
 import { windows } from './themes/button.windows.css';
 import { componentName } from './index.css';
 
-const { useVar, initialVars } = createUtils(componentName);
+const { useVar, setVars, initialVars } = createUtils(componentName);
 
 export const buttonStyle = style([
   {
@@ -87,7 +87,7 @@ export const buttonStyle = style([
       [windows.dark.selector]: {
         vars: {
           ...windows.dark.vars,
-          '--rd-button-elevation-y': '1px',
+          ...setVars`--elevation-y: 1px`,
         },
       },
     },

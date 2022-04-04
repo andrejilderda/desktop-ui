@@ -6,5 +6,9 @@ export const selectors = {
     light: `.${themes.windows.light} &`,
     dark: `.${themes.windows.dark} &`,
   },
-  macos: `.${themes.macos.light} &, .${themes.macos.dark} &`,
+  macos: {
+    toString: () => `.${themes.macos.light} &, .${themes.macos.dark} &`,
+    light: `.${themes.macos.light} &`,
+    dark: `.${themes.macos.dark} &`,
+  },
 };

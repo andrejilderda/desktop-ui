@@ -1,9 +1,9 @@
 import { NestedObjKeys } from 'lib/types/flat';
 import { getLightDarkColors } from 'lib/utils/theme-helpers';
 import { GlobalColorTokens, ThemeContract } from '../globalTheme.css';
-import { tokens } from './tokens';
+import { colors as baseColors } from './colors';
 
-type TokenNames = NestedObjKeys<typeof tokens.light>;
+type TokenNames = NestedObjKeys<typeof baseColors.light>;
 
 export const variables: Omit<ThemeContract, 'colors'> = {
   typography: {

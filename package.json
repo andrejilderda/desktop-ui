@@ -111,6 +111,7 @@
   "cca": {
     "type": "custom",
     "templatesDirPath": "./.cca",
+    "path": "./packages/components",
     "templateName": "Custom"
   }
 }

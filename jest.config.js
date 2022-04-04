@@ -8,5 +8,4 @@ module.exports = {
   transform: {
     '\\.tsx?$': ['babel-jest', { configFile: './babel-jest.config.js' }],
   },
-  plugins: [require.resolve('@vanilla-extract/babel-plugin')],
 };

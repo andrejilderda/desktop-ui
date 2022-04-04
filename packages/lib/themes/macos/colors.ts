@@ -1,4 +1,4 @@
-export const tokens = {
+export const colors = {
   light: {
     base: {
       blue: 'rgba(0, 122, 255, 1.0)',

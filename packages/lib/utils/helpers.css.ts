@@ -1,7 +1,7 @@
 import { StyleWithSelectors } from '@vanilla-extract/css/dist/declarations/src/types';
 import { Nullable } from 'ts-toolbelt/out/Object/Nullable';
 import { classNamePrefix } from 'lib/constants/styles';
-import { tokens } from 'lib/themes/tokens';
+import { colorTokens } from 'lib/themes/colorTokens';
 import { themes } from 'lib/themes/themes.css';
 import { ThemeMode, ThemeName } from 'lib/types';
 import { NestedObjKeys } from 'lib/types/flat';
@@ -23,11 +23,12 @@ export function objToNull<T extends object>(obj: T): Nullable<T, '', 'deep'> {
  * @example getToken('windows', 'light').fill_color.accent.default
  */
 // prettier-ignore
-export function getTokens<T extends ThemeMode>(theme: 'windows', mode: T): typeof tokens.windows[T];
+export function getTokens<T extends ThemeMode>(theme: 'windows', mode: T): typeof colorTokens.windows[T];
 // prettier-ignore
-export function getTokens<T extends ThemeMode>(theme: 'macos', mode: T): typeof tokens.macos[T];
+export function getTokens<T extends ThemeMode>(theme: 'macos', mode: T): typeof colorTokens.macos[T];
 export function getTokens(theme: ThemeName, mode: ThemeMode) {
-  const themeTokens = theme === 'windows' ? tokens.windows : tokens.macos;
+  const themeTokens =
+    theme === 'windows' ? colorTokens.windows : colorTokens.macos;
 
   return themeTokens[mode];
 }
@@ -90,7 +91,7 @@ export function assignTokensToVars(
   componentName: string,
   theme: 'windows',
   vars: Partial<
-    Record<string, NestedObjKeys<typeof tokens.windows.light> | string>
+    Record<string, NestedObjKeys<typeof colorTokens.windows.light> | string>
   >,
 ): Record<'light' | 'dark', { selector: string; vars: {} }>;
 // prettier-ignore
@@ -98,7 +99,7 @@ export function assignTokensToVars(
   componentName: string,
   theme: 'macos',
   vars: Partial<
-    Record<string, NestedObjKeys<typeof tokens.macos.light> | string>
+    Record<string, NestedObjKeys<typeof colorTokens.macos.light> | string>
   >,
 ): Record<'light' | 'dark', { selector: string; vars: {} }>;
 export function assignTokensToVars(
@@ -107,19 +108,16 @@ export function assignTokensToVars(
   vars: Partial<
     Record<
       string,
-      | NestedObjKeys<typeof tokens.windows.light | typeof tokens.macos.light>
+      | NestedObjKeys<
+          typeof colorTokens.windows.light | typeof colorTokens.macos.light
+        >
       | string
     >
   >,
 ): Record<'light' | 'dark', { selector: string; vars: {} }> {
-  console.log('');
-  console.log('');
-  console.log(componentName);
-  console.log('');
-
   const resolveValues = (mode: ThemeMode) => {
     return Object.entries(vars).reduce((acc, [key, value]) => {
-      const themeTokens = tokens[theme][mode];
+      const themeTokens = colorTokens[theme][mode];
       const tokenValue = get(themeTokens, value as any);
       const resolvedValue = tokenValue ? tokenValue : value;
 
