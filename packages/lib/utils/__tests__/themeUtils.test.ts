@@ -56,4 +56,34 @@ describe('themeUtils', () => {
       }
     `);
   });
+
+  it('should transform custom selectors properly', () => {
+    const { theme } = themeUtils('windows', 'componentName');
+
+    expect(theme('light', '.foo &', { '--size': '16px' }))
+      .toMatchInlineSnapshot(`
+      Object {
+        "selectors": Object {
+          ".theme_windows-light__2tecqm0 .foo &": Object {
+            "vars": Object {
+              "--rd-componentName-size": "16px",
+            },
+          },
+        },
+      }
+    `);
+
+    expect(theme('light', '.foo &, .bar &', { '--size': '16px' }))
+      .toMatchInlineSnapshot(`
+      Object {
+        "selectors": Object {
+          ".theme_windows-light__2tecqm0 .foo &, .theme_windows-light__2tecqm0 .bar &": Object {
+            "vars": Object {
+              "--rd-componentName-size": "16px",
+            },
+          },
+        },
+      }
+    `);
+  });
 });

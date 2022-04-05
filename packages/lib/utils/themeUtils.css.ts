@@ -14,6 +14,7 @@ import {
   PartialThemeFnMacos,
   PartialThemeFnWindows,
 } from './themeUtils.types';
+import { transformSelector as transformSelectorPartial } from 'lib/utils/transformSelector';
 
 // namespace vars like '--foo' to {'--rd-componentName-foo': ... }
 const transformVarNamesHof =
@@ -42,7 +43,6 @@ function themeFn(...args: any[]): any {
   const [themeName, componentName] = args as [ThemeName, string];
   const mode = isString(args[2]) ? (args[2] as ThemeMode) : undefined;
 
-  // TODO: implement selector override
   const selector = isString(args[3]) ? args[3] : undefined;
   const styleObj = args[4] || args[3] || args[2];
   const colorFn = styleObj.colors as ColorFn;
@@ -61,11 +61,15 @@ function themeFn(...args: any[]): any {
   // 2. filter vars
   const styleObjWithoutVarsAndColorsProperty = filterVars(styleObj);
 
-  return {
+  const transformSelector = transformSelectorPartial(selector);
+
+  const obj = {
     selectors: {
-      // this also works when themeName is undefined, because
-      // `selectors[undefined]` defaults to the toString()-method
-      [`${selectors[themeName]}`]: {
+      [`${
+        mode
+          ? transformSelector(selectors[themeName][mode])
+          : selectors[themeName]
+      }`]: {
         vars: transformVarNames(styleObj),
         ...styleObjWithoutVarsAndColorsProperty,
       },
@@ -75,29 +79,33 @@ function themeFn(...args: any[]): any {
       ...(isFunction(colorFn) && (!mode || mode === 'light')
         ? {
             // else output colors for both light & dark
-            [selectors[themeName].light]: {
+            [transformSelector(selectors[themeName].light)]: {
               ...transformColorsProperty(colorFn, 'light'),
             },
           }
         : {}),
       ...(isFunction(colorFn) && (!mode || mode === 'dark')
         ? {
-            [selectors[themeName].dark]: {
+            [transformSelector(selectors[themeName].dark)]: {
               ...transformColorsProperty(colorFn, 'dark'),
             },
           }
         : {}),
     },
   };
+
+  return obj;
 }
 
 // eslint-disable-next-line prettier/prettier
 export function themeUtils (themeName: 'windows', componentName: string): { theme: PartialThemeFnWindows };
+export function themeUtils (themeName: 'windows', componentName: string): { theme: PartialThemeFnWindows, tokens: typeof tokens['windows'] };
 // eslint-disable-next-line prettier/prettier
 export function themeUtils (themeName: 'macos', componentName: string): { theme: PartialThemeFnMacos };
 // eslint-disable-next-line prettier/prettier
 export function themeUtils(themeName: ThemeName, componentName: string): { theme: PartialThemeFnWindows } {
   return {
     theme: partial(themeFn, themeName, componentName),
+    ...(themeName === 'windows' ? { tokens: tokens.windows } : {}),
   };
 }
