@@ -1,4 +1,5 @@
 import { classNamePrefix } from 'lib/constants/styles';
+import { processTemplateLiteralValues } from './helpers.css';
 
 /**
  * Higher order function that returns a tagged template literal-function for
@@ -20,11 +21,14 @@ import { classNamePrefix } from 'lib/constants/styles';
  *   `,
  * }
  */
+
 export const createSetVarFn =
   (componentName: string) =>
-  ([localVar]: TemplateStringsArray) => {
+  (strings: TemplateStringsArray, ...values: any[]) => {
+    const processedString = processTemplateLiteralValues(strings, ...values);
+
     // split lines
-    const lines = (localVar as string)?.trim().split(/\n/gm);
+    const lines = processedString?.trim().split(/\n/gm);
 
     return lines.reduce((acc, line) => {
       // remove var dashes (--) from beginning of var-name for further processing:

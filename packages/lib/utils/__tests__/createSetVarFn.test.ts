@@ -1,3 +1,4 @@
+import { tokens } from 'lib/themes/windows/tokens';
 import { createSetVarFn } from '../createSetVarFn';
 
 describe('createSetVarFn', () => {
@@ -19,6 +20,20 @@ describe('createSetVarFn', () => {
       Object {
         "--rd-componentName-border-color": "#ccc",
         "--rd-componentName-font-size": "12px",
+      }
+    `);
+  });
+
+  it('should process template literal strings', () => {
+    const setVar = createSetVarFn('componentName');
+
+    expect(setVar`
+      --border-radius: ${tokens.radii[1]}
+      --font-size: ${tokens.fontSizes[1]}
+    `).toMatchInlineSnapshot(`
+      Object {
+        "--rd-componentName-border-radius": "${tokens.radii[1]}",
+        "--rd-componentName-font-size": "${tokens.fontSizes[1]}",
       }
     `);
   });

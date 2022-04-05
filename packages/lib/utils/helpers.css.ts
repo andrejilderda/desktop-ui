@@ -166,3 +166,9 @@ export const composeVars = (props: string[]) => {
     )}, ${acc})`;
   }, '');
 };
+
+// process any ${...}-values in template literal
+export const processTemplateLiteralValues = (
+  strings: TemplateStringsArray,
+  ...values: any[]
+) => strings.map((string, i) => `${string}${values[i] || ''}`).join('');

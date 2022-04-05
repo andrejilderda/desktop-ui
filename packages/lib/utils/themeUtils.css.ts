@@ -14,6 +14,7 @@ import {
   PartialThemeFnMacos,
   PartialThemeFnWindows,
 } from './themeUtils.types';
+import { tokens } from 'lib/themes/tokens';
 import { transformSelector as transformSelectorPartial } from 'lib/utils/transformSelector';
 
 // namespace vars like '--foo' to {'--rd-componentName-foo': ... }
@@ -98,7 +99,6 @@ function themeFn(...args: any[]): any {
 }
 
 // eslint-disable-next-line prettier/prettier
-export function themeUtils (themeName: 'windows', componentName: string): { theme: PartialThemeFnWindows };
 export function themeUtils (themeName: 'windows', componentName: string): { theme: PartialThemeFnWindows, tokens: typeof tokens['windows'] };
 // eslint-disable-next-line prettier/prettier
 export function themeUtils (themeName: 'macos', componentName: string): { theme: PartialThemeFnMacos };
