@@ -19,7 +19,7 @@ import { classNamePrefix } from 'lib/constants/styles';
  */
 export const createUseVarFn =
   (componentName: string) =>
-  ([localVar]: TemplateStringsArray) => {
+  ([localVar]: TemplateStringsArray): string => {
     const varName = (name: string) =>
       `--${classNamePrefix}-${componentName}-${name}`;
 

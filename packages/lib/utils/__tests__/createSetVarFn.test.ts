@@ -1,8 +1,9 @@
 import { tokens } from 'lib/themes/windows/tokens';
 import { createSetVarFn } from '../createSetVarFn';
+import { createUseVarFn } from '../createUseVarFn';
 
 describe('createSetVarFn', () => {
-  it('should create namespaced vars when given a single or multile lines', () => {
+  it('should create namespaced vars when given a single or multiple lines', () => {
     const setVar = createSetVarFn('componentName');
 
     // single
@@ -20,6 +21,21 @@ describe('createSetVarFn', () => {
       Object {
         "--rd-componentName-border-color": "#ccc",
         "--rd-componentName-font-size": "12px",
+      }
+    `);
+  });
+
+  it('should process vars as values', () => {
+    const setVar = createSetVarFn('componentName');
+    const useVar = createUseVarFn('componentName');
+
+    expect(setVar`
+      --border-radius: ${useVar`--foo`},
+      --font-size: ${useVar`--bar`}
+    `).toMatchInlineSnapshot(`
+      Object {
+        "--rd-componentName-border-radius": "var(--rd-componentName-foo)",
+        "--rd-componentName-font-size": "var(--rd-componentName-bar)",
       }
     `);
   });

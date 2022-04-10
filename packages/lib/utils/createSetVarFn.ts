@@ -46,10 +46,6 @@ export const createSetVarFn =
         [namespaceVar(componentName, variableClean)]: value,
       };
     }, {});
-
-    // const [variableClean, value] = splitVariablesClean;
-
-    // return { [getNamespacedCSSvar(componentName, variableClean)]: value };
   };
 
 export const namespaceVar = (componentName: string, name: string) => {

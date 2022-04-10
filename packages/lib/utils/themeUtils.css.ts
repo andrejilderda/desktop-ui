@@ -16,6 +16,16 @@ import {
 } from './themeUtils.types';
 import { tokens } from 'lib/themes/tokens';
 import { transformSelector as transformSelectorPartial } from 'lib/utils/transformSelector';
+// import { forOwn, isObject, isObjectLike, mapValues } from 'lodash';
+
+// const recursiveLoop = (
+//   obj: Record<string, any>,
+//   callback: (value: any, key: string) => any,
+// ): Record<string, any> =>
+//   mapValues(obj, (value, key) => {
+//     if (isObjectLike(value)) return recursiveLoop(value, callback);
+//     else return callback(value, key);
+//   });
 
 // namespace vars like '--foo' to {'--rd-componentName-foo': ... }
 const transformVarNamesHof =
@@ -44,6 +54,7 @@ function themeFn(...args: any[]): any {
   const [themeName, componentName] = args as [ThemeName, string];
   const mode = isString(args[2]) ? (args[2] as ThemeMode) : undefined;
 
+  // TODO: think of something to easily apply pseudo-styles
   const selector = isString(args[3]) ? args[3] : undefined;
   const styleObj = args[4] || args[3] || args[2];
   const colorFn = styleObj.colors as ColorFn;
