@@ -5,9 +5,10 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import type * as Stitches from '@stitches/react';
 import { Check, Minus } from 'phosphor-react';
 import { useId } from 'src/hooks/useId';
-import Wrap from 'lib/components/Wrap';
-import { Label } from 'components/Label/src';
+
 import clsx from 'clsx';
+import { Label } from 'components/Label/src/Label';
+import Wrap from 'lib/components/Wrap';
 
 export type CheckboxProps = Stitches.ComponentProps<
   typeof RadixCheckbox.Root

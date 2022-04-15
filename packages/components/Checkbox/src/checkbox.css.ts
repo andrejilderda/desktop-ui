@@ -1,11 +1,12 @@
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
-import { selectors } from 'lib/constants/selectors';
+import { pseudo } from 'lib/constants/styles';
 import { createUtils } from 'lib/utils';
+import { styles } from './themes/index';
 import { componentName } from './index.css';
-import { assignTokensToVars } from 'lib/utils/helpers.css';
+import { recipe } from '@vanilla-extract/recipes';
+import { controlColors } from 'lib/styles/controlColors.css';
 
-const { useVar, setVars, initialVars } = createUtils(componentName);
+const { useVar, initialVars } = createUtils(componentName);
 
 export const wrapper = style([
   {
@@ -14,24 +15,13 @@ export const wrapper = style([
     display: 'inline-flex',
     alignItems: 'flex-start',
     gap: '8px',
-    fontSize: '8px',
-    lineHeight: '8px',
   },
 ]);
-
-const wrapperVars = assignTokensToVars(componentName, 'windows', {
-  '--text-disabled': 'fill_color.text.disabled',
-});
 
 export const wrapperVariants = recipe({
   variants: {
     disabled: {
-      true: {
-        selectors: {
-          [wrapperVars.dark.selector]: { vars: wrapperVars.dark.vars },
-          [wrapperVars.light.selector]: { vars: wrapperVars.light.vars },
-        },
-      },
+      true: styles.windows.wrapperVariants,
     },
   },
 });
@@ -46,10 +36,11 @@ export const checkboxWrapper = style([
 export const root = style([
   {
     alignItems: 'center',
-
+    fontSize: '8px',
+    lineHeight: '8px',
     borderStyle: 'solid',
     borderWidth: useVar`--border-width`,
-    borderRadius: '$1',
+    borderRadius: useVar`--border-radius`,
     display: 'block',
     flexShrink: '0',
     height: useVar`--size`,
@@ -59,19 +50,14 @@ export const root = style([
     transform: 'translateY(1px)',
 
     selectors: {
-      // Windows
-      [`${selectors.windows}`]: {
-        borderRadius: '4px',
-        vars: {
-          ...setVars`
-            --size: 20px,
-            --border-width: 4px
-          `,
-        },
+      [`${pseudo.hover}:not([disabled])`]: {
+        color: useVar`--text-hover, --text`,
       },
     },
   },
-  // controlColors,
+  styles.windows.root,
+  // styles.macos.root,
+  ...controlColors,
 ]);
 
 export const indicator = style([
@@ -91,31 +77,3 @@ export const label = style([
     userSelect: 'none',
   },
 ]);
-
-//     vars: initialVars([]),
-
-//     background: useVar`--fill`,
-//     backgroundColor: useVar`--fill-active, --fill`,
-
-//     selectors: {
-//       // hover
-//       [`${pseudo.hover}:not([disabled])`]: {
-//         backgroundColor: useVar`--fill-hover, --fill`,
-//       },
-
-//       [`${selectors.windows}`]: {
-//         borderRadius: '4px',
-//       },
-
-//       [checkboxVars.windows.light.selector]: {
-//         vars: checkboxVars.windows.light.vars,
-//       },
-//       [checkboxVars.windows.dark.selector]: {
-//         vars: {
-//           ...checkboxVars.windows.dark.vars,
-//           '--rd-button-elevation-y': '1px',
-//         },
-//       },
-//     },
-//   },
-// ]);

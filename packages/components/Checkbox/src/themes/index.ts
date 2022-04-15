@@ -1,5 +1,7 @@
-import windows from './checkbox.windows.css';
+import * as windows from './checkbox.windows.css';
+import * as macos from './checkbox.macos.css';
 
-export default {
+export const styles = {
   windows,
+  macos
 };
