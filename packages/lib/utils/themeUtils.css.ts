@@ -5,6 +5,7 @@ import isFunction from 'lodash/isFunction';
 import mapKeys from 'lodash/mapKeys';
 import pickBy from 'lodash/pickBy';
 import omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 import { selectors } from 'lib/constants/selectors';
 import { namespaceVar } from './createSetVarFn';
 import { colorTokens } from 'lib/themes/colorTokens';
@@ -16,6 +17,7 @@ import {
 } from './themeUtils.types';
 import { tokens } from 'lib/themes/tokens';
 import { transformSelector as transformSelectorPartial } from 'lib/utils/transformSelector';
+import { transformVars } from './transformVars.css';
 // import { forOwn, isObject, isObjectLike, mapValues } from 'lodash';
 
 // const recursiveLoop = (
@@ -33,15 +35,15 @@ const transformVarNamesHof =
     mapKeys(pickVars(obj), (_value, key) => namespaceVar(componentName, key));
 
 const pickVars = (obj: Record<string, string>) =>
-  pickBy(obj, (_value, key) => key.startsWith('--'));
+  pickBy(obj, (_value, key) => key.startsWith('$$'));
 
 // partition variables and properties, since the `colors`-property can hold both
 const partitionVarsAndProperties = (
   componentName: ComponentName,
   obj: Record<string, string>,
 ) => {
-  const vars = transformVarNamesHof(componentName)(pickVars(obj));
-  const properties = pickBy(obj, (_value, key) => !key.startsWith('--'));
+  const vars = transformVars(componentName, pickVars(obj));
+  const properties = pickBy(obj, (_value, key) => !key.startsWith('$$'));
 
   return {
     ...(Object.keys(vars).length ? { vars } : {}),
@@ -58,7 +60,7 @@ function themeFn(...args: any[]): any {
   const selector = isString(args[3]) ? args[3] : undefined;
   const styleObj = args[4] || args[3] || args[2];
   const colorFn = styleObj.colors as ColorFn;
-  const transformVarNames = transformVarNamesHof(componentName);
+  const transformVarNames = transformVars(componentName);
 
   const transformColorsProperty = (colorFn: ColorFn, mode: ThemeMode) => {
     if (!colorFn) return {};
@@ -68,10 +70,15 @@ function themeFn(...args: any[]): any {
   };
 
   const filterVars = (obj: Record<string, string>) =>
-    omitBy(obj, (_value, key) => key.startsWith('--') || key === 'colors');
+    omitBy(obj, (_value, key) => key.startsWith('$$') || key === 'colors');
+
+  const pickVars = (obj: Record<string, string>) =>
+    pickBy(obj, (_value, key) => key.startsWith('$$'));
+
+  const transformedStyleObj = transformVarNames(styleObj);
 
   // 2. filter vars
-  const styleObjWithoutVarsAndColorsProperty = filterVars(styleObj);
+  const styleProps = filterVars(styleObj);
 
   const transformSelector = transformSelectorPartial(selector);
 
@@ -82,8 +89,8 @@ function themeFn(...args: any[]): any {
           ? transformSelector(selectors[themeName][mode])
           : selectors[themeName]
       }`]: {
-        vars: transformVarNames(styleObj),
-        ...styleObjWithoutVarsAndColorsProperty,
+        vars: transformVarNames(pickVars(styleObj)),
+        ...styleProps,
       },
 
       // colors are populated with the appropriate tokens and output per theme.

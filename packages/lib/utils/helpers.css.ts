@@ -167,7 +167,7 @@ export const composeVars = (props: string[]) => {
   }, '');
 };
 
-// process any ${...}-values in template literal
+// process any ${...}-values in template literals (f.e. `${foo}-bar`)
 export const processTemplateLiteralValues = (
   strings: TemplateStringsArray,
   ...values: any[]
