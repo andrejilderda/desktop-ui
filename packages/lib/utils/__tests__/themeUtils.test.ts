@@ -1,7 +1,7 @@
 import { themeUtils } from '../themeUtils.css';
 
 describe('themeUtils', () => {
-  it.only('should partition styles to the right selector when no themeMode is set (dark/light)', () => {
+  it.skip('should partition styles to the right selector when no themeMode is set (dark/light)', () => {
     const { theme } = themeUtils('windows', 'componentName');
 
     // light & dark
@@ -42,7 +42,7 @@ describe('themeUtils', () => {
     `);
   });
 
-  it('should prefix custom properties & populate tokens properly', () => {
+  it.skip('should prefix custom properties & populate tokens properly', () => {
     const { theme } = themeUtils('windows', 'componentName');
 
     expect(theme({ $$size: '16px' })).toMatchInlineSnapshot(`
@@ -59,7 +59,7 @@ describe('themeUtils', () => {
     `);
   });
 
-  it('should transform custom selectors properly', () => {
+  it.skip('should transform custom selectors properly', () => {
     const { theme } = themeUtils('windows', 'componentName');
 
     expect(theme('light', '.foo &', { $$size: '16px' })).toMatchInlineSnapshot(`

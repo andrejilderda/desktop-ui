@@ -26,11 +26,12 @@ export const recursiveMap = (
 export const prefixVarCurried = curry(
   (componentName: string, nameRaw: string) => {
     const tokenRegex = /^\$\$/g; // match `$$` at the beginning of a string
-
     const name = nameRaw.trim();
-    return !name.match(tokenRegex)
-      ? name
-      : `--${classNamePrefix}-${componentName}-${name.replace(tokenRegex, '')}`;
+    const isValidVar = tokenRegex.test(name) && componentName;
+
+    return isValidVar
+      ? `--${classNamePrefix}-${componentName}-${name.replace(tokenRegex, '')}`
+      : name;
   },
 );
 
@@ -48,6 +49,8 @@ export const prefixVarsStyleRuleValue = (
   componentName: string,
   ruleValue: string,
 ) => {
+  const prefix = prefixVarCurried(componentName);
+
   if (typeof ruleValue !== 'string') return;
 
   return (
@@ -64,7 +67,6 @@ export const prefixVarsStyleRuleValue = (
               .map((item) => item.trim())
               .reverse()
               .reduce((acc, groupItem, index) => {
-                const prefix = prefixVarCurried(componentName);
                 return !groupItem.startsWith('$$')
                   ? groupItem
                   : index + 1 === item[itemIndex].length
@@ -73,8 +75,16 @@ export const prefixVarsStyleRuleValue = (
               }, '')
           : item,
       )
-      // transform items here
-      .map((item) => item)
+      // any '$$'-vars left will be considered single vars
+      .map((item) =>
+        item
+          .split(/(\$\$\S+)/g)
+          .filter((match) => !!match && !!match.trim())
+          .map((item) =>
+            item.startsWith('$$') ? `var(${prefix(item)})` : item,
+          )
+          .join(' '),
+      )
       .join(' ')
   );
 };

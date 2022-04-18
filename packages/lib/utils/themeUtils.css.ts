@@ -72,13 +72,8 @@ function themeFn(...args: any[]): any {
   const filterVars = (obj: Record<string, string>) =>
     omitBy(obj, (_value, key) => key.startsWith('$$') || key === 'colors');
 
-  const pickVars = (obj: Record<string, string>) =>
-    pickBy(obj, (_value, key) => key.startsWith('$$'));
-
-  const transformedStyleObj = transformVarNames(styleObj);
-
   // 2. filter vars
-  const styleProps = filterVars(styleObj);
+  const styleObjWithoutVarsAndColorsProperty = filterVars(styleObj);
 
   const transformSelector = transformSelectorPartial(selector);
 
@@ -89,8 +84,8 @@ function themeFn(...args: any[]): any {
           ? transformSelector(selectors[themeName][mode])
           : selectors[themeName]
       }`]: {
-        vars: transformVarNames(pickVars(styleObj)),
-        ...styleProps,
+        vars: transformVarNames(styleObj),
+        ...styleObjWithoutVarsAndColorsProperty,
       },
 
       // colors are populated with the appropriate tokens and output per theme.
