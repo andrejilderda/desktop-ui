@@ -1,4 +1,12 @@
-import { StyleRule } from '@vanilla-extract/css/dist/declarations/src';
+import {
+  StyleRule,
+  StyleWithSelectors,
+} from '@vanilla-extract/css/dist/declarations/src';
+import {
+  CSSPropertiesWithVars,
+  FeatureQueries,
+  MediaQueries,
+} from '@vanilla-extract/css/dist/declarations/src/types';
 import { colorTokens } from 'lib/themes/colorTokens';
 import { ThemeMode, ThemeName } from 'lib/types';
 import { ComponentName } from 'lib/utils/themeUtils.types';
@@ -15,6 +23,18 @@ export interface RdStyleOptions {
 
 export interface RdStyleRule extends StyleRule {
   [key: `$$${string}`]: string;
+
+  selectors?: {
+    [selector: string]: CSSPropertiesWithVars &
+      MediaQueries<
+        CSSPropertiesWithVars & FeatureQueries<CSSPropertiesWithVars>
+      > &
+      FeatureQueries<
+        CSSPropertiesWithVars & MediaQueries<CSSPropertiesWithVars>
+      > &
+      // make it accept tokens also
+      Record<`$$${string}`, string>;
+  };
 }
 export interface RdStyleRuleWindows extends RdStyleRule {
   colors?: (colors: typeof colorTokens['windows']['light']) => any;
