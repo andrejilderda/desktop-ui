@@ -56,12 +56,6 @@ export function rdStyle({
       };
     };
 
-    return style(
-      styleRuleArray.map((styleRule) =>
-        typeof styleRule === 'string'
-          ? styleRule
-          : transformStyleRules(styleRule),
-      ),
-    );
+    return styleRuleArray.map((styleRule) => transformStyleRules(styleRule));
   };
 }

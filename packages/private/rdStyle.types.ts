@@ -24,13 +24,13 @@ export interface RdStyleRuleMacos extends RdStyleRule {
 }
 
 export type PartialRdStyleFn = (
-  styleRules: RdStyleRule | (RdStyleRule | string)[],
-) => string;
+  styleRules: RdStyleRule | RdStyleRule[],
+) => RdStyleRule[];
 
 export type PartialRdStyleFnWindows = (
-  styleRules: RdStyleRuleWindows | (RdStyleRuleWindows | string)[],
-) => string;
+  styleRules: RdStyleRuleWindows | RdStyleRuleWindows[],
+) => RdStyleRule[];
 
 export type PartialRdStyleFnMacos = (
-  styleRules: RdStyleRuleMacos | (RdStyleRuleMacos | string)[],
-) => string;
+  styleRules: RdStyleRuleMacos | RdStyleRuleMacos[],
+) => RdStyleRule[];
