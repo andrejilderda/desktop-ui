@@ -3,6 +3,10 @@ import { colorTokens } from 'lib/themes/colorTokens';
 import { ThemeMode, ThemeName } from 'lib/types';
 import { ComponentName } from 'lib/utils/themeUtils.types';
 
+export type WithRequiredProperty<T, K extends keyof T> = T & {
+  [P in K]-?: T[P];
+};
+
 export interface RdStyleOptions {
   componentName: ComponentName;
   theme?: ThemeName;

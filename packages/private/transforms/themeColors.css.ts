@@ -4,6 +4,7 @@ import { colorTokens } from 'lib/themes/colorTokens';
 import { ThemeName, ThemeMode } from 'lib/types';
 import { ColorFn } from 'lib/utils/themeUtils.types';
 import _ from 'lodash';
+import { RdStyleRule, WithRequiredProperty } from '../rdStyle.types';
 
 interface ThemeColorsOptions {
   theme?: ThemeName;
@@ -11,12 +12,15 @@ interface ThemeColorsOptions {
 }
 
 export const themeColors = _.curry(
-  ({ theme, mode }: ThemeColorsOptions, obj: any) => {
+  (
+    { theme, mode }: ThemeColorsOptions,
+    obj: WithRequiredProperty<RdStyleRule, 'selectors'>,
+  ) => {
     const filterColors = (obj: Record<string, string>) =>
       _.omitBy(obj, (_value, key) => key === 'colors');
 
     const output = {
-      selectors: Object.entries(obj.selectors).reduce(
+      selectors: Object.entries(obj?.selectors).reduce(
         (acc, [selector, styleObj]: any[]) => {
           const colorsFn = styleObj.colors as ColorFn;
 

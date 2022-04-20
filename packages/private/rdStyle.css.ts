@@ -1,9 +1,14 @@
-import _ from 'lodash';
 import { ThemeMode } from 'lib/types';
 import * as transform from './transforms';
 import { compose } from 'lodash/fp';
 import { ComponentName } from 'lib/utils/themeUtils.types';
-import { PartialRdStyleFn, RdStyleOptions } from './rdStyle.types';
+import {
+  PartialRdStyleFn,
+  RdStyleOptions,
+  PartialRdStyleFnWindows,
+  PartialRdStyleFnMacos,
+  RdStyleRule,
+} from './rdStyle.types';
 
 // eslint-disable-next-line prettier/prettier
 export function rdStyle (options: { componentName: ComponentName, theme: 'windows', mode?: ThemeMode }): PartialRdStyleFnWindows;
@@ -21,7 +26,7 @@ export function rdStyle({
       ? styleRules
       : [styleRules];
 
-    return styleRuleArray.map((styles) => {
+    const transformStyleRules = (styles: RdStyleRule) => {
       const flatObjWithSelectorsOnly = transform.rootValuesToSelectors(styles);
 
       const replaceThemeColors = transform.themeColors({ mode, theme });
@@ -48,6 +53,8 @@ export function rdStyle({
           {},
         ),
       };
-    });
+    };
+
+    return styleRuleArray.map(transformStyleRules);
   };
 }

@@ -1,5 +1,4 @@
 import { pseudoWrapperClassNames } from './../constants/pseudo.css';
-import _ from 'lodash';
 
 export const selectors = (
   originalSelector: string,
