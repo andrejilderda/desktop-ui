@@ -115,17 +115,4 @@ describe('rdStyle', () => {
       }
     `);
   });
-
-  it("should throw error when there's a colors-function, but no theme is provided", () => {
-    expect(() =>
-      rdStyle(
-        { componentName: 'foo' },
-        {
-          colors: (t: any) => ({
-            backgroundColor: t.fill_color.text.primary,
-          }),
-        },
-      ),
-    ).toThrow();
-  });
 });
