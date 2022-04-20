@@ -1,4 +1,3 @@
-import { pseudo } from 'lib/constants/styles';
 import { rdStyle } from './rdStyle.css';
 
 describe('rdStyle', () => {
@@ -9,19 +8,21 @@ describe('rdStyle', () => {
       borderColor: '($$fill, $$foo)', // 2. var usage with fallback
     };
 
-    expect(rdStyle({ componentName: 'component-name' }, obj))
+    expect(rdStyle({ componentName: 'component-name' })(obj))
       .toMatchInlineSnapshot(`
-      Object {
-        "selectors": Object {
-          "&": Object {
-            "borderColor": "var(--rd-component-name-fill, var(--rd-component-name-foo))",
-            "color": "var(--rd-component-name-fill)",
-            "vars": Object {
-              "--rd-component-name-size": "16px",
+      Array [
+        Object {
+          "selectors": Object {
+            "&": Object {
+              "borderColor": "var(--rd-component-name-fill, var(--rd-component-name-foo))",
+              "color": "var(--rd-component-name-fill)",
+              "vars": Object {
+                "--rd-component-name-size": "16px",
+              },
             },
           },
         },
-      }
+      ]
     `);
   });
 
@@ -38,31 +39,33 @@ describe('rdStyle', () => {
       }),
     };
 
-    expect(rdStyle({ componentName: 'component-name', theme: 'windows' }, obj))
+    expect(rdStyle({ componentName: 'component-name', theme: 'windows' })(obj))
       .toMatchInlineSnapshot(`
-      Object {
-        "selectors": Object {
-          ".theme_windows-dark__2tecqm1 &": Object {
-            "backgroundColor": "rgb(255, 255, 255)",
-            "vars": Object {
-              "--rd-component-name-fill": "rgb(96, 205, 255)",
+      Array [
+        Object {
+          "selectors": Object {
+            ".theme_windows-dark__2tecqm1 &": Object {
+              "backgroundColor": "rgb(255, 255, 255)",
+              "vars": Object {
+                "--rd-component-name-fill": "rgb(96, 205, 255)",
+              },
             },
-          },
-          ".theme_windows-light__2tecqm0 &": Object {
-            "backgroundColor": "rgba(0, 0, 0, 0.9)",
-            "vars": Object {
-              "--rd-component-name-fill": "rgb(0, 95, 184)",
+            ".theme_windows-light__2tecqm0 &": Object {
+              "backgroundColor": "rgba(0, 0, 0, 0.9)",
+              "vars": Object {
+                "--rd-component-name-fill": "rgb(0, 95, 184)",
+              },
             },
-          },
-          ".theme_windows-light__2tecqm0 &, .theme_windows-dark__2tecqm1 &": Object {
-            "borderColor": "var(--rd-component-name-fill, var(--rd-component-name-foo))",
-            "color": "var(--rd-component-name-fill)",
-            "vars": Object {
-              "--rd-component-name-size": "16px",
+            ".theme_windows-light__2tecqm0 &, .theme_windows-dark__2tecqm1 &": Object {
+              "borderColor": "var(--rd-component-name-fill, var(--rd-component-name-foo))",
+              "color": "var(--rd-component-name-fill)",
+              "vars": Object {
+                "--rd-component-name-size": "16px",
+              },
             },
           },
         },
-      }
+      ]
     `);
   });
 
@@ -83,36 +86,38 @@ describe('rdStyle', () => {
       },
     };
 
-    const result = rdStyle(
-      { componentName: 'component-name', theme: 'windows' },
-      obj,
-    );
+    const result = rdStyle({
+      componentName: 'component-name',
+      theme: 'windows',
+    })(obj);
 
     expect(result).toMatchInlineSnapshot(`
-      Object {
-        "selectors": Object {
-          ".theme_windows-dark__2tecqm1 &:hover": Object {
-            "color": "rgb(255, 255, 255)",
-            "vars": Object {
-              "--rd-component-name-bar": "rgb(96, 205, 255)",
+      Array [
+        Object {
+          "selectors": Object {
+            ".theme_windows-dark__2tecqm1 &:hover": Object {
+              "color": "rgb(255, 255, 255)",
+              "vars": Object {
+                "--rd-component-name-bar": "rgb(96, 205, 255)",
+              },
             },
-          },
-          ".theme_windows-light__2tecqm0 &, .theme_windows-dark__2tecqm1 &": Object {
-            "vars": Object {
-              "--rd-component-name-size": "16px",
+            ".theme_windows-light__2tecqm0 &, .theme_windows-dark__2tecqm1 &": Object {
+              "vars": Object {
+                "--rd-component-name-size": "16px",
+              },
             },
-          },
-          ".theme_windows-light__2tecqm0 &:hover": Object {
-            "color": "rgba(0, 0, 0, 0.9)",
-            "vars": Object {
-              "--rd-component-name-bar": "rgb(0, 95, 184)",
+            ".theme_windows-light__2tecqm0 &:hover": Object {
+              "color": "rgba(0, 0, 0, 0.9)",
+              "vars": Object {
+                "--rd-component-name-bar": "rgb(0, 95, 184)",
+              },
             },
-          },
-          ".theme_windows-light__2tecqm0 &:hover, .theme_windows-dark__2tecqm1 &:hover": Object {
-            "background": "yellow",
+            ".theme_windows-light__2tecqm0 &:hover, .theme_windows-dark__2tecqm1 &:hover": Object {
+              "background": "yellow",
+            },
           },
         },
-      }
+      ]
     `);
   });
 });
