@@ -17,9 +17,8 @@ export type ColorFn = (
 
 export type PartialThemeFnWindows = {
   (...args: [ComplexStyleRule | { colors: ColorFnWindows }]): StyleRule;
-  (
-    ...args: [ThemeMode, ComplexStyleRule | { colors: ColorFnWindows }]
-  ): StyleRule;
+  // eslint-disable-next-line prettier/prettier
+  (...args: [ThemeMode, ComplexStyleRule | { colors: ColorFnWindows }]): StyleRule;
   // eslint-disable-next-line prettier/prettier
   (...args: [ThemeMode, string, ComplexStyleRule | { colors: ColorFnWindows }]): StyleRule;
   (...args: any[]): StyleRule;
@@ -27,9 +26,8 @@ export type PartialThemeFnWindows = {
 
 export type PartialThemeFnMacos = {
   (...args: [ComplexStyleRule | { colors: ColorFnMacos }]): StyleRule;
-  (
-    ...args: [ThemeMode, ComplexStyleRule | { colors: ColorFnMacos }]
-  ): StyleRule;
+  // eslint-disable-next-line prettier/prettier
+  (...args: [ThemeMode, ComplexStyleRule | { colors: ColorFnMacos }]): StyleRule;
   // eslint-disable-next-line prettier/prettier
   (...args: [ThemeMode, string, ComplexStyleRule | { colors: ColorFnMacos }]): StyleRule;
   (...args: any[]): StyleRule;
