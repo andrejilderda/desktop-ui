@@ -23,9 +23,14 @@ export interface RdStyleRuleMacos extends RdStyleRule {
   colors?: (colors: typeof colorTokens['macos']['light']) => any;
 }
 
-// eslint-disable-next-line prettier/prettier
-export type PartialRdStyleFn = (styleRules: RdStyleRule | RdStyleRule[]) => StyleRule[];
-// eslint-disable-next-line prettier/prettier
-export type PartialRdStyleFnWindows = (styleRules: RdStyleRuleWindows | RdStyleRuleWindows[]) => StyleRule[];
-// eslint-disable-next-line prettier/prettier
-export type PartialRdStyleFnMacos = (styleRules: RdStyleRuleMacos | RdStyleRuleMacos[]) => StyleRule[];
+export type PartialRdStyleFn = (
+  styleRules: RdStyleRule | (RdStyleRule | string)[],
+) => string;
+
+export type PartialRdStyleFnWindows = (
+  styleRules: RdStyleRuleWindows | (RdStyleRuleWindows | string)[],
+) => string;
+
+export type PartialRdStyleFnMacos = (
+  styleRules: RdStyleRuleMacos | (RdStyleRuleMacos | string)[],
+) => string;
