@@ -7,7 +7,10 @@ export const selectors = (
   if (!extension) return originalSelector;
 
   const extensionSelector = extension
-    .split(', ')
+    // split by comma, also when it is directly followed by a break
+    .replaceAll('\n', '')
+    .split(/, /)
+    .map((item) => item.trim())
     // ⚠️ TRANSFORM BELOW IS ONLY APPLIED IN DEVELOPMENT MODE
     // prefix pseudo-classes so that these can be documented in
     // Storybook/Chromatic.
