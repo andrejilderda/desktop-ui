@@ -29,7 +29,7 @@ export const themeColors = _.curry(
               ? transformSelector(selectors[theme][mode], selector)
               : theme
               ? transformSelector(selectors[theme].toString(), selector)
-              : selector;
+              : transformSelector('&', selector);
 
           if (!_.isFunction(styleObj.colors))
             return {
