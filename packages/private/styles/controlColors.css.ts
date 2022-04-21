@@ -47,11 +47,13 @@ export const controlColors = [
 
       [`&:active:not([disabled])`]: {
         $$fill: '$$fill-active',
+        $$border: '$$border-active',
       },
 
       [`&:active:not([disabled])[data-state="checked"],
-        &:active:not([disabled])[data-state="indeterminate"]`]: {
+      &:active:not([disabled])[data-state="indeterminate"]`]: {
         $$fill: '$$fill-active-checked',
+        $$symbol: '$$symbol-active-checked',
       },
     },
   }),

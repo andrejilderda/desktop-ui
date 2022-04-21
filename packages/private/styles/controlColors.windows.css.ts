@@ -10,7 +10,7 @@ const rdStyle = rdStylePartial({ componentName: 'control', theme: 'windows' });
 export const controlColors = rdStyle({
   colors: (c) => ({
     $$fill: c.fill_color.control_alt.secondary,
-    $$border: c.stroke_color.control_stroke.default,
+    $$border: c.stroke_color.control_strong_stroke.default,
     $$symbol: c.fill_color.text_on_accent.primary,
     '$$symbol-checked': c.fill_color.text_on_accent.primary,
 
@@ -19,12 +19,16 @@ export const controlColors = rdStyle({
     '$$fill-checked-disabled': c.fill_color.accent.disabled,
     '$$border-checked-disabled': 'transparent',
 
-    '$$fill-checked': c.fill_color.accent.tertiary,
+    '$$fill-checked': c.fill_color.accent.default,
     '$$border-checked': 'transparent',
 
     '$$fill-hover': c.fill_color.control_alt.tertiary,
     '$$fill-hover-checked': c.fill_color.accent.secondary,
+
     '$$fill-active': c.fill_color.control_alt.quarternary,
+    '$$border-active': c.stroke_color.control_strong_stroke.disabled,
+
     '$$fill-active-checked': c.fill_color.accent.tertiary,
+    '$$symbol-active-checked': c.fill_color.text_on_accent.secondary,
   }),
 });
