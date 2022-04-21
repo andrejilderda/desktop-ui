@@ -1,22 +1,19 @@
 import { style } from '@vanilla-extract/css';
-import { pseudo } from 'lib/constants/styles';
-import { createUtils } from 'lib/utils';
 import { styles } from './themes/index';
 import { componentName } from './index.css';
 import { recipe } from '@vanilla-extract/recipes';
-import { controlColors } from 'lib/styles/controlColors.css';
+import { rdStyle as rdStylePartial } from 'packages/private/rdStyle.css';
+import { controlColors } from 'packages/private/styles/controlColors.css';
 
-const { useVar, initialVars } = createUtils(componentName);
+const rdStyle = rdStylePartial({ componentName });
 
-export const wrapper = style([
-  {
-    vars: initialVars(['color']),
-
+export const wrapper = style(
+  rdStyle({
     display: 'inline-flex',
     alignItems: 'flex-start',
     gap: '8px',
-  },
-]);
+  }),
+);
 
 export const wrapperVariants = recipe({
   variants: {
@@ -24,50 +21,45 @@ export const wrapperVariants = recipe({
       true: styles.windows.wrapperVariants,
     },
   },
+  ...styles.windows.wrapperVariants,
 });
 
-export const checkboxWrapper = style([
-  {
+export const checkboxWrapper = style(
+  rdStyle({
     display: 'flex',
     alignItems: 'center',
-  },
-]);
+  }),
+);
 
 export const root = style([
-  {
+  ...rdStyle({
     alignItems: 'center',
     fontSize: '8px',
     lineHeight: '8px',
     borderStyle: 'solid',
-    borderWidth: useVar`--border-width`,
-    borderRadius: useVar`--border-radius`,
+    borderWidth: '$$border-width',
+    borderRadius: '$$border-radius',
     display: 'block',
     flexShrink: '0',
-    height: useVar`--size`,
-    width: useVar`--size`,
+    height: '$$size',
+    width: '$$size',
     margin: 0,
     padding: 0,
     transform: 'translateY(1px)',
-
-    selectors: {
-      [`${pseudo.hover}:not([disabled])`]: {
-        color: useVar`--text-hover, --text`,
-      },
-    },
-  },
-  styles.windows.root,
-  // styles.macos.root,
+  }),
+  ...styles.windows.root,
   ...controlColors,
+  // styles.macos.root,
 ]);
 
-export const indicator = style([
-  {
+export const indicator = style(
+  rdStyle({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexShrink: 0,
-  },
-]);
+  }),
+);
 
 export const check = style([{ position: 'absolute' }]);
 export const minus = style([{ position: 'absolute' }]);
