@@ -1,10 +1,16 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Button, ButtonProps } from './Button';
+import mdx from './Button.mdx';
 
 export default {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
   argTypes: {
     wrapperClass: {
       table: { disable: true },

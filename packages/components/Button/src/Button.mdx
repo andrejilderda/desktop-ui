@@ -1,0 +1,25 @@
+import {
+  Canvas,
+  Story,
+  ArgsTable,
+  Source,
+  Props,
+  Primary,
+} from '@storybook/addon-docs';
+import { Figma } from 'storybook-addon-designs/blocks';
+import { Button, Template, Default } from './Button';
+
+# Button
+
+<Canvas
+  style={{ backgroundColor: 'var(--rd-colors-background)' }}
+  withSource="open"
+>
+  <Story name="foo" id="components-button--default" />
+</Canvas>
+
+<ArgsTable story={'^'} />
+
+## Design reference
+
+<Figma url="https://www.figma.com/file/EooAijYel5ATF7hrxwbMqW/Windows-UI-(Community)?node-id=31787%3A95527" />
