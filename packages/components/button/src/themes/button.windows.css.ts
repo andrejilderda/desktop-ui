@@ -1,30 +1,70 @@
 import { componentName } from './../index.css';
-import { assignTokensToVars } from 'lib/utils/helpers.css';
+import { rdStyle as rdStylePartial } from 'packages/private/rdStyle.css';
 
-export const windows = assignTokensToVars(componentName, 'windows', {
-  '--font-size': '14px',
-  '--stroke-disabled': 'transparent',
-  '--elevation-y': '-1px',
-  '--elevation-stroke-active': 'transparent',
-  '--padding': '6px 20px',
-  '--focus-outline': 'stroke_color.focus_stroke.outer',
+const rdStyle = rdStylePartial({ componentName, theme: 'windows' });
+const rdStyleDark = rdStylePartial({
+  componentName,
+  theme: 'windows',
+  mode: 'dark',
+});
 
-  // fill
-  '--fill': 'fill_color.control.default',
-  '--fill-hover': 'fill_color.control.secondary',
-  '--fill-disabled': 'fill_color.accent.disabled',
-  '--fill-active': 'fill_color.control.tertiary',
+export const button = rdStyle({
+  '$$font-size': '14px',
+  '$$elevation-y': '-1px',
+  '$$line-height': '20px',
+  $$padding: '6px 20px',
+  borderRadius: '4px',
 
-  // stroke
-  '--stroke': 'stroke_color.control_stroke.default',
-  '--stroke-active': 'stroke_color.control_stroke.default',
+  selectors: {
+    '&:focus-visible': {
+      outline: '2px solid $$focus-outline',
+      outlineOffset: '1px',
+    },
+  },
 
-  // elevationStroke
-  '--elevation-stroke': 'stroke_color.control_stroke.secondary',
+  colors: (c) => ({
+    '$$stroke-disabled': 'transparent',
+    '$$elevation-stroke-active': 'transparent',
+    '$$focus-outline': c.stroke_color.focus_stroke.outer,
 
-  // text
-  '--text': 'fill_color.text.primary',
-  '--text-hover': 'fill_color.text.primary',
-  '--text-active': 'fill_color.text.secondary',
-  '--text-disabled': 'fill_color.text.disabled',
+    // fill
+    $$fill: c.fill_color.control.default,
+    '$$fill-hover': c.fill_color.control.secondary,
+    '$$fill-disabled': c.fill_color.accent.disabled,
+    '$$fill-active': c.fill_color.control.tertiary,
+
+    // stroke
+    $$stroke: c.stroke_color.control_stroke.default,
+    '$$stroke-active': c.stroke_color.control_stroke.default,
+
+    // elevationStroke
+    '$$elevation-stroke': c.stroke_color.control_stroke.secondary,
+
+    // text
+    $$text: c.fill_color.text.primary,
+    '$$text-hover': c.fill_color.text.primary,
+    '$$text-active': c.fill_color.text.secondary,
+    '$$text-disabled': c.fill_color.text.disabled,
+  }),
+});
+
+export const buttonDark = rdStyleDark({
+  '$$elevation-y': '1px',
+});
+
+export const accent = rdStyle({
+  colors: (c) => ({
+    $$fill: c.fill_color.accent.default,
+    '$$fill-hover': c.fill_color.accent.secondary,
+    '$$fill-active': c.fill_color.accent.tertiary,
+    '$$fill-disabled': c.fill_color.accent.disabled,
+    $$stroke: c.stroke_color.control_stroke.on_accent_default,
+    '$$elevation-stroke': c.stroke_color.control_stroke.on_accent_secondary,
+
+    // text
+    $$text: c.fill_color.text_on_accent.primary,
+    '$$text-hover': c.fill_color.text_on_accent.primary,
+    '$$text-active': c.fill_color.text_on_accent.secondary,
+    '$$text-disabled': c.fill_color.text_on_accent.disabled,
+  }),
 });

@@ -1,7 +1,4 @@
-import {
-  StyleRule,
-  StyleWithSelectors,
-} from '@vanilla-extract/css/dist/declarations/src';
+import { StyleRule } from '@vanilla-extract/css/dist/declarations/src';
 import {
   CSSPropertiesWithVars,
   FeatureQueries,

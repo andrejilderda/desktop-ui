@@ -22,7 +22,7 @@ export default {
 } as Meta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
-  <Button {...args}>{children ? children : 'Default button'}</Button>
+  <Button {...args}>{children ? children : 'Button'}</Button>
 );
 
 export const Default = Template.bind({});
