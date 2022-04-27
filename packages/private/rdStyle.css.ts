@@ -9,7 +9,6 @@ import {
   PartialRdStyleFnMacos,
   RdStyleRule,
 } from './rdStyle.types';
-import { style } from '@vanilla-extract/css';
 
 // eslint-disable-next-line prettier/prettier
 export function rdStyle (options: { componentName: ComponentName, theme: 'windows', mode?: ThemeMode }): PartialRdStyleFnWindows;

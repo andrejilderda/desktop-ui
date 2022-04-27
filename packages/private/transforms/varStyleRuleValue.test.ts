@@ -4,11 +4,11 @@ describe('varStyleRuleValue', () => {
   it('should transform single vars', () => {
     expect(
       varStyleRuleValue('componentName', {
-        withRegularFallback: '1px solid $$foo $$bar',
+        color: '1px solid $$foo $$bar',
       }),
     ).toMatchInlineSnapshot(`
       Object {
-        "withRegularFallback": "1px solid var(--rd-componentName-foo) var(--rd-componentName-bar)",
+        "color": "1px solid var(--rd-componentName-foo) var(--rd-componentName-bar)",
       }
     `);
   });
@@ -16,21 +16,20 @@ describe('varStyleRuleValue', () => {
   it('should transform vars with a fallback', () => {
     expect(
       varStyleRuleValue('componentName', {
-        withRegularFallback: '($$foo, #ff0)',
+        color: '($$foo, #ff0)',
       }),
     ).toMatchInlineSnapshot(`
       Object {
-        "withRegularFallback": "var(--rd-componentName-foo, #ff0)",
+        "color": "var(--rd-componentName-foo, #ff0)",
       }
     `);
   });
 
   it('should transform subsequential vars to nested custom properties fallbacks', () => {
-    expect(
-      varStyleRuleValue('componentName', { withVarFallback: '($$foo, $$bar)' }),
-    ).toMatchInlineSnapshot(`
+    expect(varStyleRuleValue('componentName', { color: '($$foo, $$bar)' }))
+      .toMatchInlineSnapshot(`
       Object {
-        "withVarFallback": "var(--rd-componentName-foo, var(--rd-componentName-bar))",
+        "color": "var(--rd-componentName-foo, var(--rd-componentName-bar))",
       }
       `);
   });

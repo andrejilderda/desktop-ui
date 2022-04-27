@@ -42,21 +42,20 @@ export const prefixVarCurried = curry(
  * @param {string} ruleValue
  * @return {function | string} Curried function that returns a string when all arguments are passed
  * @example
- * prefixVarsStyleRuleValue('componentName', '$$foo, $$bar')
- * // returns '--rd-component-name-foo, --rd-component-name-bar'
+ *
+ * prefixVarsStyleRuleValue('componentName', '($$foo, $$bar)')
+ * // returns 'var(--rd-componentName-foo, var(--rd-componentName-bar))'
  */
 export const prefixVarsStyleRuleValue = (
   componentName: string,
   ruleValue: string,
-) => {
+): string => {
   const prefix = prefixVarCurried(componentName);
-
-  if (typeof ruleValue !== 'string') return;
 
   return (
     ruleValue
-      // split var fallback groups (f.e. `($$foo, $$bar)`) or whitespace `/([\s])/g`
-      .split(/\((\$\$[^\)]+)\)|([\s])/g)
+      // split on var fallback groups (f.e. `($$foo, $$bar)`)
+      .split(/\((\$\$[^\)]+)\)/g)
       // trim each
       .filter((match) => !!match && !!match.trim())
       // split the group
@@ -78,10 +77,10 @@ export const prefixVarsStyleRuleValue = (
       // any '$$'-vars left will be considered single vars
       .map((item) =>
         item
-          .split(/(\$\$\S+)/g)
+          .split(/([\$]{2,}[a-zA-Z-]*)/gm)
           .filter((match) => !!match && !!match.trim())
           .map((item) =>
-            item.startsWith('$$') ? `var(${prefix(item)})` : item,
+            item.startsWith('$$') ? `var(${prefix(item)})` : item.trim(),
           )
           .join(' '),
       )
