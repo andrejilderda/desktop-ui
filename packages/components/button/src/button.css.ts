@@ -6,6 +6,7 @@ import { rdStyle as rdStylePartial } from 'packages/private/rdStyle.css';
 import { styles } from 'components/Button/src/themes';
 
 const rdStyle = rdStylePartial({ componentName });
+
 export const buttonStyle = style([
   ...rdStyle({
     // vars: initialVars([

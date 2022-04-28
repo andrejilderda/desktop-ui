@@ -30,13 +30,13 @@ const Template: Story<ButtonProps & { wrapperClass: string }> = ({
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Button',
+  children: 'Button',
 };
 
 export const Accent = Template.bind({});
 Accent.args = {
   ...Default.args,
-  variants: { variant: 'accent' },
+  variant: 'accent',
 };
 
 export const Disabled = Template.bind({});

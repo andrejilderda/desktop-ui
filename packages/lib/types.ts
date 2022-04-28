@@ -1,3 +1,4 @@
+import { RuntimeFn } from '@vanilla-extract/recipes';
 import { classNamePrefix } from './constants/styles';
 
 export type ThemeName = 'windows' | 'macos';
@@ -14,3 +15,8 @@ export type ThemeClassName =
   | `${typeof classNamePrefix}-${ThemeSlugWithoutBlur}`
   | `${typeof classNamePrefix}-${ThemeSlugWithBlur}`;
 export type ThemeBaseClassName = `${typeof classNamePrefix}-${ThemeName}`;
+
+export type RecipeVariant<
+  T extends RuntimeFn<Record<string, any>>,
+  V extends keyof NonNullable<Parameters<T>[0]>,
+> = NonNullable<NonNullable<Parameters<T>[0]>[V]>;

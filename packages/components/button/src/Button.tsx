@@ -1,21 +1,33 @@
-import { RecipeVariants } from '@vanilla-extract/recipes';
 import clsx from 'clsx';
+import { RecipeVariant } from 'lib/types';
 import * as styles from './button.css';
 
+type ButtonVariants = RecipeVariant<typeof styles.buttonRecipe, 'variant'>;
+
 export interface ButtonProps {
-  label: string;
-  disabled: boolean;
-  variants: RecipeVariants<typeof styles.buttonRecipe>;
+  children: string;
+  variant?: ButtonVariants;
+  disabled?: boolean;
   onClick?: () => void;
+  className?: string | string[];
 }
 
-export const Button = ({ label, variants = {}, ...props }: ButtonProps) => {
+export const Button = ({
+  children,
+  variant,
+  className,
+  ...props
+}: ButtonProps) => {
   return (
     <button
       {...props}
-      className={clsx(styles.buttonStyle, styles.buttonRecipe(variants))}
+      className={clsx(
+        styles.buttonStyle,
+        styles.buttonRecipe({ variant: variant }),
+        className,
+      )}
     >
-      {label}
+      {children}
     </button>
   );
 };
