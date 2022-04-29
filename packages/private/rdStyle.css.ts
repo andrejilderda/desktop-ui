@@ -36,8 +36,11 @@ export function rdStyle({
 
       const varStyleRuleValue = transform.varStyleRuleValue(componentName);
       const varDeclarations = transform.varDeclarations(componentName);
+      const transformTokens = transform.transformTokens(theme);
+
       const transformStyleObj = compose(
         transform.groupVars,
+        transformTokens,
         varDeclarations,
         varStyleRuleValue,
       );
