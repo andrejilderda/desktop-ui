@@ -1,4 +1,4 @@
-import { varDeclarations } from './varDeclarations.css';
+import { varDeclarations } from 'packages/private/transforms/varDeclarations.css';
 
 describe('varDeclarations', () => {
   it('should transform var declarations with a prefix of namespace & component name', () => {

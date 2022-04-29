@@ -1,4 +1,4 @@
-import { rootValuesToSelectors } from './rootValuesToSelectors.css';
+import { rootValuesToSelectors } from 'packages/private/transforms/rootValuesToSelectors.css';
 
 describe('rootValuesToSelectors', () => {
   it('should move root values to `selectors`-property', () => {

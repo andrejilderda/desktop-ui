@@ -1,4 +1,4 @@
-import { varStyleRuleValue } from './varStyleRuleValue.css';
+import { varStyleRuleValue } from 'packages/private/transforms/varStyleRuleValue.css';
 
 describe('varStyleRuleValue', () => {
   it('should transform single vars', () => {

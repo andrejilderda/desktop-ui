@@ -1,4 +1,4 @@
-import { themeColors } from './themeColors.css';
+import { themeColors } from 'packages/private/transforms/themeColors.css';
 
 describe('themeColors', () => {
   it('should not transform when no theme and mode is provided', () => {

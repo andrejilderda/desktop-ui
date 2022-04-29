@@ -1,4 +1,4 @@
-import { groupVars } from './groupVars.css';
+import { groupVars } from 'packages/private/transforms/groupVars.css';
 
 describe('groupVars', () => {
   it('should group vars in its own `vars`-property', () => {
