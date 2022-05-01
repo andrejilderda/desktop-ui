@@ -2,7 +2,6 @@ import { componentName } from './index.css';
 import { rdStyle as rdStylePartial } from 'packages/private/rdStyle.css';
 import { globalStyle, style } from '@vanilla-extract/css';
 import { styles } from 'components/Dialog/src/themes';
-import { Button } from 'components/Button/src';
 import { buttonStyle } from 'components/Button/src/button.css';
 import { recipe } from '@vanilla-extract/recipes';
 
@@ -61,17 +60,6 @@ export const footer = style([
     background: '$$bgFooter',
     display: 'flex',
     justifyContent: 'flex-end',
-
-    selectors: {
-      // TODO: check why this doesn't work
-      [`${buttonStyle} &`]: {
-        outline: '2px solid red',
-        background: 'red',
-
-        flex: '1 0 auto',
-        maxWidth: '50%',
-      },
-    },
   }),
   ...styles.windows.footer,
 ]);
