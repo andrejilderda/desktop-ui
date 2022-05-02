@@ -20,6 +20,7 @@ export const controlColors = [
       '&[disabled]': {
         $$fill: '$$fill-disabled',
         $$border: '$$border-disabled',
+        $$symbol: '$$symbol-disabled !important',
       },
 
       [`&[disabled][data-state="checked"], 

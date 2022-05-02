@@ -11,11 +11,12 @@ export const controlColors = rdStyle({
   colors: (c) => ({
     $$fill: c.fill_color.control_alt.secondary,
     $$border: c.stroke_color.control_strong_stroke.default,
-    $$symbol: c.fill_color.text_on_accent.primary,
+    $$symbol: c.fill_color.text.secondary,
     '$$symbol-checked': c.fill_color.text_on_accent.primary,
 
     '$$fill-disabled': c.fill_color.control.disabled,
     '$$border-disabled': c.stroke_color.control_strong_stroke.disabled,
+    '$$symbol-disabled': c.fill_color.text.disabled,
     '$$fill-checked-disabled': c.fill_color.accent.disabled,
     '$$border-checked-disabled': 'transparent',
 
