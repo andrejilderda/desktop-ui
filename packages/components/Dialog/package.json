@@ -1,0 +1,16 @@
+{
+  "name": "dialog",
+  "version": "0.0.0",
+  "author": "Andre Jilderda",
+  "description": "Dialog description",
+  "main": "dist/dialog.es.js",
+  "module": "dist/dialog.es.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "lint": "eslint ./src",
+    "tsc": "tsc"
+  },
+  "types": "./src/dialog.d.ts"
+}

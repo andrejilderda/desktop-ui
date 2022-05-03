@@ -4,7 +4,7 @@ import RadioGroup, { RadioGroupProps } from './RadioGroup';
 import Pseudo from '../../../.storybook/components/Pseudo';
 
 export default {
-  title: 'Components/RadioGroup/Pseudo',
+  title: 'Legacy/RadioGroup/Pseudo',
   component: RadioGroup,
 } as Meta;
 

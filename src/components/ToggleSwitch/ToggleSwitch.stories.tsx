@@ -5,7 +5,7 @@ import ToggleSwitch, { ToggleSwitchProps } from './ToggleSwitch';
 import { styled } from 'src/reactDesktop.config';
 
 export default {
-  title: 'Components/ToggleSwitch',
+  title: 'Legacy/ToggleSwitch',
   component: ToggleSwitch,
 } as Meta;
 

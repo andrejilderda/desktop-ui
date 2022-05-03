@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,10 +17,11 @@
     "jsx": "react-jsx",
     "declaration": true,
     "outDir": "./lib",
-    "paths": {
-      "@emotion/core": ["./src/index.d.ts"]
+    "paths": { 
+      "lib/*": ["packages/lib/*"],
+      "components/*": ["packages/components/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["src/**/*", "./packages/**/*", "*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

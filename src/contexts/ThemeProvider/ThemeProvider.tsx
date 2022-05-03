@@ -15,7 +15,7 @@ interface ThemeProviderProps {
   local?: boolean;
 }
 
-const ThemeProvider = ({
+const LegacyThemeProvider = ({
   children,
   theme: themeName,
   mode: modeProp = 'auto',
@@ -55,4 +55,4 @@ const ThemeProvider = ({
   );
 };
 
-export default ThemeProvider;
+export default LegacyThemeProvider;

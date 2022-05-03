@@ -1,7 +1,7 @@
 import type * as Stitches from '@stitches/react';
 import StitchesReact from '@stitches/react/types/stitches';
 import { config } from 'src/reactDesktop.config';
-import themes from './themes';
+import { themes } from './themes';
 
 // https://stitches.dev/docs/typescript#type-a-css-object
 export type CSS = Stitches.CSS<typeof config>;

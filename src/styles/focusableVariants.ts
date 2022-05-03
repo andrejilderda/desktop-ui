@@ -2,7 +2,7 @@ import { pseudo } from 'src/constants/styles';
 
 const { focusVisible } = pseudo;
 
-const focusableVariants = {
+export const focusableVariants = {
   variants: {
     theme: {
       windows: {
@@ -14,5 +14,3 @@ const focusableVariants = {
     },
   },
 };
-
-export default focusableVariants;

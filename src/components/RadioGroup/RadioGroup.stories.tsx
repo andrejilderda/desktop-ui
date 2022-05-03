@@ -4,7 +4,7 @@ import RadioGroup, { RadioGroupProps } from './RadioGroup';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Components/RadioGroup',
+  title: 'Legacy/RadioGroup',
   component: RadioGroup,
 } as Meta;
 

@@ -4,7 +4,7 @@ import COMPONENT_NAME from './COMPONENT_NAME';
 import mdx from './COMPONENT_NAME.mdx';
 
 export default {
-  title: 'Components/COMPONENT_NAME',
+  title: 'Legacy/COMPONENT_NAME',
   component: COMPONENT_NAME,
   parameters: {
     docs: {

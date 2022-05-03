@@ -1,5 +1,5 @@
 import base from './base';
-import t from './tokens';
+import { tokens as t } from './tokens';
 
 const light = {
   theme: {
