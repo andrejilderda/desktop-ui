@@ -1,6 +1,26 @@
 {
   "version": 2,
   "projects": {
+    "docs": {
+      "root": "apps/docs",
+      "projectType": "application",
+      "sourceRoot": "apps/docs/src",
+      "targets": {
+        "build": {
+          "executor": "@nx-plus/docusaurus:browser",
+          "options": {
+            "outputPath": "dist/apps/docs"
+          }
+        },
+        "serve": {
+          "executor": "@nx-plus/docusaurus:dev-server",
+          "options": {
+            "port": 3000
+          }
+        }
+      },
+      "tags": []
+    },
     "example-app": "apps/example-app",
     "example-app-e2e": "apps/example-app-e2e",
     "libs-react-components-button-button": {
