@@ -20,7 +20,7 @@
         ],
         "styles": ["apps/example-app/src/styles.scss"],
         "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "webpackConfig": "webpack.config.js"
       },
       "configurations": {
         "development": {

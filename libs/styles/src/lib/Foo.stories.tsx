@@ -1,10 +1,13 @@
-import React from "react";
+import React from 'react';
+import './foo.css';
 
 export default {
   title: 'Story',
 };
 
-const Template = () => <button>Foo</button>;
+const Template = () => (
+    <button>Foobar</button>
+);
 
 export const Default = Template.bind({});
 
