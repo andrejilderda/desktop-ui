@@ -68,6 +68,6 @@
         }
       }
     },
-    "styles-ui": "libs/styles/ui"
+    "styles-ui": "libs/styles"
   }
 }

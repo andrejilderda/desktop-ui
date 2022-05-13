@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@desktop-ui/styles": ["libs/styles/ui/src/index.ts"]
+      "@desktop-ui/styles": ["libs/styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
