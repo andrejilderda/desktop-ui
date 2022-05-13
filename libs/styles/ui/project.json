@@ -1,0 +1,36 @@
+{
+  "sourceRoot": "libs/styles/ui/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/styles/ui",
+        "main": "libs/styles/ui/src/index.ts",
+        "tsConfig": "libs/styles/ui/tsconfig.lib.json",
+        "assets": ["libs/styles/ui/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs styles-ui {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/styles/ui/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
