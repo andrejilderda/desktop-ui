@@ -1,5 +1,5 @@
 import React from 'react';
-import './foo.css';
+import './foo.scss';
 
 export default {
   title: 'Story',

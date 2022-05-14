@@ -1,18 +1,20 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "outDir": ""
   },
-  "extends": "../../../../tsconfig.base.json",
-  "exclude": [
-    "../**/*.spec.js",
-    "../**/*.test.js",
-    "../**/*.spec.ts",
-    "../**/*.test.ts",
-    "../**/*.spec.tsx",
-    "../**/*.test.tsx",
-    "../**/*.spec.jsx",
-    "../**/*.test.jsx"
+  "files": [
+    "../../../node_modules/@nrwl/react/typings/styled-jsx.d.ts",
+    "../../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
+    "../../../node_modules/@nrwl/react/typings/image.d.ts"
   ],
-  "include": ["../**/*"]
+  "exclude": [
+    "../**/*.spec.ts",
+    "../**/*.spec.js",
+    "../**/*.spec.tsx",
+    "../**/*.spec.jsx"
+  ],
+  "include": ["../src/**/*", "*.js"]
 }

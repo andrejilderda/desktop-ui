@@ -1,20 +1,30 @@
+const rootMain = require('../../../.storybook/main');
+
 module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
+  ...rootMain,
+
+  core: { ...rootMain.core, builder: 'webpack5' },
   refs: {
     react: {
       title: 'React',
       url: 'http://localhost:4401',
     },
   },
-  stories: ['../**/*.stories.@(ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials'],
-  // uncomment the property below if you want to apply some webpack config globally
-  // webpackFinal: async (config, { configType }) => {
-  //   // Make whatever fine-grained changes you need that should apply to all storybook configs
+  stories: [
+    ...rootMain.stories,
+    '../src/lib/**/*.stories.mdx',
+    '../src/lib/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
+  // addons: [...rootMain.addons],
+  addons: [...rootMain.addons, '@nrwl/react/plugins/storybook'],
+  webpackFinal: async (config, { configType }) => {
+    // apply any global webpack configs that might have been specified in .storybook/main.js
+    if (rootMain.webpackFinal) {
+      config = await rootMain.webpackFinal(config, { configType });
+    }
 
-  //   // Return the altered config
-  //   return config;
-  // },
+    // add your own webpack tweaks if needed
+
+    return config;
+  },
 };
