@@ -17,14 +17,25 @@
           "options": {
             "port": 3000
           }
-        },
+        }
+      },
+      "tags": []
+    },
+    "example-app": "apps/example-app",
+    "example-app-e2e": "apps/example-app-e2e",
+    "react": {
+      "root": "libs/react",
+      "sourceRoot": "libs/react/src",
+      "projectType": "library",
+      "tags": [],
+      "targets": {
         "storybook": {
           "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/react",
             "port": 4400,
             "config": {
-              "configFolder": "apps/docs/.storybook"
+              "configFolder": "libs/react/.storybook"
             }
           },
           "configurations": {
@@ -40,7 +51,7 @@
             "uiFramework": "@storybook/react",
             "outputPath": "dist/storybook/docs",
             "config": {
-              "configFolder": "apps/docs/.storybook"
+              "configFolder": "libs/react/.storybook"
             }
           },
           "configurations": {
@@ -49,11 +60,8 @@
             }
           }
         }
-      },
-      "tags": []
+      }
     },
-    "example-app": "apps/example-app",
-    "example-app-e2e": "apps/example-app-e2e",
     "react-components-button": {
       "root": "libs/react/components/button",
       "sourceRoot": "libs/react/components/button/src",
