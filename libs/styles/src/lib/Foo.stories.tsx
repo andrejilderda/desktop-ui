@@ -5,9 +5,7 @@ export default {
   title: 'Story',
 };
 
-const Template = () => (
-    <button>Foobar</button>
-);
+const Template = () => <button>Foobar</button>;
 
 export const Default = Template.bind({});
 

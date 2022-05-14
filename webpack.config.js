@@ -9,8 +9,7 @@ module.exports = (config) => {
         ...config.module.rules,
         {
           test: /\.css$|\.scss$|\.sass$|\.less$|\.styl$/,
-          use: [ "style-loader", "css-loader", "postcss-loader"
-          ],
+          use: ['style-loader', 'css-loader', 'postcss-loader'],
         },
       ],
     },
