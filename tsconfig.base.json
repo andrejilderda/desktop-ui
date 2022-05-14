@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@desktop-ui/react-button": ["libs/react/components/button/src/index.ts"],
       "@desktop-ui/styles": ["libs/styles/src/index.ts"]
     }
   },

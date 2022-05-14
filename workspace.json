@@ -54,9 +54,9 @@
     },
     "example-app": "apps/example-app",
     "example-app-e2e": "apps/example-app-e2e",
-    "libs-react-components-button-button": {
-      "root": "libs/libs/react/components/button/button",
-      "sourceRoot": "libs/libs/react/components/button/button/src",
+    "react-components-button": {
+      "root": "libs/react/components/button",
+      "sourceRoot": "libs/react/components/button/src",
       "projectType": "library",
       "tags": [],
       "targets": {
@@ -64,16 +64,16 @@
           "executor": "@nrwl/web:rollup",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/libs/libs/react/components/button/button",
-            "tsConfig": "libs/libs/react/components/button/button/tsconfig.lib.json",
-            "project": "libs/libs/react/components/button/button/package.json",
-            "entryFile": "libs/libs/react/components/button/button/src/index.ts",
+            "outputPath": "dist/libs/react/components/button",
+            "tsConfig": "libs/react/components/button/tsconfig.lib.json",
+            "project": "libs/react/components/button/package.json",
+            "entryFile": "libs/react/components/button/src/index.ts",
             "external": ["react/jsx-runtime"],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "compiler": "babel",
             "assets": [
               {
-                "glob": "libs/libs/react/components/button/button/README.md",
+                "glob": "libs/react/components/button/README.md",
                 "input": ".",
                 "output": "."
               }
@@ -85,15 +85,15 @@
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": [
-              "libs/libs/react/components/button/button/**/*.{ts,tsx,js,jsx}"
+              "libs/react/components/button/**/*.{ts,tsx,js,jsx}"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/libs/react/components/button/button"],
+          "outputs": ["coverage/libs/react/components/button"],
           "options": {
-            "jestConfig": "libs/libs/react/components/button/button/jest.config.ts",
+            "jestConfig": "libs/react/components/button/jest.config.ts",
             "passWithNoTests": true
           }
         }
