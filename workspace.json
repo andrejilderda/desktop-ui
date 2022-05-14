@@ -33,7 +33,7 @@
           "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/react",
-            "port": 4400,
+            "port": 4401,
             "config": {
               "configFolder": "libs/react/.storybook"
             }
