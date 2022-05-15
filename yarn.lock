@@ -13801,6 +13801,13 @@ postcss-custom-selectors@^6.0.0:
   dependencies:
     postcss-selector-parser "^6.0.4"
 
+postcss-design-tokens@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/postcss-design-tokens/-/postcss-design-tokens-1.2.1.tgz#b00d97674b51ea08b7638a8ae77b558df7b80676"
+  integrity sha512-8WOETt8CGy7ykXGkg9xIgkXlUrIT0VLx4sSrf0tg80YOGqV2RGhR1fIyJOebr/a9EDO5mMoyKlIzmbuzbG/Nfw==
+  dependencies:
+    postcss-value-parser "^4.2.0"
+
 postcss-dir-pseudo-class@^6.0.4:
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-6.0.4.tgz#9afe49ea631f0cb36fa0076e7c2feb4e7e3f049c"
