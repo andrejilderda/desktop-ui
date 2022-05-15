@@ -1,26 +1,21 @@
-const path = require('path');
-const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
-
 module.exports = {
-  stories: [
-    '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../packages/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../stories/**/*.stories.mdx',
-  ],
+  stories: [],
   addons: [
-    '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    'storybook-addon-designs',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
-  webpackFinal: async (config) => {
-    config.resolve.modules = [
-      ...(config.resolve.modules || []),
-      path.resolve('./'),
-      path.resolve('./packages'),
-    ];
-    config.plugins.push(new VanillaExtractPlugin());
+  // uncomment the property below if you want to apply some webpack config globally
+  // webpackFinal: async (config, { configType }) => {
+  //   // Make whatever fine-grained changes you need that should apply to all storybook configs
 
-    return config;
-  },
+  //   // Return the altered config
+  //   return config;
+  // },
 };
