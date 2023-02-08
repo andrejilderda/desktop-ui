@@ -1,28 +1,30 @@
 {
+  "name": "styles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/styles/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/vite:build",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/styles",
-        "main": "libs/styles/src/index.ts",
-        "tsConfig": "libs/styles/tsconfig.lib.json",
-        "assets": ["libs/styles/*.md"]
+        "outputPath": "dist/libs/styles"
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs styles-ui {args.ver} {args.tag}"
+        "command": "node tools/scripts/publish.mjs styles {args.ver} {args.tag}"
       },
-      "dependsOn": [
-        {
-          "projects": "self",
-          "target": "build"
-        }
-      ]
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/libs/styles"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/styles"
+      }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -34,11 +36,8 @@
     "storybook": {
       "executor": "@nrwl/storybook:storybook",
       "options": {
-        "uiFramework": "@storybook/react",
-        "port": 4400,
-        "config": {
-          "configFolder": "libs/styles/.storybook"
-        }
+        "port": 4401,
+        "configDir": "libs/styles/.storybook"
       },
       "configurations": {
         "ci": {
@@ -48,13 +47,10 @@
     },
     "build-storybook": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react",
-        "outputPath": "dist/storybook/styles-ui",
-        "config": {
-          "configFolder": "libs/styles/.storybook"
-        }
+        "outputDir": "dist/storybook/styles",
+        "configDir": "libs/styles/.storybook"
       },
       "configurations": {
         "ci": {

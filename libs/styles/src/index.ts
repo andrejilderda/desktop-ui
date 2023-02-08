@@ -1,1 +1,1 @@
-export * from './lib/styles-ui';
+export * from './lib/styles';

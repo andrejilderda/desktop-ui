@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@desktop-ui/react-button": ["libs/react/components/button/src/index.ts"],
-      "@desktop-ui/styles": ["libs/styles/src/index.ts"]
+      "@desktop-ui/react-button": ["libs/react/button/src/index.ts"],
+      "@desktop-ui/storybook-host": ["libs/storybook-host/src/index.ts"],
+      "@desktop-ui/styles": ["libs/styles/src/index.ts"],
+      "@desktop-ui/tooling": ["libs/tooling/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,7 +1,5 @@
 # Desktop UI
 
-[![Chat on Discord](https://img.shields.io/discord/971839080725876836?label=Discord&color=707af7)](https://github.com/mui/material-ui/blob/HEAD/LICENSE)
-
 👷 Work in progress – The aim of this project is to become the de-facto standard component library for building beautiful, accessible and performant desktop UI’s with web technologies (f.e. using [Electron](https://www.electronjs.org/) or [Tauri](https://tauri.studio/)).
 
 The planned features for this library are:
