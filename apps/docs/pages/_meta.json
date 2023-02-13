@@ -1,0 +1,19 @@
+{
+  "index": {
+    "type": "page",
+    "title": "Desktop UI",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "section": {
+    "title": "Section",
+    "type": "page"
+  },
+  "github_link": {
+    "title": "Github",
+    "href": "https://github.com/andrejilderda/desktop-ui",
+    "newWindow": true
+  }
+}
