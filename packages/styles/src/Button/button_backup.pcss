@@ -1,0 +1,98 @@
+.button {
+  all: unset;
+  cursor: default;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+  line-height: var(--line-height);
+  padding: var(--padding);
+  text-align: center;
+  user-select: none;
+  border-color: var(--border);
+  background-color: var(--fill);
+  color: var(--text);
+  font-size: var(--font-size);
+  outline-color: var(--focus-outline);
+
+  &[disabled] {
+    background-color: var(--fill-disabled, --fill);
+    border-color: var(--border-disabled, --border);
+    color: var(--text-disabled, --text);
+  }
+
+  &:not([disabled]) {
+    box-shadow: inset 0px var(--elevation-y) 0px 0px var(--elevation-stroke),
+      inset 0px 0px 0px 1px var(--stroke);
+  }
+
+  /* hover */
+  &:hover:not([disabled]) {
+    background-color: var(--fill-hover, --fill);
+    color: var(--text-hover, --text);
+  }
+
+  /* active */
+  &:active:not([disabled]) {
+    background-color: var(--fill-active, --fill);
+    color: var(--text-active, --text);
+    box-shadow: inset 0px var(--elevation-y) 0px 0px
+        var(--elevation-stroke-active, --elevation-stroke),
+      inset 0px 0px 0px 1px var(--stroke-active, --stroke);
+  }
+
+  .windows & {
+    --font-size: 14px;
+    --elevation-y: -1px;
+    --line-height: 20px;
+    --padding: 6px 20px;
+    border-radius: 4px;
+
+    --stroke-disabled: transparent;
+    --elevation-stroke-active: transparent;
+    --focus-outline: var(--dui-windows-stroke_color-focus_stroke-outer);
+
+    /* fill */
+    --fill: var(--dui-windows-fill_color-control-default);
+    --fill-hover: var(--dui-windows-fill_color-control-secondary);
+    --fill-disabled: var(--dui-windows-fill_color-accent-disabled);
+    --fill-active: var(--dui-windows-fill_color-control-tertiary);
+
+    /* stroke */
+    --stroke: var(--dui-windows-stroke_color-control_stroke-default);
+    --stroke-active: var(--dui-windows-stroke_color-control_stroke-default);
+
+    /* elevationStroke */
+    --elevation-stroke: var(
+      --dui-windows-stroke_color-control_stroke-secondary
+    );
+
+    /* text */
+    --text: var(--dui-windows-fill_color-text-primary);
+    --text-hover: var(--dui-windows-fill_color-text-primary);
+    --text-active: var(--dui-windows-fill_color-text-secondary);
+    --text-disabled: var(--dui-windows-fill_color-text-disabled);
+
+    &.accent {
+      --fill: var(--dui-windows-fill_color-accent-default);
+      --fill-hover: var(--dui-windows-fill_color-accent-secondary);
+      --fill-active: var(--dui-windows-fill_color-accent-tertiary);
+      --fill-disabled: var(--dui-windows-fill_color-accent-disabled);
+      --stroke: var(
+        --dui-windows-stroke_color-control_stroke-on_accent_default
+      );
+      --elevation-stroke: var(
+        --dui-stroke_color-control_stroke-on_accent_secondary
+      );
+
+      /* text */
+      --text: var(--dui-windows-fill_color-text_on_accent-primary);
+      --text-hover: var(--dui-windows-fill_color-text_on_accent-primary);
+      --text-active: var(--dui-windows-fill_color-text_on_accent-secondary);
+      --text-disabled: var(--dui-windows-fill_color-text_on_accent-disabled);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-outline);
+      outline-offset: 1px;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+/* was .rail */
+.progress {
+  border-radius: 9999px;
+  align-items: center;
+  display: flex;
+  height: 1px;
+  background: var(--rail);
+  width: 100%;
+
+  .windows & {
+    --rail: var(--dui-windows-stroke_color-control_strong_stroke-default);
+  }
+}
+
+/* was .track */
+.progress__indicator {
+  height: 3px;
+  background: var(--track);
+  border-radius: 9999px;
+
+  &[data-state="indeterminate"] {
+    background: transparent;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &[data-state="indeterminate"]:after {
+    content: "";
+    background: var(--track);
+    display: block;
+    height: 3px;
+    position: relative;
+    width: 53%;
+    animation: 2s linear running infinite indeterminateProgressBar;
+  }
+
+  .windows & {
+    --track: var(--dui-windows-fill_color-accent-default);
+
+    &[data-state="paused"] {
+      --track: var(--dui-windows-fill_color-system-caution);
+    }
+
+    &[data-state="error"] {
+      --track: var(--dui-windows-fill_color-system-critical);
+    }
+  }
+}
+
+/* export const trackStatusRecipe = recipe(styles.windows.trackStatusRecipe); */
+
+/* was .ringWrapper */
+.progress--ring {
+  height: 16px;
+  width: 16px;
+
+  stroke: var(--stroke);
+  transform: rotate(-90deg);
+  overflow: visible;
+
+  &[data-state="indeterminate"] {
+    transform-origin: center;
+    animation: 2s linear running infinite indeterminateProgressRailRotation;
+  }
+
+  /* TODO: turn this into t-shirt sizes so that they're cross-platform compatible? */
+  &[data-size="16"] {
+    height: 16px;
+    width: 16px;
+  }
+  &[data-size="32"] {
+    height: 32px;
+    width: 32px;
+  }
+  &[data-size="64"] {
+    height: 64px;
+    width: 64px;
+  }
+
+  .windows & {
+    --stroke: var(--dui-windows-fill_color-accent-default);
+  }
+}
+
+/* was .ring */
+.progress__indicator--ring {
+  &[data-state="indeterminate"] {
+    stroke-dasharray: 360 100;
+    transform-origin: center;
+    animation: 2s linear running infinite indeterminateProgressRailDash;
+  }
+}
+
+@keyframes indeterminateProgressBar {
+  0% {
+    width: 40%;
+    transform: translateX(-100%);
+    left: 0;
+  }
+
+  50% {
+    left: 100%;
+    transform: translateX(0%);
+  }
+
+  50.1% {
+    width: 60%;
+    transform: translateX(-100%);
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+    width: 60%;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes indeterminateProgressRailRotation {
+  0% {
+    transform: rotate3d(0, 0, 1, -105deg);
+  }
+
+  100% {
+    transform: rotate3d(0, 0, 1, 615deg);
+  }
+}
+
+@keyframes indeterminateProgressRailDash {
+  0% {
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100 100;
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  33% {
+    stroke-dashoffset: 62;
+    stroke-dasharray: 100 100;
+    transform: rotate3d(0, 0, 1, 80deg);
+  }
+
+  66% {
+    stroke-dashoffset: 62;
+    stroke-dasharray: 100 100;
+    transform: rotate3d(0, 0, 1, 160deg);
+  }
+
+  100% {
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100 100;
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}

@@ -1,0 +1,14 @@
+.label {
+  user-select: none;
+  color: var(--text);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+
+  .windows & {
+    --font-size: 14px;
+    --line-height: 20px;
+    --text: var(--dui-windows-fill_color-text-primary);
+
+    border-radius: 4px;
+  }
+}

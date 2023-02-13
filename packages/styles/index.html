@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Add CSS -->
+    <link rel="stylesheet" href="src/index.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop UI – styles</title>
+  </head>
+  <body>
+    <div class="dui-theme windows">
+      <div id="app">
+        <button class="button">Button</button>
+        <button class="button accent">Button</button>
+
+        <br />
+
+        <button class="button" disabled>Button</button>
+        <button class="button accent" disabled>Button</button>
+
+        <br />
+
+        <div class="checkbox">
+          <!-- zero-width space character for aligning the label to the checkbox properly -->
+          &#8203;
+          <button class="checkbox__root">
+            <span class="checkbox__indicator"> </span>
+          </button>
+        </div>
+        <div class="checkbox">
+          <!-- zero-width space character for aligning the label to the checkbox properly -->
+          &#8203;
+          <button class="checkbox__root" data-state="checked">
+            <span class="checkbox__indicator">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                fill="currentcolor"
+                viewBox="0 0 256 256"
+                class="checkbox__check"
+              >
+                <rect width="256" height="256" fill="none"></rect>
+                <polyline
+                  points="216 72.005 104 184 48 128.005"
+                  fill="none"
+                  stroke="currentcolor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="16"
+                ></polyline>
+              </svg>
+            </span>
+          </button>
+        </div>
+        <br />
+        <button
+          class="toggle-switch"
+          type="button"
+          role="switch"
+          data-state="unchecked"
+          aria-checked="false"
+          value="on"
+        >
+          <span class="toggle-switch__thumb" data-state="unchecked"> </span>
+        </button>
+        <button
+          class="toggle-switch"
+          type="button"
+          role="switch"
+          data-state="checked"
+          aria-checked="true"
+          value="on"
+        >
+          <span class="toggle-switch__thumb" data-state="checked"> </span>
+        </button>
+
+        <br />
+
+        <button
+          class="toggle-switch"
+          type="button"
+          role="switch"
+          data-state="unchecked"
+          aria-checked="false"
+          data-disabled=""
+          disabled=""
+          value="on"
+        >
+          <span
+            class="toggle-switch__thumb"
+            data-state="unchecked"
+            data-disabled=""
+          >
+          </span>
+        </button>
+        <button
+          class="toggle-switch"
+          type="button"
+          role="switch"
+          data-state="checked"
+          aria-checked="true"
+          data-disabled=""
+          disabled=""
+          value="on"
+        >
+          <span
+            class="toggle-switch__thumb"
+            data-state="checked"
+            data-disabled=""
+          >
+          </span>
+        </button>
+
+        <div data-state="loading" class="progress">
+          <div
+            data-state="loading"
+            class="progress__indicator"
+            style="width: 34%"
+          ></div>
+        </div>
+
+        <br />
+        <div class="progress" data-state="error">
+          <div
+            class="progress__indicator"
+            data-state="error"
+            style="width: 34%"
+          ></div>
+        </div>
+
+        <br />
+
+        <div class="progress" data-state="paused">
+          <div
+            data-state="paused"
+            class="progress__indicator"
+            style="width: 34%"
+          ></div>
+        </div>
+
+        <br />
+
+        <div class="progress" data-state="indeterminate">
+          <div class="progress__indicator" data-state="indeterminate"></div>
+        </div>
+
+        <br />
+
+        <svg
+          class="progress--ring"
+          data-state="loading"
+          data-size="16"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="progress__indicator--ring"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            cx="16"
+            cy="16"
+            r="16"
+            data-state="loading"
+            stroke-dasharray="66px 100px"
+          ></circle>
+        </svg>
+
+        <svg
+          class="progress--ring"
+          data-state="loading"
+          data-size="32"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="progress__indicator--ring"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            cx="16"
+            cy="16"
+            r="16"
+            data-state="loading"
+            stroke-dasharray="66px 100px"
+          ></circle>
+        </svg>
+
+        <svg
+          class="progress--ring"
+          data-state="loading"
+          data-size="64"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="progress__indicator--ring"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            cx="16"
+            cy="16"
+            r="16"
+            data-state="loading"
+            stroke-dasharray="66px 100px"
+          ></circle>
+        </svg>
+
+        <br />
+
+        <svg
+          class="progress--ring"
+          data-state="indeterminate"
+          data-size="16"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="progress__indicator--ring"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            cx="16"
+            cy="16"
+            r="16"
+            data-state="indeterminate"
+          ></circle>
+        </svg>
+        <svg
+          class="progress--ring"
+          data-state="indeterminate"
+          data-size="32"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="progress__indicator--ring"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            cx="16"
+            cy="16"
+            r="16"
+            data-state="indeterminate"
+          ></circle>
+        </svg>
+        <svg
+          class="progress--ring"
+          data-state="indeterminate"
+          data-size="64"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="progress__indicator--ring"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            cx="16"
+            cy="16"
+            r="16"
+            data-state="indeterminate"
+          ></circle>
+        </svg>
+
+        <br />
+
+        <div role="radiogroup" dir="ltr" tabindex="0" style="outline: none">
+          <div class="radio-group">
+            <div class="radio-group__item">
+              <button
+                class="radio-group__button"
+                type="button"
+                data-state="checked"
+                role="radio"
+                value="foo"
+                id="foo"
+                tabindex="0"
+              >
+                <span
+                  data-state="checked"
+                  class="radio-group__indicator"
+                ></span>
+              </button>
+              <label class="label radio-group__label" for="foo" role="label">
+                Foo
+              </label>
+            </div>
+            <div class="radio-group__item">
+              <button
+                class="radio-group__button"
+                type="button"
+                data-state="unchecked"
+                role="radio"
+                value="bar"
+                id="bar"
+                tabindex="-1"
+              ></button>
+              <label class="label radio-group__label" for="bar" role="label">
+                Bar
+              </label>
+            </div>
+            <div class="radio-group__item">
+              <button
+                class="radio-group__button"
+                type="button"
+                data-state="unchecked"
+                role="radio"
+                value="baz"
+                id="baz"
+                tabindex="-1"
+              ></button>
+              <label class="label radio-group__label" for="baz" role="label">
+                Baz
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dialog">
+          <div data-state="open" class="dialog__overlay">
+            <div
+              data-state="open"
+              class="dialog__content"
+              data-size="standard"
+              tabindex="-1"
+            >
+              <h2 class="dialog__title">Title</h2>
+              <p class="dialog__description">
+                This is body text. Windows 11 marks a visual evolution of the
+                operating system. We have evolved our design language alongside
+                with Fluent to create a design which is human, universal and
+                truly feels like Windows. The design principles below have
+                guided us throughout the journey of making Windows the
+                best-in-class implementation of Fluent.
+              </p>
+              <div class="dialog__footer">
+                <button class="button accent">Confirm</button>
+                <button class="button">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

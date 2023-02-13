@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.dui-theme {
+  background: var(--dui-windows-background-fill_color-solid_background-base);
+  min-height: calc(100vh - 2rem);
+  padding: 1rem;
+
+  &.windows {
+    --dui-windows-font-family: "Segoe UI Variable", "Segoe UI", "Segoe UI Emoji",
+      "Segoe UI Symbol", system-ui, sans-serif;
+    --dui-text-primary: var(--dui-windows-fill_color-text-primary);
+
+    font-family: var(--dui-windows-font-family);
+    color: var(--dui-text-primary);
+
+    &:not(.dui-dark) {
+      @import-json './tokens/windows/base.json';
+      @import-json './tokens/windows/light.json';
+    }
+
+    @media (prefers-color-scheme: dark) {
+      @import-json './tokens/windows/base.json';
+      @import-json './tokens/windows/dark.json';
+    }
+  }
+}

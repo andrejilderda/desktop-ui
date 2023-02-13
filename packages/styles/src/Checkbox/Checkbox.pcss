@@ -1,0 +1,57 @@
+/* TODO: Wrapper for when checkbox is combined with label */
+/* 
+.labeled-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+} 
+*/
+
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  &__root {
+    @mixin controlColors;
+
+    align-items: center;
+    font-size: 8px;
+    line-height: 8px;
+    border-style: solid;
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    display: block;
+    flex-shrink: 0;
+    height: var(--size);
+    width: var(--size);
+    margin: 0;
+    padding: 0;
+    transform: translateY(1px);
+
+    .windows & {
+      --size: 20px;
+      --border-width: 1px;
+      --border-radius: 3px;
+      --text: var(--dui-windows-fill_color-text-primary);
+
+      font-size: 14px;
+    }
+  }
+
+  &__indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__check,
+  &__indeterminate {
+    position: absolute;
+  }
+
+  &__label {
+    align-self: center;
+    user-select: none;
+  }
+}

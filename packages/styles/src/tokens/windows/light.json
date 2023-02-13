@@ -1,0 +1,149 @@
+{
+  "windows": {
+    "fill_color": {
+      "text": {
+        "primary": "rgba(0, 0, 0, 0.9)",
+        "secondary": "rgba(0, 0, 0, 0.61)",
+        "tertiary": "rgba(0, 0, 0, 0.45)",
+        "disabled": "rgba(0, 0, 0, 0.36)"
+      },
+      "accent_text": {
+        "primary": "rgb(0, 62, 146)",
+        "secondary": "rgb(0, 26, 104)",
+        "tertiary": "rgb(0, 95, 184)",
+        "disabled": "rgba(0, 0, 0, 0.36)"
+      },
+      "text_on_accent": {
+        "primary": "rgb(255, 255, 255)",
+        "secondary": "rgba(255, 255, 255, 0.7)",
+        "disabled": "rgb(255, 255, 255)",
+        "selected_text": "rgb(255, 255, 255)"
+      },
+      "control": {
+        "transparent": "rgb(255, 255, 255)",
+        "default": "rgba(255, 255, 255, 0.7)",
+        "secondary": "rgba(249, 249, 249, 0.5)",
+        "tertiary": "rgba(249, 249, 249, 0.3)",
+        "input_active": "rgb(255, 255, 255)",
+        "disabled": "rgba(249, 249, 249, 0.3)"
+      },
+      "control_strong": {
+        "default": "rgba(0, 0, 0, 0.45)",
+        "disabled": "rgba(0, 0, 0, 0.32)"
+      },
+      "control_solid": {
+        "default": "rgb(255, 255, 255)"
+      },
+      "control_alt": {
+        "transparent": "rgb(255, 255, 255)",
+        "secondary": "rgba(0, 0, 0, 0.02)",
+        "tertiary": "rgba(0, 0, 0, 0.06)",
+        "quarternary": "rgba(0, 0, 0, 0.09)",
+        "disabled": "rgb(255, 255, 255)"
+      },
+      "subtle": {
+        "transparent": "rgb(255, 255, 255)",
+        "secondary": "rgba(0, 0, 0, 0.04)",
+        "tertiary": "rgba(0, 0, 0, 0.02)",
+        "disabled": "rgb(0, 0, 0)"
+      },
+      "accent": {
+        "default": "rgb(0, 95, 184)",
+        "secondary": "rgba(0, 95, 184, 0.9)",
+        "tertiary": "rgba(0, 95, 184, 0.8)",
+        "disabled": "rgba(0, 0, 0, 0.22)",
+        "selected_text_background": "rgb(0, 120, 212)"
+      },
+      "system": {
+        "critical": "rgb(196, 43, 28)",
+        "success": "rgb(15, 123, 15)",
+        "attention": "rgb(0, 95, 183)",
+        "caution": "rgb(157, 93, 0)",
+        "attention_background": "rgba(246, 246, 246, 0.5)",
+        "success_background": "rgb(223, 246, 221)",
+        "caution_background": "rgb(255, 244, 206)",
+        "critical_background": "rgb(253, 231, 233)",
+        "neutral": "rgba(0, 0, 0, 0.45)",
+        "neutral_background": "rgba(0, 0, 0, 0.02)",
+        "solid_attention_background": "rgb(247, 247, 247)",
+        "solid_neutral": "rgb(138, 138, 138)",
+        "solid_neutral_background": "rgb(243, 243, 243)"
+      },
+      "control_on_image": {
+        "default": "rgba(255, 255, 255, 0.79)",
+        "secondary": "rgb(243, 243, 243)",
+        "tertiary": "rgb(235, 235, 235)",
+        "disabled": "rgb(255, 255, 255)"
+      }
+    },
+    "stroke_color": {
+      "control_stroke": {
+        "default": "rgba(0, 0, 0, 0.06)",
+        "secondary": "rgba(0, 0, 0, 0.16)",
+        "on_accent_default": "rgba(255, 255, 255, 0.08)",
+        "on_accent_secondary": "rgba(0, 0, 0, 0.4)",
+        "on_accent_tertiary": "rgba(0, 0, 0, 0.22)",
+        "on_accent_disabled": "rgba(0, 0, 0, 0.06)",
+        "for_strong_fill_when_on_image": "rgba(255, 255, 255, 0.35)"
+      },
+      "control_strong_stroke": {
+        "default": "rgba(0, 0, 0, 0.45)",
+        "disabled": "rgba(0, 0, 0, 0.22)"
+      },
+      "card_stroke": {
+        "default": "rgba(0, 0, 0, 0.06)",
+        "default_solid": "rgb(235, 235, 235)"
+      },
+      "divider_stroke": {
+        "default": "rgba(0, 0, 0, 0.08)"
+      },
+      "surface_stroke": {
+        "default": "rgba(117, 117, 117, 0.4)",
+        "flyout": "rgba(0, 0, 0, 0.06)"
+      },
+      "focus_stroke": {
+        "outer": "rgba(0, 0, 0, 0.9)",
+        "inner": "rgb(255, 255, 255)"
+      }
+    },
+    "background": {
+      "fill_color": {
+        "card_background": {
+          "default": "rgba(255, 255, 255, 0.7)",
+          "secondary": "rgba(246, 246, 246, 0.5)",
+          "tertiary": "rgb(255, 255, 255)"
+        },
+        "smoke": {
+          "default": "rgba(0, 0, 0, 0.3)"
+        },
+        "layer": {
+          "default": "rgba(255, 255, 255, 0.5)",
+          "alt": "rgb(255, 255, 255)"
+        },
+        "layer_on_acrylic": {
+          "default": "rgba(255, 255, 255, 0.25)"
+        },
+        "layer_on_accent_acrylic": {
+          "default": "rgba(255, 255, 255, 0.25)"
+        },
+        "acrylic_background": {
+          "default": "rgba(252, 252, 252, 0.85)",
+          "base": "rgba(243, 243, 243, 0.9)"
+        },
+        "accent_acrylic_background": {
+          "base": "rgba(153, 235, 255, 0.9)",
+          "default": "rgba(153, 235, 255, 0.9)"
+        },
+        "mica_background": {
+          "base": "rgb(243, 243, 243)"
+        },
+        "solid_background": {
+          "base": "rgb(243, 243, 243)",
+          "secondary": "rgb(238, 238, 238)",
+          "tertiary": "rgb(249, 249, 249)",
+          "quarternary": "rgb(255, 255, 255)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+/* 
+  can be used by at least:
+  - checkbox
+  - radio
+  - toggle 
+*/
+
+@define-mixin controlColorsBackup2 {
+  border-color: var(
+    --border,
+    var(--dui-windows-stroke_color-control_strong_stroke-default)
+  );
+  color: var(--symbol, var(--dui-windows-fill_color-text-secondary));
+  background-color: var(
+    --fill,
+    var(--dui-windows-fill_color-control_alt-secondary)
+  );
+
+  .windows & {
+    &[disabled] {
+      --fill: var(--dui-windows-fill_color-control_alt-disabled);
+      --border: var(--dui-windows-stroke_color-control_strong_stroke-disabled);
+      --symbol: var(--dui-windows-fill_color-text-disabled);
+
+      &[data-state="checked"],
+      &[data-state="indeterminate"] {
+        --fill: var(--dui-windows-fill_color-accent-disabled);
+        --border: transparent;
+        --symbol: var(--dui-windows-fill_color-text_on_accent-disabled);
+      }
+    }
+
+    &:not([disabled])[data-state="checked"],
+    &:not([disabled])[data-state="indeterminate"] {
+      --fill: var(--dui-windows-fill_color-accent-default);
+      --border: transparent;
+      --symbol: var(--dui-windows-fill_color-text_on_accent-primary);
+    }
+
+    &:hover:not([disabled]) {
+      --fill: var(--dui-windows-fill_color-control_alt-tertiary);
+
+      &[data-state="checked"],
+      &[data-state="indeterminate"] {
+        --fill: var(--dui-windows-fill_color-accent-secondary);
+      }
+    }
+
+    &:active:not([disabled]) {
+      --fill: var(--dui-windows-fill_color-control_alt-quarternary);
+      --border: var(--dui-windows-stroke_color-control_strong_stroke-default);
+
+      &[data-state="checked"],
+      &[data-state="indeterminate"] {
+        --fill: var(--dui-windows-fill_color-accent-tertiary);
+        --symbol: var(--dui-windows-fill_color-text_on_accent-secondary);
+        --border: transparent;
+      }
+    }
+  }
+}

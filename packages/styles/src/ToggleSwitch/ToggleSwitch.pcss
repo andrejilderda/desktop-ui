@@ -1,0 +1,56 @@
+.toggle-switch {
+  $el: .toggle-switch;
+
+  all: unset;
+  border-radius: 9999px;
+  border-style: solid;
+  height: 20px;
+  width: 40px;
+  position: relative;
+  transition: background-color 150ms;
+  will-change: background-color;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  @mixin controlColors;
+
+  &:active:not([data-disabled]) $(el)__thumb {
+    width: 17px;
+    transform: translate(calc(0% + 3px), -50%);
+    left: 0%;
+  }
+
+  &[data-state="checked"] $(el)__thumb {
+    transform: translate(calc(-100% - 3px), -50%) !important;
+    left: 100% !important;
+  }
+
+  .windows & {
+    border-width: 1px; /* default */
+    // ToggleSwitch doesn't have a changing border-color when active (like f.e. checkbox has)
+    --border-active: var(
+      --dui-windows-stroke_color-control_strong_stroke-default
+    );
+  }
+
+  &__thumb {
+    background-color: currentcolor;
+    border-radius: 9999px;
+    display: block;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(calc(0% + 3px), -50%);
+    /* TODO: add animations according to spec */
+    transition: all 150ms;
+    width: 12px;
+    will-change: transform;
+
+    .windows & {
+      --fill: var(--dui-windows-fill_color-text-secondary);
+      --fill-thumb-checked: var(
+        --dui-windows-fill_color-text-on-accent-primary
+      );
+    }
+  }
+}

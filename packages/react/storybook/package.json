@@ -1,10 +1,10 @@
 {
-  "name": "storybook-host",
+  "name": "storybook-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "sleep 2 && storybook dev -p 6006",
+    "dev": "storybook dev -p 6007 --no-open",
     "build": "storybook build"
   },
   "dependencies": {

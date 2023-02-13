@@ -1,0 +1,9 @@
+{
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "dist/global-variables.css"
+  ]
+}

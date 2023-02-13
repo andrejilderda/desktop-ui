@@ -1,0 +1,68 @@
+/* 
+  can be used by at least:
+  - checkbox
+  - radio
+  - toggle 
+*/
+
+@define-mixin controlColors {
+  border-color: var(--border);
+  color: var(--symbol);
+  background-color: var(--fill);
+  outline: 2px solid var(--outline-color);
+  outline-offset: 1px;
+
+  .windows & {
+    /* unchecked state */
+    --border: var(--dui-windows-stroke_color-control_strong_stroke-default);
+    --symbol: var(--dui-windows-fill_color-text-secondary);
+    --fill: var(--dui-windows-fill_color-control_alt-secondary);
+    --outline-color: transparent;
+
+    &[disabled] {
+      --fill: var(--dui-windows-fill_color-control_alt-disabled);
+      --border: var(--dui-windows-stroke_color-control_strong_stroke-disabled);
+      --symbol: var(--dui-windows-fill_color-text-disabled);
+    }
+
+    &:hover:not([disabled]) {
+      --fill: var(--dui-windows-fill_color-control_alt-tertiary);
+    }
+
+    &:active:not([disabled]) {
+      --fill: var(--dui-windows-fill_color-control_alt-quarternary);
+      --border: var(--dui-windows-stroke_color-control_strong_stroke-disabled);
+      --symbol: var(--dui-windows-fill_color-text_on_accent-primary);
+    }
+
+    &:focus-visible {
+      --outline-color: var(--dui-windows-stroke_color-focus_stroke-outer);
+    }
+
+    /* checked state */
+    &[data-state="checked"],
+    &[data-state="indeterminate"] {
+      &[disabled] {
+        --fill: var(--dui-windows-fill_color-accent-disabled);
+        --border: transparent;
+        --symbol: var(--dui-windows-fill_color-text_on_accent-disabled);
+      }
+
+      &:not([disabled]) {
+        --fill: var(--dui-windows-fill_color-accent-default);
+        --border: transparent;
+        --symbol: var(--dui-windows-fill_color-text_on_accent-primary);
+      }
+
+      &:hover:not([disabled]) {
+        --fill: var(--dui-windows-fill_color-accent-secondary);
+      }
+
+      &:active:not([disabled]) {
+        --fill: var(--dui-windows-fill_color-accent-tertiary);
+        --symbol: var(--dui-windows-fill_color-text_on_accent-secondary);
+        --border: transparent;
+      }
+    }
+  }
+}
