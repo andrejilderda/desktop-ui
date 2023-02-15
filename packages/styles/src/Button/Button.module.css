@@ -7,7 +7,7 @@
   background-color: var(--fill);
   color: var(--text);
 
-  :global .windows & {
+  .windows & {
     box-shadow: inset 0px var(--elevation-y) 0px 0px var(--elevation-stroke),
       inset 0px 0px 0px 1px var(--stroke);
     outline-color: var(--dui-windows-stroke_color-focus_stroke-outer);

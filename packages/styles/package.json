@@ -8,7 +8,7 @@
     "dist/style.css"
   ],
   "scripts": {
-    "vite": "vite build",
+    "vite": "rm -rf dist && vite build --mode global && vite build",
     "dev": "storybook dev -p 6008 --no-open",
     "dev:css": "postcss src/index.css -o dist/styles.css -w",
     "dev:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css -w",

@@ -6,6 +6,9 @@ import { Button } from "./Button";
 const meta = {
   title: "Example/Button",
   component: Button,
+  render: (args) => {
+    return <div className={args.classNames}>Foo</div>;
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof Button>;
 
