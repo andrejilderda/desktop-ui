@@ -1,5 +1,5 @@
 {
-  "name": "styles",
+  "name": "@desktop-ui/styles",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -20,14 +20,16 @@
   "devDependencies": {
     "@csstools/postcss-design-tokens": "^2.0.2",
     "@daltontan/postcss-import-json": "^1.1.1",
-    "@storybook/addon-essentials": "^7.0.0-beta.47",
-    "@storybook/addon-interactions": "^7.0.0-beta.47",
-    "@storybook/addon-links": "^7.0.0-beta.47",
-    "@storybook/blocks": "^7.0.0-beta.47",
-    "@storybook/react": "^7.0.0-beta.47",
-    "@storybook/react-vite": "^7.0.0-beta.47",
+    "@storybook/addon-essentials": "^7.0.0-beta.50",
+    "@storybook/addon-interactions": "^7.0.0-beta.50",
+    "@storybook/addon-links": "^7.0.0-beta.50",
+    "@storybook/blocks": "^7.0.0-beta.50",
+    "@storybook/react": "^7.0.0-beta.50",
+    "@storybook/react-vite": "^7.0.0-beta.50",
     "@storybook/testing-library": "^0.0.14-next.1",
+    "clsx": "^1.2.1",
     "cssnano": "^5.1.14",
+    "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "postcss-dark-theme-class": "^0.7.3",
@@ -40,12 +42,9 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.0-beta.47",
+    "storybook": "^7.0.0-beta.50",
     "tsconfig": "workspace:*",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
-  },
-  "dependencies": {
-    "clsx": "^1.2.1"
   }
 }

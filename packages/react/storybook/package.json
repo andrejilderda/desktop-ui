@@ -12,18 +12,19 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.0-beta.47",
-    "@storybook/addon-interactions": "^7.0.0-beta.47",
-    "@storybook/addon-links": "^7.0.0-beta.47",
-    "@storybook/blocks": "^7.0.0-beta.47",
-    "@storybook/react": "^7.0.0-beta.47",
-    "@storybook/react-vite": "^7.0.0-beta.47",
+    "@storybook/addon-essentials": "^7.0.0-beta.50",
+    "@storybook/addon-interactions": "^7.0.0-beta.50",
+    "@storybook/addon-links": "^7.0.0-beta.50",
+    "@storybook/blocks": "^7.0.0-beta.50",
+    "@storybook/react": "^7.0.0-beta.50",
+    "@storybook/react-vite": "^7.0.0-beta.50",
     "@storybook/testing-library": "^0.0.14-next.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "prop-types": "^15.8.1",
-    "storybook": "^7.0.0-beta.47",
+    "storybook": "^7.0.0-beta.50",
+    "tsconfig": "workspace:*",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }
