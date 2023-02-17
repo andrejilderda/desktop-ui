@@ -5,6 +5,9 @@
   "files": [
     "base.json",
     "nextjs.json",
-    "react-component.json"
+    "react-component.json",
+    "storybook.json",
+    "styles.json",
+    "vite-config.json"
   ]
 }
