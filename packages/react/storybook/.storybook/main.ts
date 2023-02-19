@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     // matching files outside of the given directory:
     // https://github.com/storybookjs/storybook/issues/21031
     // This is a workaround for now.
-    "../../button/*.stories.@(js|jsx|ts|tsx)",
+    "../../button/src/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
