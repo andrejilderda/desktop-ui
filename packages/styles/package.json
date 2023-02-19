@@ -8,12 +8,12 @@
     "dist/style.css"
   ],
   "scripts": {
-    "vite": "vite build --mode global",
+    "vite": "vite build --mode module",
     "dev": "concurrently \"pnpm build:types --w\" \"pnpm storybook\"",
     "storybook": "storybook dev -p 6006",
     "dev:css": "postcss src/style.module.css -o dist/styles.css -w",
     "dev:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css -w",
-    "build": "rm -rf dist && pnpm build:types && vite build && vite build --mode global && storybook build",
+    "build": "rm -rf dist && pnpm build:types && vite build && vite build --mode module && storybook build",
     "build:css": "postcss src/style.module.css -o dist/styles.css",
     "build:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css",
     "build:types": "tcm src",

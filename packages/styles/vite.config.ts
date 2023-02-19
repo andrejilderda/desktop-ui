@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
 
   const scopeType: "global" | "module" =
     // eslint-disable-next-line turbo/no-undeclared-env-vars
-    (process.env.VITE_APP_SCOPE as "global" | undefined) || "global";
+    (process.env.VITE_APP_SCOPE as "module" | undefined) || "global";
 
   const relativeFilePaths = [...glob.sync("src/**/*.css")]
     // exclude files that start with an underscore (like Sass does)
