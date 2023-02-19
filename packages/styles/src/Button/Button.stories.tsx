@@ -1,27 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import styles from "./Button.module.css";
+import styles from "./button.module.css";
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
-import { Button } from "./Button";
+const mergeClasses = (...classes: (string | undefined)[]) =>
+  classes.filter(Boolean).join(" ");
 
-const meta = {
-  title: "Styles/Button",
-  component: Button,
-  tags: ["autodocs"],
-} satisfies Meta<typeof Button>;
-
-type Story = StoryObj<typeof meta>;
-
-export const Primary: Story = {
-  args: {
-    children: "Button",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    children: "Button",
-    classNames: styles.accent,
-  },
+const meta: Meta<{ className: string }> = {
+  title: "Button",
+  render: ({ className }) => html`<div class="${className}">Button</div>`,
 };
 
 export default meta;
+
+export const Default: StoryObj = {
+  args: {
+    className: styles.button,
+  },
+};
+
+export const Accent: StoryObj = {
+  args: {
+    className: mergeClasses(styles.button, styles.accent),
+  },
+};

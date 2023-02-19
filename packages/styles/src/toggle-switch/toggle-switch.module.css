@@ -26,7 +26,7 @@
 
   .windows & {
     border-width: 1px; /* default */
-    // ToggleSwitch doesn't have a changing border-color when active (like f.e. checkbox has)
+    /* ToggleSwitch doesn't have a changing border-color when active (like f.e. checkbox has) */
     --border-active: var(
       --dui-windows-stroke_color-control_strong_stroke-default
     );

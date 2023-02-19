@@ -1,20 +1,20 @@
-import React from "react";
-import "./../dist/global/global/global.css";
+import { html } from "lit-html";
+import "../src/global.module.css";
 
 export const parameters = {
   backgrounds: {
     default: "light",
   },
   actions: { argTypesRegex: "^on[A-Z].*" },
-  layout: "fullscreen",
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
   },
+  layout: "fullscreen",
 };
 
 export const decorators = [
-  (Story) => <div className="dui-theme windows">{Story()}</div>,
+  (Story) => html`<div class="dui-theme windows">${Story()}</div>`,
 ];

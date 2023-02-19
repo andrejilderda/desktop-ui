@@ -1,3 +1,4 @@
 {
-  "extends": "tsconfig/styles.json"
+  "extends": "tsconfig/styles.json",
+  "include": ["src"]
 }

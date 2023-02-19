@@ -8,13 +8,15 @@
     "dist/style.css"
   ],
   "scripts": {
-    "vite": "rm -rf dist && vite build --mode global && vite build",
-    "dev": "storybook dev -p 6008 --no-open",
-    "dev:css": "postcss src/index.css -o dist/styles.css -w",
+    "vite": "vite build --mode global",
+    "dev": "concurrently \"pnpm build:types --w\" \"pnpm storybook\"",
+    "storybook": "storybook dev -p 6006",
+    "dev:css": "postcss src/style.module.css -o dist/styles.css -w",
     "dev:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css -w",
-    "build": "tsc && vite build && storybook build",
-    "build:css": "postcss src/index.css -o dist/styles.css",
+    "build": "rm -rf dist && pnpm build:types && vite build && vite build --mode global && storybook build",
+    "build:css": "postcss src/style.module.css -o dist/styles.css",
     "build:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css",
+    "build:types": "tcm src",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -24,12 +26,14 @@
     "@storybook/addon-interactions": "^7.0.0-beta.50",
     "@storybook/addon-links": "^7.0.0-beta.50",
     "@storybook/blocks": "^7.0.0-beta.50",
-    "@storybook/react": "^7.0.0-beta.50",
-    "@storybook/react-vite": "^7.0.0-beta.50",
     "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/web-components": "^7.0.0-beta.50",
+    "@storybook/web-components-vite": "^7.0.0-beta.50",
     "clsx": "^1.2.1",
+    "concurrently": "^7.6.0",
     "cssnano": "^5.1.14",
     "eslint-config-custom": "workspace:*",
+    "lit": "^2.6.1",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "postcss-dark-theme-class": "^0.7.3",
@@ -44,7 +48,11 @@
     "react-dom": "^18.2.0",
     "storybook": "^7.0.0-beta.50",
     "tsconfig": "workspace:*",
+    "typed-css-modules": "^0.7.2",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "lit-html": "^2.6.1"
   }
 }
