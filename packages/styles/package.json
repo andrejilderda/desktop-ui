@@ -10,7 +10,7 @@
   "scripts": {
     "vite": "vite build --mode module",
     "dev": "concurrently \"pnpm build:types --w\" \"pnpm storybook\"",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6008",
     "dev:css": "postcss src/style.module.css -o dist/styles.css -w",
     "dev:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css -w",
     "build": "rm -rf dist && pnpm build:types && vite build && vite build --mode module && storybook build",
