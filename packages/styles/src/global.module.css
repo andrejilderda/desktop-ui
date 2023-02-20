@@ -5,8 +5,6 @@ body {
 
 .dui-theme {
   background: var(--dui-windows-background-fill_color-solid_background-base);
-  min-height: calc(100vh - 2rem);
-  padding: 1rem;
 
   &.windows {
     --dui-windows-font-family: "Segoe UI Variable", "Segoe UI", "Segoe UI Emoji",
