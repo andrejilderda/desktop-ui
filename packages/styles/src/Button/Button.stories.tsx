@@ -5,21 +5,42 @@ import { html } from "lit-html";
 const mergeClasses = (...classes: (string | undefined)[]) =>
   classes.filter(Boolean).join(" ");
 
-const meta: Meta<{ className: string }> = {
+type ButtonArgs = { className: string; disabled: boolean };
+
+const meta: Meta<ButtonArgs> = {
   title: "Button",
-  render: ({ className }) => html`<div class="${className}">Button</div>`,
+  render: ({ className, disabled }) =>
+    html`<div class="${className}" ?disabled=${disabled}>Button</div>`,
 };
 
 export default meta;
+type Story = StoryObj<ButtonArgs>;
 
-export const Default: StoryObj = {
+export const Default: Story = {
   args: {
     className: styles.button,
+    disabled: false,
   },
 };
 
-export const Accent: StoryObj = {
+export const DefaultDisabled: Story = {
   args: {
+    ...Default.args,
+    disabled: true,
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    ...Default.args,
     className: mergeClasses(styles.button, styles.accent),
+  },
+};
+
+export const AccentDisabled: Story = {
+  args: {
+    ...Default.args,
+    className: mergeClasses(styles.button, styles.accent),
+    disabled: true,
   },
 };
