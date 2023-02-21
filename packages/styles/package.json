@@ -3,21 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "files": [
-    "dist/global.css",
-    "dist/style.css"
-  ],
   "scripts": {
-    "vite": "vite build --mode module",
+    "build:types": "tcm -o src dist/global",
+    "build": "rm -rf dist && vite build && vite build --mode module && storybook build  && pnpm build:types",
     "dev": "concurrently \"pnpm build:types --w\" \"pnpm storybook\"",
+    "preview": "vite preview",
     "storybook": "storybook dev -p 6008",
-    "dev:css": "postcss src/style.module.css -o dist/styles.css -w",
-    "dev:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css -w",
-    "build": "rm -rf dist && pnpm build:types && vite build && vite build --mode module && storybook build",
-    "build:css": "postcss src/style.module.css -o dist/styles.css",
-    "build:css:globalVars": "postcss src/global-variables.css -o dist/global-variables.css",
-    "build:types": "tcm src",
-    "preview": "vite preview"
+    "vite": "vite build --mode module"
   },
   "devDependencies": {
     "@csstools/postcss-design-tokens": "^2.0.2",

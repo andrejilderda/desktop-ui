@@ -15,13 +15,13 @@ body {
     color: var(--dui-text-primary);
 
     &:not(.dui-dark) {
-      @import-json './tokens/windows/base.json';
-      @import-json './tokens/windows/light.json';
+      @import-json './../tokens/windows/base.json';
+      @import-json './../tokens/windows/light.json';
     }
 
     @media (prefers-color-scheme: dark) {
-      @import-json './tokens/windows/base.json';
-      @import-json './tokens/windows/dark.json';
+      @import-json './../tokens/windows/base.json';
+      @import-json './../tokens/windows/dark.json';
     }
   }
 }

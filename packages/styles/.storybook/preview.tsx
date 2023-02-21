@@ -1,7 +1,7 @@
 import { html } from "lit-html";
 import clsx from "clsx";
 import { GlobalTypes, DecoratorFunction, Parameters } from "@storybook/types";
-import "../src/global.module.css";
+import "../src/global/global.module.css";
 import "./storybook-styles.css";
 
 export const parameters: Parameters = {

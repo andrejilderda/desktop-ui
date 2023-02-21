@@ -53,8 +53,8 @@ export default defineConfig(({ mode }) => {
         input,
         output: {
           assetFileNames: ({ name }) => {
-            const fileName =
-              scopeType === "global" ? name?.replace(/\.module/g, "") : name;
+            const fileName = name;
+            // scopeType === "global" ? name?.replace(/\.module/g, "") : name;
             const folderName = `${name?.replace(/(\.module)*.css/g, "")}`;
 
             // put CSS files in the same directory as their js-files (for modules)
