@@ -23,7 +23,9 @@
     --elevation-y: -1px;
 
     @media (prefers-color-scheme: dark) {
-      --elevation-y: 1px;
+      .dui-theme& {
+        --elevation-y: 1px;
+      }
     }
 
     &[disabled] {
