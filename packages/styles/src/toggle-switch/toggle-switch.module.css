@@ -4,8 +4,8 @@
   all: unset;
   border-radius: 9999px;
   border-style: solid;
-  height: 20px;
-  width: 40px;
+  height: 18px;
+  width: 38px;
   position: relative;
   transition: background-color 150ms;
   will-change: background-color;
@@ -13,7 +13,7 @@
 
   @mixin controlColors;
 
-  &:active:not([data-disabled]) $(el)__thumb {
+  &:active:not([disabled]) $(el)__thumb {
     width: 17px;
     transform: translate(calc(0% + 3px), -50%);
     left: 0%;
@@ -26,14 +26,28 @@
 
   .windows & {
     border-width: 1px; /* default */
-    /* ToggleSwitch doesn't have a changing border-color when active (like f.e. checkbox has) */
-    --border-active: var(
-      --dui-windows-stroke_color-control_strong_stroke-default
-    );
+
+    &:active:not([disabled]) {
+      /* ToggleSwitch doesn't have a changing border-color when active (like f.e. checkbox has) */
+      --border: var(--dui-windows-stroke_color-control_strong_stroke-default);
+      --symbol: var(--dui-windows-fill_color-text-secondary);
+    }
+
+    &[data-state="checked"] {
+      .dui-light& {
+        /* TODO: add token for light-elevation-circle (= gradient) */
+        --thumb-border: rgba(0, 0, 0, 0.1);
+      }
+
+      &:active:not([disabled]) {
+        --symbol: var(--dui-windows-fill_color-text_on_accent-primary);
+      }
+    }
   }
 
   &__thumb {
-    background-color: currentcolor;
+    background-color: currentColor;
+    box-shadow: 0 0 0 1px var(--thumb-border, transparent);
     border-radius: 9999px;
     display: block;
     height: 12px;
@@ -45,12 +59,5 @@
     transition: all 150ms;
     width: 12px;
     will-change: transform;
-
-    .windows & {
-      --fill: var(--dui-windows-fill_color-text-secondary);
-      --fill-thumb-checked: var(
-        --dui-windows-fill_color-text-on-accent-primary
-      );
-    }
   }
 }
