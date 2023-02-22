@@ -1,0 +1,39 @@
+{<%
+  // Note: maybe in the future we can support this using 'mix-blend-mode'
+  const propHasValidBlendMode = (prop) => prop.blendMode === 'normal';
+  // if the last path item is a number this means that we have multiple colors
+  // for the same property. In the future we may want to merge the colors, but
+  // since we don't have a use case for this yet (the only values that have
+  // multiple colors are the ones with invalid blend modes), we'll just ignore
+  // them for now.
+  const propHasSingleColor = (prop) => _.isNaN(Number(prop.path[prop.path.length - 1]));
+
+  // partition the properties into two groups: one with valid properties (valid
+  // blend modes & only a single color) and one with invalid properties
+  const partitionedProperties = _.partition(allProperties, (prop) => propHasValidBlendMode(prop) && propHasSingleColor(prop));
+  const validProperties = partitionedProperties[0];
+  const invalidProperties = partitionedProperties[1];
+
+  _.each(validProperties, function ({name, value, blendMode, ...prop}, index) {
+      const comma = `${index < allProperties.length - 1 ? "," : ""}`;
+      const line = `\n  "${name}": "${value}"${comma}`;
+
+      print(line);
+  });
+
+  // print a warning for each invalid property
+  _.each(invalidProperties, function ({ name, blendMode, ...prop }) {
+    if (blendMode !== 'normal') {
+      console.log(`Ignored property '${name}'. Reason: invalid blendMode '${blendMode}'`)
+      return
+    }
+    else if (!propHasSingleColor(prop)) {
+      console.log(`Ignored property '${name}'. Reason: name ends with a number, indicating that there are multiple colors for the same property.`);
+      return;
+    }
+
+    // this should never happen
+    throw new Error('Invalid properties found. See console for details.')
+  });
+%>
+}

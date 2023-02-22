@@ -1,0 +1,19 @@
+{
+  "name": "@desktop-ui/tokens",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "fetch-tokens": "style-dictionary build",
+    "build": "sh ./src/macos/build-macos-color-tokens.sh && ts-node ./src/style-dictionary/build.ts",
+    "build:macos-tokens": "sh ./src/macos/build-macos-color-tokens.sh"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.0",
+    "jsdom": "^21.1.0",
+    "lodash": "^4.17.21",
+    "node-fetch": "^3.3.0",
+    "style-dictionary": "^3.7.2",
+    "tsconfig": "workspace:*",
+    "ts-node": "^10.9.1"
+  }
+}

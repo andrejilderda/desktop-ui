@@ -1,0 +1,330 @@
+{
+  "light": {
+    "systemRedColor": {
+      "value": "rgb(255, 59, 48)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(255, 149, 0)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(255, 204, 0)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(40, 205, 65)"
+    },
+    "systemMintColor": {
+      "value": "rgb(0, 199, 190)"
+    },
+    "systemTealColor": {
+      "value": "rgb(89, 173, 196)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(85, 190, 240)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(0, 122, 255)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(88, 86, 214)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(175, 82, 222)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(255, 45, 85)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(162, 132, 94)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(142, 142, 147)"
+    }
+  },
+  "dark": {
+    "systemRedColor": {
+      "value": "rgb(255, 69, 58)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(255, 159, 10)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(255, 214, 10)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(50, 215, 75)"
+    },
+    "systemMintColor": {
+      "value": "rgb(102, 212, 207)"
+    },
+    "systemTealColor": {
+      "value": "rgb(106, 196, 220)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(90, 200, 245)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(10, 132, 255)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(94, 92, 230)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(191, 90, 242)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(255, 55, 95)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(172, 142, 104)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(152, 152, 157)"
+    }
+  },
+  "vibrant-light": {
+    "systemRedColor": {
+      "value": "rgb(255, 49, 38)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(245, 139, 0)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(245, 194, 0)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(30, 195, 55)"
+    },
+    "systemMintColor": {
+      "value": "rgb(0, 189, 180)"
+    },
+    "systemTealColor": {
+      "value": "rgb(46, 167, 189)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(65, 175, 220)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(0, 112, 245)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(84, 82, 204)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(159, 75, 201)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(245, 35, 75)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(152, 122, 84)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(132, 132, 137)"
+    }
+  },
+  "vibrant-dark": {
+    "systemRedColor": {
+      "value": "rgb(255, 79, 68)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(255, 169, 20)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(255, 224, 20)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(60, 225, 85)"
+    },
+    "systemMintColor": {
+      "value": "rgb(108, 224, 219)"
+    },
+    "systemTealColor": {
+      "value": "rgb(68, 212, 237)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(90, 205, 250)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(20, 142, 255)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(99, 97, 242)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(204, 101, 255)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(255, 65, 105)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(182, 152, 114)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(162, 162, 167)"
+    }
+  },
+  "accessible-light": {
+    "systemRedColor": {
+      "value": "rgb(215, 0, 21)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(201, 52, 0)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(160, 90, 0)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(0, 125, 27)"
+    },
+    "systemMintColor": {
+      "value": "rgb(12, 129, 123)"
+    },
+    "systemTealColor": {
+      "value": "rgb(0, 130, 153)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(0, 113, 164)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(0, 64, 221)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(54, 52, 163)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(173, 68, 171)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(211, 15, 69)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(127, 101, 69)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(105, 105, 110)"
+    }
+  },
+  "accessible-dark": {
+    "systemRedColor": {
+      "value": "rgb(255, 105, 97)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(255, 179, 64)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(255, 212, 38)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(49, 222, 75)"
+    },
+    "systemMintColor": {
+      "value": "rgb(102, 212, 207)"
+    },
+    "systemTealColor": {
+      "value": "rgb(93, 230, 255)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(112, 215, 255)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(64, 156, 255)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(125, 122, 255)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(218, 143, 255)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(255, 100, 130)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(181, 148, 105)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(152, 152, 157)"
+    }
+  },
+  "accessible-vibrant-light": {
+    "systemRedColor": {
+      "value": "rgb(194, 6, 24)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(173, 58, 0)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(146, 81, 0)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(0, 112, 24)"
+    },
+    "systemMintColor": {
+      "value": "rgb(11, 117, 112)"
+    },
+    "systemTealColor": {
+      "value": "rgb(0, 119, 140)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(0, 103, 150)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(0, 64, 221)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(54, 52, 163)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(173, 68, 171)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(193, 16, 50)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(119, 93, 59)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(97, 97, 101)"
+    }
+  },
+  "accessible-vibrant-dark": {
+    "systemRedColor": {
+      "value": "rgb(255, 65, 54)"
+    },
+    "systemOrangeColor": {
+      "value": "rgb(255, 179, 64)"
+    },
+    "systemYellowColor": {
+      "value": "rgb(255, 212, 38)"
+    },
+    "systemGreenColor": {
+      "value": "rgb(49, 222, 75)"
+    },
+    "systemMintColor": {
+      "value": "rgb(102, 212, 207)"
+    },
+    "systemTealColor": {
+      "value": "rgb(93, 230, 255)"
+    },
+    "systemCyanColor": {
+      "value": "rgb(112, 215, 255)"
+    },
+    "systemBlueColor": {
+      "value": "rgb(64, 156, 255)"
+    },
+    "systemIndigoColor": {
+      "value": "rgb(125, 122, 255)"
+    },
+    "systemPurpleColor": {
+      "value": "rgb(218, 143, 255)"
+    },
+    "systemPinkColor": {
+      "value": "rgb(255, 58, 95)"
+    },
+    "systemBrownColor": {
+      "value": "rgb(181, 148, 105)"
+    },
+    "systemGrayColor": {
+      "value": "rgb(152, 152, 157)"
+    }
+  }
+}
