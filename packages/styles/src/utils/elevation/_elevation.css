@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.circle {
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 140px;
+  width: 140px;
+}
+
+.elevation-0 {
+  @mixin windows-elevation 0;
+}
+
+.elevation-2 {
+  @mixin windows-elevation 2;
+}
+
+.elevation-8 {
+  @mixin windows-elevation 8;
+}
+
+.elevation-16 {
+  @mixin windows-elevation 16;
+}
+
+.elevation-32 {
+  @mixin windows-elevation 32;
+}
+
+.elevation-128 {
+  @mixin windows-elevation 128;
+}
