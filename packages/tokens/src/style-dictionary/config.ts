@@ -1,20 +1,51 @@
-import StyleDictionary from "style-dictionary";
+import StyleDictionary, { Config } from "style-dictionary";
+import { createFilter } from "./helpers/createFilter";
+import { filterBy } from "./helpers/filterBy";
+import registerTransforms from "./transforms";
 
-const createFilter = (name, key) => {
-  StyleDictionary.registerFilter({
-    name,
-    matcher: function (prop) {
-      return prop.type === "color" && prop.attributes.type === key;
-    },
-  });
+registerTransforms();
 
-  // Style Dictionary uses the name of the filter as a reference
-  return name;
-};
+// create custom transform groups that extends the default CSS & JSON ones
+StyleDictionary.registerTransformGroup({
+  name: "custom/css",
+  transforms: StyleDictionary.transformGroup["css"].concat([
+    "shadow/css",
+    "custom/transformName",
+  ]),
+});
 
-const config = {
+StyleDictionary.registerTransformGroup({
+  name: "custom/json",
+  transforms: StyleDictionary.transformGroup["web"].concat(["shadow/css"]),
+});
+
+const filterColorProps = filterBy("colors", (prop) => prop.type === "color");
+const filterColorAndShadowProps = filterBy(
+  "colorAndShadows",
+  (prop) => prop.type === "color" || prop.type === "custom-shadow"
+);
+
+// setup the custom output formats
+// We want it to split by light & dark colors
+const config: Config = {
   source: ["src/tokens/**/*.json"],
   platforms: {
+    css: {
+      buildPath: "build/",
+      transformGroup: "custom/css",
+      files: [
+        {
+          format: "css/variables",
+          destination: "variables-light.css",
+          filter: filterColorAndShadowProps.light,
+        },
+        {
+          format: "css/variables",
+          destination: "variables-dark.css",
+          filter: filterColorAndShadowProps.dark,
+        },
+      ],
+    },
     json: {
       transformGroup: "custom/json",
       buildPath: "build/",
@@ -22,17 +53,21 @@ const config = {
         {
           destination: "light.json",
           format: "custom/format/merge-multiple-colors",
-          filter: createFilter("custom/lightColors", "light"),
+          filter: filterColorProps.light,
         },
         {
           destination: "dark.json",
           format: "json/flat",
-          filter: createFilter("custom/darkColors", "dark"),
+          filter: filterColorProps.dark,
         },
         {
-          destination: "contrast.json",
+          destination: "effect.json",
           format: "json/flat",
-          filter: createFilter("custom/contrastColors", "contrast"),
+          filter: createFilter(
+            "custom-shadow/light",
+            (prop) =>
+              prop.type === "custom-shadow" && prop.attributes?.type === "light"
+          ),
         },
       ],
     },

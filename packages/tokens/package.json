@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "dev": "chokidar \"src/**/*\" -c \"npm run build:style-dictionary\"",
     "fetch-tokens": "style-dictionary build",
-    "build": "sh ./src/macos/build-macos-color-tokens.sh && ts-node ./src/style-dictionary/build.ts",
-    "build:macos-tokens": "sh ./src/macos/build-macos-color-tokens.sh"
+    "build": "pnpm build:macos-tokens && pnpm build:style-dictionary",
+    "build:macos-tokens": "sh ./src/macos/build-macos-color-tokens.sh",
+    "build:style-dictionary": "ts-node ./src/style-dictionary/build.ts"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.0",
+    "@types/tinycolor": "^1.1.27",
+    "chokidar-cli": "^3.0.0",
     "jsdom": "^21.1.0",
     "lodash": "^4.17.21",
     "node-fetch": "^3.3.0",
     "style-dictionary": "^3.7.2",
-    "tsconfig": "workspace:*",
-    "ts-node": "^10.9.1"
+    "tinycolor2": "^1.6.0",
+    "ts-node": "^10.9.1",
+    "tsconfig": "workspace:*"
   }
 }

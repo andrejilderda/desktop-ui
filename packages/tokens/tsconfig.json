@@ -2,8 +2,7 @@
   "extends": "tsconfig/base.json",
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ESNext",
-    "strict": false
+    "target": "ESNext"
   },
   "ts-node": {
     "esm": true,
