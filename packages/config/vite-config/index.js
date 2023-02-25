@@ -5,6 +5,7 @@ const cssInjectedByJsPlugin = require("vite-plugin-css-injected-by-js").default;
 const react = require("@vitejs/plugin-react").default;
 const dts = require("vite-plugin-dts");
 const { defineConfig } = require("vite");
+const { getCssModulesConfig } = require("./get-css-modules-config");
 
 const createViteConfig = ({
   name, // @desktop-ui/react-<component>
@@ -37,4 +38,4 @@ const createViteConfig = ({
     },
   });
 
-module.exports = { createViteConfig };
+module.exports = { createViteConfig, getCssModulesConfig };
