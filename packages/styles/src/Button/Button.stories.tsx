@@ -9,8 +9,9 @@ type ButtonArgs = { className: string; disabled: boolean };
 
 const meta: Meta<ButtonArgs> = {
   title: "Button",
+  tags: ["autodocs"],
   render: ({ className, disabled }) =>
-    html`<div class="${className}" ?disabled=${disabled}>Button</div>`,
+    html`<button class="${className}" ?disabled=${disabled}>Button</button>`,
 };
 
 export default meta;

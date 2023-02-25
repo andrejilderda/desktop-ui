@@ -8,6 +8,7 @@ type ElevationArgs = {
 
 const meta: Meta<ElevationArgs> = {
   title: "Elevation",
+  tags: ["autodocs"],
   render: ({ elevation }) =>
     html`<div>
       <div class="circle elevation-${elevation}" />

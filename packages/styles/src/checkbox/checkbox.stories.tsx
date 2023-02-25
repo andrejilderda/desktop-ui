@@ -6,6 +6,7 @@ type CheckboxArgs = { checked: boolean | "indeterminate"; disabled: boolean };
 
 const meta: Meta<CheckboxArgs> = {
   title: "Checkbox",
+  tags: ["autodocs"],
   render: ({ checked, disabled }) =>
     html`<div class="${styles.checkbox}">
       <!-- zero-width space character for aligning the label to the checkbox properly -->

@@ -9,6 +9,7 @@ type ToggleSwitchArgs = {
 
 const meta: Meta<ToggleSwitchArgs> = {
   title: "ToggleSwitch",
+  tags: ["autodocs"],
   render: ({ checked, disabled }) =>
     html`
       <button
