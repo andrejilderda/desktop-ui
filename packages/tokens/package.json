@@ -1,9 +1,10 @@
 {
   "name": "@desktop-ui/tokens",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "chokidar \"src/**/*\" -c \"npm run build:style-dictionary\"",
+    "dev": "chokidar \"src/**/*\" -c \"rm -rf build && pnpm build:style-dictionary\"",
     "fetch-tokens": "style-dictionary build",
     "build": "pnpm build:macos-tokens && pnpm build:style-dictionary",
     "build:macos-tokens": "sh ./src/macos/build-macos-color-tokens.sh",

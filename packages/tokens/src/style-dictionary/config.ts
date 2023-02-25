@@ -1,8 +1,11 @@
-import StyleDictionary, { Config } from "style-dictionary";
-import { createFilter } from "./helpers/createFilter";
+import __ from "lodash/fp";
+import StyleDictionary, { Config, TransformedToken } from "style-dictionary";
+import { filterUnusualBlendModes } from "./filters/unusualBlendModes";
 import { filterBy } from "./helpers/filterBy";
 import registerTransforms from "./transforms";
+import registerFormatters from "./formatters";
 
+registerFormatters();
 registerTransforms();
 
 // create custom transform groups that extends the default CSS & JSON ones
@@ -19,9 +22,8 @@ StyleDictionary.registerTransformGroup({
   transforms: StyleDictionary.transformGroup["web"].concat(["shadow/css"]),
 });
 
-const filterColorProps = filterBy("colors", (prop) => prop.type === "color");
+const filterColorProps = filterBy((prop) => prop.type === "color");
 const filterColorAndShadowProps = filterBy(
-  "colorAndShadows",
   (prop) => prop.type === "color" || prop.type === "custom-shadow"
 );
 
@@ -31,24 +33,45 @@ const config: Config = {
   source: ["src/tokens/**/*.json"],
   platforms: {
     css: {
-      buildPath: "build/",
+      buildPath: "build/css/",
       transformGroup: "custom/css",
       files: [
         {
           format: "css/variables",
           destination: "variables-light.css",
           filter: filterColorAndShadowProps.light,
+          options: {
+            selector: "&",
+          },
         },
         {
           format: "css/variables",
           destination: "variables-dark.css",
           filter: filterColorAndShadowProps.dark,
+          options: {
+            selector: "&",
+          },
+        },
+      ],
+    },
+    js: {
+      transformGroup: "js",
+      buildPath: "build/js/",
+      files: [
+        {
+          format: "custom/format/es6-color-variables",
+          destination: "colors.js",
+          filter: {
+            attributes: {
+              category: "color",
+            },
+          },
         },
       ],
     },
     json: {
       transformGroup: "custom/json",
-      buildPath: "build/",
+      buildPath: "build/json/",
       files: [
         {
           destination: "light.json",
@@ -58,16 +81,14 @@ const config: Config = {
         {
           destination: "dark.json",
           format: "json/flat",
-          filter: filterColorProps.dark,
+          filter: (prop) =>
+            filterColorProps.dark(prop) && filterUnusualBlendModes(prop),
         },
         {
           destination: "effect.json",
           format: "json/flat",
-          filter: createFilter(
-            "custom-shadow/light",
-            (prop) =>
-              prop.type === "custom-shadow" && prop.attributes?.type === "light"
-          ),
+          filter: (prop: TransformedToken) =>
+            prop.type === "custom-shadow" && prop.attributes?.type === "light",
         },
       ],
     },

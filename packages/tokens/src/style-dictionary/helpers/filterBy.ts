@@ -1,15 +1,10 @@
-import { Matcher } from "style-dictionary";
-import { createFilter } from "./createFilter";
+import { Matcher, TransformedToken } from "style-dictionary";
 
-export const filterBy = (property: string, matcher: Matcher = () => true) => {
+export const filterBy = (matcher: Matcher = () => true) => {
   return {
-    light: createFilter(
-      `light/${property}`,
-      (prop) => prop.attributes?.type === "light" && matcher(prop)
-    ),
-    dark: createFilter(
-      `dark/${property}`,
-      (prop) => prop.attributes?.type === "dark" && matcher(prop)
-    ),
+    light: (prop: TransformedToken) =>
+      prop?.attributes?.type === "light" && matcher(prop),
+    dark: (prop: TransformedToken) =>
+      prop?.attributes?.type === "dark" && matcher(prop),
   };
 };
