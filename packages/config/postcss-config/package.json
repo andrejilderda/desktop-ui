@@ -1,0 +1,20 @@
+{
+  "name": "@desktop-ui/postcss-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@daltontan/postcss-import-json": "^1.1.1",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "postcss-dark-theme-class": "^0.7.3",
+    "postcss-import": "^15.1.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.0",
+    "postcss-preset-env": "^8.0.1",
+    "postcss-scss": "^4.0.6",
+    "postcss-simple-vars": "^7.0.1",
+    "vite": "^4.0.0"
+  }
+}

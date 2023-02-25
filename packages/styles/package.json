@@ -1,18 +1,21 @@
 {
   "name": "@desktop-ui/styles",
-  "private": true,
   "version": "0.0.0",
+  "private": false,
   "type": "module",
   "scripts": {
     "build:types": "tcm -o src dist/global",
     "build": "rm -rf dist && vite build && vite build --mode module && storybook build  && pnpm build:types",
     "dev": "concurrently \"pnpm build:types --w\" \"pnpm storybook\"",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6008",
+    "storybook": "storybook dev -p 6008 --no-open",
     "vite": "vite build --mode module"
   },
   "devDependencies": {
-    "@csstools/postcss-design-tokens": "^2.0.2",
+    "@desktop-ui/postcss-config": "workspace:*",
+    "@desktop-ui/storybook-config": "workspace:*",
+    "@desktop-ui/tokens": "workspace:*",
+    "@desktop-ui/vite-config": "workspace:*",
     "@daltontan/postcss-import-json": "^1.1.1",
     "@storybook/addon-essentials": "^7.0.0-beta.50",
     "@storybook/addon-interactions": "^7.0.0-beta.50",

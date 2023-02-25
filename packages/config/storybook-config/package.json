@@ -1,0 +1,9 @@
+{
+  "name": "@desktop-ui/storybook-config",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@storybook/types": "^7.0.0-beta.54",
+    "tsconfig": "workspace:*"
+  }
+}

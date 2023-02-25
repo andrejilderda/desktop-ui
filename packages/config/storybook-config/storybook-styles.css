@@ -1,0 +1,50 @@
+html,
+body.sb-main-fullscreen {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  #storybook-root,
+  #root-inner {
+    height: 100%;
+  }
+}
+
+.story-preview {
+  display: flex;
+  height: 100%;
+  min-width: 100%;
+
+  // cover the background of the story with the theme background
+  .dui-theme {
+    min-height: 100%;
+    min-width: 100%;
+  }
+
+  .story-wrapper {
+    padding: 1rem;
+  }
+
+  &--side-by-side,
+  &--stacked {
+    > .dui-theme {
+      flex: 1;
+      min-height: 0;
+      min-width: 0;
+    }
+  }
+
+  &--stacked {
+    flex-direction: column;
+
+    > .dui-theme {
+      display: flex;
+      width: 100%;
+
+      .story-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
