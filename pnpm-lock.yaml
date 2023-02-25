@@ -8,7 +8,7 @@ importers:
       prettier: latest
       turbo: latest
     devDependencies:
-      eslint-config-custom: link:packages/eslint-config-custom
+      eslint-config-custom: link:packages/config/eslint-config-custom
       prettier: 2.8.4
       turbo: 1.8.2
 
@@ -45,10 +45,10 @@ importers:
       '@types/react-dom': 18.0.10
       autoprefixer: 10.4.13_postcss@8.4.21
       eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
+      eslint-config-custom: link:../../packages/config/eslint-config-custom
       postcss: 8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
-      tsconfig: link:../../packages/tsconfig
+      tsconfig: link:../../packages/config/tsconfig
       typescript: 4.9.5
 
   apps/storybook-host:
@@ -86,7 +86,7 @@ importers:
       '@vitejs/plugin-react': 3.1.0_vite@4.1.1
       prop-types: 15.8.1
       storybook: 7.0.0-beta.50
-      tsconfig: link:../../packages/tsconfig
+      tsconfig: link:../../packages/config/tsconfig
       typescript: 4.9.5
       vite: 4.1.1
 
@@ -115,11 +115,11 @@ importers:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
+      eslint-config-custom: link:../../packages/config/eslint-config-custom
+      tsconfig: link:../../packages/config/tsconfig
       typescript: 4.9.5
 
-  packages/create-vite-config:
+  packages/config/create-vite-config:
     specifiers:
       '@vitejs/plugin-react': ^3.1.0
       tsconfig: workspace:*
@@ -137,7 +137,7 @@ importers:
       vite-plugin-css-injected-by-js: 3.0.1_vite@4.1.1
       vite-plugin-dts: 1.7.2_vite@4.1.1
 
-  packages/eslint-config-custom:
+  packages/config/eslint-config-custom:
     specifiers:
       eslint: ^7.23.0
       eslint-config-next: 13.0.0
@@ -153,6 +153,9 @@ importers:
       eslint-plugin-react: 7.31.8_eslint@7.32.0
     devDependencies:
       typescript: 4.9.5
+
+  packages/config/tsconfig:
+    specifiers: {}
 
   packages/react/button:
     specifiers:
@@ -170,16 +173,17 @@ importers:
       '@desktop-ui/styles': link:../../styles
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
-      create-vite-config: link:../../create-vite-config
+      create-vite-config: link:../../config/create-vite-config
       eslint: 7.32.0
-      eslint-config-custom: link:../../eslint-config-custom
+      eslint-config-custom: link:../../config/eslint-config-custom
       react: 18.2.0
-      tsconfig: link:../../tsconfig
+      tsconfig: link:../../config/tsconfig
       typescript: 4.9.5
       vite: 4.1.1
 
   packages/react/storybook:
     specifiers:
+      '@desktop-ui/styles': workspace:*
       '@storybook/addon-essentials': ^7.0.0-beta.50
       '@storybook/addon-interactions': ^7.0.0-beta.50
       '@storybook/addon-links': ^7.0.0-beta.50
@@ -201,6 +205,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@desktop-ui/styles': link:../../styles
       '@storybook/addon-essentials': 7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-interactions': 7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-links': 7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y
@@ -213,14 +218,13 @@ importers:
       '@vitejs/plugin-react': 3.1.0_vite@4.1.1
       prop-types: 15.8.1
       storybook: 7.0.0-beta.50
-      tsconfig: link:../../tsconfig
+      tsconfig: link:../../config/tsconfig
       typescript: 4.9.5
       vite: 4.1.1
 
   packages/styles:
     specifiers:
-      '@csstools/postcss-design-tokens': ^2.0.2
-      '@daltontan/postcss-import-json': ^1.1.1
+      '@desktop-ui/tokens': workspace:*
       '@storybook/addon-essentials': ^7.0.0-beta.50
       '@storybook/addon-interactions': ^7.0.0-beta.50
       '@storybook/addon-links': ^7.0.0-beta.50
@@ -254,8 +258,7 @@ importers:
     dependencies:
       lit-html: 2.6.1
     devDependencies:
-      '@csstools/postcss-design-tokens': 2.0.2_postcss@8.4.21
-      '@daltontan/postcss-import-json': 1.1.1
+      '@desktop-ui/tokens': link:../tokens
       '@storybook/addon-essentials': 7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-interactions': 7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-links': 7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y
@@ -266,7 +269,7 @@ importers:
       clsx: 1.2.1
       concurrently: 7.6.0
       cssnano: 5.1.14_postcss@8.4.21
-      eslint-config-custom: link:../eslint-config-custom
+      eslint-config-custom: link:../config/eslint-config-custom
       lit: 2.6.1
       postcss: 8.4.21
       postcss-cli: 10.1.0_postcss@8.4.21
@@ -281,7 +284,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       storybook: 7.0.0-beta.50
-      tsconfig: link:../tsconfig
+      tsconfig: link:../config/tsconfig
       typed-css-modules: 0.7.2
       typescript: 4.9.5
       vite: 4.1.1
@@ -308,10 +311,7 @@ importers:
       style-dictionary: 3.7.2
       tinycolor2: 1.6.0
       ts-node: 10.9.1_cin3sed6ohfsopbmt6orxeb4o4
-      tsconfig: link:../tsconfig
-
-  packages/tsconfig:
-    specifiers: {}
+      tsconfig: link:../config/tsconfig
 
 packages:
 
@@ -1672,18 +1672,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /@csstools/postcss-design-tokens/2.0.2_postcss@8.4.21:
-    resolution: {integrity: sha512-lRBCCN026R4VusrZExipi6vhCkCvy17nPnvMQ7+jOoEEsHOfq9ay02+oCuiV130SKvnztlfp3gg+F/tPFRtz7g==}
-    engines: {node: ^14 || ^16 || >=18}
-    peerDependencies:
-      postcss: ^8.4
-    dependencies:
-      '@csstools/css-parser-algorithms': 2.0.1_xu4ijqbgbw3jz65fprqzqcck3y
-      '@csstools/css-tokenizer': 2.0.2
-      postcss: 8.4.21
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /@csstools/postcss-font-format-keywords/2.0.2_postcss@8.4.21:
     resolution: {integrity: sha512-iKYZlIs6JsNT7NKyRjyIyezTCHLh4L4BBB3F5Nx7Dc4Z/QmBgX+YJFuUSar8IM6KclGiAUFGomXFdYxAwJydlA==}
     engines: {node: ^14 || ^16 || >=18}
@@ -1869,10 +1857,6 @@ packages:
     dependencies:
       postcss: 8.4.21
       postcss-selector-parser: 6.0.11
-    dev: true
-
-  /@daltontan/postcss-import-json/1.1.1:
-    resolution: {integrity: sha512-O00tu73ApgCIQeQ/P+Wm0Vysinq/YRL4rHsx0O42StdFs9MXnQtzpZw0C37CCg+bxBadwKlZowRy0sf4MTMeeA==}
     dev: true
 
   /@discoveryjs/json-ext/0.5.7:
@@ -3099,12 +3083,12 @@ packages:
       telejson: 7.0.4
     dev: true
 
-  /@storybook/channel-postmessage/7.0.0-beta.53:
-    resolution: {integrity: sha512-uul+krJ9BNoCc4HhedYDIrhVgLgzZqvus0QEBgomwDbF9nmd4pKdU7Ri8zmNx8KCG6G7iGc8+XDGd2VVuGHgvw==}
+  /@storybook/channel-postmessage/7.0.0-beta.54:
+    resolution: {integrity: sha512-oipGp65i2D6vidZ6xBTEvXtmOstyc2pvjduz7iKGksfz06vEuev5U3pJCMXbtVM3Sch18FeF6MZ7OBc/udNdFQ==}
     dependencies:
-      '@storybook/channels': 7.0.0-beta.53
-      '@storybook/client-logger': 7.0.0-beta.53
-      '@storybook/core-events': 7.0.0-beta.53
+      '@storybook/channels': 7.0.0-beta.54
+      '@storybook/client-logger': 7.0.0-beta.54
+      '@storybook/core-events': 7.0.0-beta.54
       '@storybook/global': 5.0.0
       qs: 6.11.0
       telejson: 7.0.4
@@ -3123,8 +3107,8 @@ packages:
     resolution: {integrity: sha512-Apq2SEbhvBlh70VVyL4+X7Nwk+t6ABbkkFRtCtA5+cgXcACyArC0ycmn/xqypttjnk5tYkf1PjzEHqS6bLpo8A==}
     dev: true
 
-  /@storybook/channels/7.0.0-beta.53:
-    resolution: {integrity: sha512-UnMRoVzUe1jUnlcbraSLjFA3B+Nmui6S2ShNr/9Hc7vcOyFisJuFK7HDqTRS8Z6kvHFa7mVMoZ+LHTPJd5WkEA==}
+  /@storybook/channels/7.0.0-beta.54:
+    resolution: {integrity: sha512-CXV3koGjshDZvRrQ4Ck44vBbarMVtiFW9MeBrXaCW7/dElKTYEH8WBiGkqHuna9Pio5ZlVDGVzxn9JqN5J6bKA==}
     dev: true
 
   /@storybook/cli/7.0.0-beta.50:
@@ -3181,8 +3165,8 @@ packages:
       '@storybook/global': 5.0.0
     dev: true
 
-  /@storybook/client-logger/7.0.0-beta.53:
-    resolution: {integrity: sha512-xxtbL64oyvwro104VYH9O03MnLkSYJCcWPkSLKlywVYH3E4SveVyGvwU3rRKOpo3mYxnUB5dVQYqTzh1YuBJzg==}
+  /@storybook/client-logger/7.0.0-beta.54:
+    resolution: {integrity: sha512-X5AB31btMsgmmwmC+RyR65b9qR2RZka5Ki+9lY9E4LdJg021iW39i7CQs5vHAmUGQwmUzixd2lfRop6rX/4Ykw==}
     dependencies:
       '@storybook/global': 5.0.0
     dev: true
@@ -3264,8 +3248,8 @@ packages:
     resolution: {integrity: sha512-XOun2KZqlLNHCQlPNEUEE7mczGT/+mQSayDOMYHfFSpgKYNGYI69AdXf/kq52A0BeXao8S29KeuP1Cxu8Lo56A==}
     dev: true
 
-  /@storybook/core-events/7.0.0-beta.53:
-    resolution: {integrity: sha512-ODFto8BXVenukVrEfOHvlqBP0YjWoC/OSO2lOmkgJeOApa66wsgwzNDeGn9938Nc6n1fyQg8sOPm4n9Pd90pCA==}
+  /@storybook/core-events/7.0.0-beta.54:
+    resolution: {integrity: sha512-/YDjgPHKqdkbB9+jTv3zKjNDRy0gZnVeFfXyS9jCXj4D0K1pYwzkttHAT/xEu6qFeCI8A8wwEgIh6+0t3xfL9g==}
     dev: true
 
   /@storybook/core-server/7.0.0-beta.50:
@@ -3377,14 +3361,14 @@ packages:
       '@storybook/preview-api': 7.0.0-beta.50
     dev: true
 
-  /@storybook/instrumenter/7.0.0-beta.53:
-    resolution: {integrity: sha512-HZKKtbMFyoVVq4c1R5Pj0X/Xe+TEDUlwPyer+5xPFvgmYgxJ9tQ2qxzRmgJyARdFrYRMI1cKNiq8dM2UD/eUfw==}
+  /@storybook/instrumenter/7.0.0-beta.54:
+    resolution: {integrity: sha512-qVLNVtOL77PlX7lzu25ssPBSQiN4BIxMwDhqlmvt5phOvc7F96ToN4BzIuGM69aFKubDOAp+0ppUJjPAFpvcNQ==}
     dependencies:
-      '@storybook/channels': 7.0.0-beta.53
-      '@storybook/client-logger': 7.0.0-beta.53
-      '@storybook/core-events': 7.0.0-beta.53
+      '@storybook/channels': 7.0.0-beta.54
+      '@storybook/client-logger': 7.0.0-beta.54
+      '@storybook/core-events': 7.0.0-beta.54
       '@storybook/global': 5.0.0
-      '@storybook/preview-api': 7.0.0-beta.53
+      '@storybook/preview-api': 7.0.0-beta.54
     dev: true
 
   /@storybook/manager-api/7.0.0-beta.50_biqbaboplfbrettd7655fr4n2y:
@@ -3454,16 +3438,16 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /@storybook/preview-api/7.0.0-beta.53:
-    resolution: {integrity: sha512-oLRRJ+xHzJNPDd7E18YUlrYL+AT6TvUbbDBpESlPa/eYrKp/jQ8HAceDQRhVi32K09HmnP2YTYxxQ9bB8euSKQ==}
+  /@storybook/preview-api/7.0.0-beta.54:
+    resolution: {integrity: sha512-rVtKocB4oslUK7wBmNMIhFOxvRsfNSFMFSeVLR0nT+ZKNzMvWHIi4URJC8pWYtinoC9/5jC1M9dsTGVv9O+cKg==}
     dependencies:
-      '@storybook/channel-postmessage': 7.0.0-beta.53
-      '@storybook/channels': 7.0.0-beta.53
-      '@storybook/client-logger': 7.0.0-beta.53
-      '@storybook/core-events': 7.0.0-beta.53
+      '@storybook/channel-postmessage': 7.0.0-beta.54
+      '@storybook/channels': 7.0.0-beta.54
+      '@storybook/client-logger': 7.0.0-beta.54
+      '@storybook/core-events': 7.0.0-beta.54
       '@storybook/csf': 0.0.2-next.10
       '@storybook/global': 5.0.0
-      '@storybook/types': 7.0.0-beta.53
+      '@storybook/types': 7.0.0-beta.54
       '@types/qs': 6.9.7
       dequal: 2.0.3
       lodash: 4.17.21
@@ -3577,8 +3561,8 @@ packages:
   /@storybook/testing-library/0.0.14-next.1:
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 7.0.0-beta.53
-      '@storybook/instrumenter': 7.0.0-beta.53
+      '@storybook/client-logger': 7.0.0-beta.54
+      '@storybook/instrumenter': 7.0.0-beta.54
       '@testing-library/dom': 8.20.0
       '@testing-library/user-event': 13.5.0_yxlyej73nftwmh2fiao7paxmlm
       ts-dedent: 2.2.0
@@ -3607,10 +3591,10 @@ packages:
       file-system-cache: 2.0.2
     dev: true
 
-  /@storybook/types/7.0.0-beta.53:
-    resolution: {integrity: sha512-io3d06PZvUCIpSf3owYuNwBWoXc9SFrIAT5khexSG+FVqhPkSzIKZYwc9RkqLNll2f7ruufXuq5TOtSzTdrMnQ==}
+  /@storybook/types/7.0.0-beta.54:
+    resolution: {integrity: sha512-+iTRHBETN+AXYHpgLzydIf6ONf0VktKaVwkgUE4uFgq/IRlEMNSdSbmbeqeY76Q7A2ll+0bPMtVm7w+UkH1rBg==}
     dependencies:
-      '@storybook/channels': 7.0.0-beta.53
+      '@storybook/channels': 7.0.0-beta.54
       '@types/babel__core': 7.20.0
       '@types/express': 4.17.17
       file-system-cache: 2.0.2
