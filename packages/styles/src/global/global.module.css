@@ -15,6 +15,7 @@ body {
     color: var(--dui-text-primary);
 
     &:not(.dui-dark) {
+      /* TODO: Import CSS variables from tokens */
       @import-json './../tokens/windows/base.json';
       @import-json './../tokens/windows/light.json';
     }
