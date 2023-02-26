@@ -55,12 +55,7 @@
 
   /* 1. Radix radio button */
   &__button {
-    &:active {
-      &:not([data-state="checked"])::after {
-        height: 10px !important;
-        width: 10px !important;
-      }
-
+    &:active:not([disabled]) {
       .radio-group__indicator:after {
         height: 10px;
         width: 10px;
