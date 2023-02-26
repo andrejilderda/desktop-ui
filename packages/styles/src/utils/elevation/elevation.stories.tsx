@@ -7,7 +7,7 @@ type ElevationArgs = {
 };
 
 const meta: Meta<ElevationArgs> = {
-  title: "Elevation",
+  title: "Tokens/Elevation",
   tags: ["autodocs"],
   render: ({ elevation }) =>
     html`<div>
