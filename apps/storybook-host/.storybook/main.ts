@@ -15,7 +15,6 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   refs: (_config, { configType }) => {
-    console.log("configType", configType);
     if (configType === "DEVELOPMENT") {
       return {
         react: {
