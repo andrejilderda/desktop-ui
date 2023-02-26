@@ -1,6 +1,6 @@
 # Desktop UI
 
-👷 Work in progress – The aim of this project is to become the de-facto standard component library for building beautiful, accessible and performant desktop UI’s with web technologies (f.e. using [Electron](https://www.electronjs.org/) or [Tauri](https://tauri.studio/)).
+The aim of this project is to become the de-facto standard component library for building beautiful, accessible and performant desktop UI’s with web technologies (f.e. using [Electron](https://www.electronjs.org/) or [Tauri](https://tauri.studio/)).
 
 The planned features for this library are:
 
@@ -10,9 +10,12 @@ The planned features for this library are:
 
 ## Current status
 
-🚧 Under active development.
+🚧 In active development.
 
-This repository does not contain any components yet. To see the components that were created before, check out [this Storybook](https://react-desktop.netlify.app/). For more information about the planned changes for this project in the short term, check out [the description of this PR](https://github.com/andrejilderda/react-desktop/pull/4#issue-1224405686).
+You can follow the progress of this project in [this combined Storybook](https://desktop-ui.netlify.app/). For the best navigation experience it’s recommended to use the individal Storybooks:
+
+- [React Storybook](https://desktop-ui-react.netlify.app/) - contains the React components
+- [Styles Storybook](https://desktop-ui-styles.netlify.app/) - contains the CSS-library
 
 ## Credits
 
