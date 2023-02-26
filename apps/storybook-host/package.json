@@ -1,5 +1,5 @@
 {
-  "name": "storybook-host",
+  "name": "@desktop-ui/storybook-host",
   "private": true,
   "version": "0.0.0",
   "type": "module",
