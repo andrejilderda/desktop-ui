@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "sleep 2 && storybook dev -p 6006 --no-open",
-    "build": "storybook build"
+    "build": "pnpm build:storybook",
+    "build:storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.2.0",

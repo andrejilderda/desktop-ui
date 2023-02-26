@@ -23,5 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-storybook-static
 src/**/*css.d.ts

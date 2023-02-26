@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build:types": "tcm -o src dist/global",
-    "build": "rm -rf dist && vite build && vite build --mode module && storybook build  && pnpm build:types",
+    "build": "rm -rf dist && vite build && vite build --mode module && pnpm build:storybook  && pnpm build:types",
+    "build:storybook": "storybook build",
     "dev": "concurrently \"pnpm build:types --w\" \"pnpm storybook\"",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6008 --no-open",

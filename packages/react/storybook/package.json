@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6007 --no-open",
-    "build": "storybook build"
+    "build": "pnpm build:storybook",
+    "build:storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.2.0",
