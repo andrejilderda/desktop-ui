@@ -12,7 +12,7 @@ The planned features for this library are:
 
 🚧 In active development.
 
-You can follow the progress of this project in [this combined Storybook](https://desktop-ui.netlify.app/). For the best navigation experience it’s recommended to use the individal Storybooks:
+You can follow the progress of this project in [this combined Storybook](https://desktop-ui-storybook.netlify.app/). For the best navigation experience it’s recommended to use the individal Storybooks:
 
 - [React Storybook](https://desktop-ui-react.netlify.app/) - contains the React components
 - [Styles Storybook](https://desktop-ui-styles.netlify.app/) - contains the CSS-library
