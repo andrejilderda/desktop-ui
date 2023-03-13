@@ -1,0 +1,4 @@
+{
+  "extends": "tsconfig/react-component.json",
+  "exclude": ["dist", "build", "node_modules"]
+}

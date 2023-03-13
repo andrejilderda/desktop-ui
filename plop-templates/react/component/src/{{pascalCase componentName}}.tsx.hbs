@@ -1,0 +1,18 @@
+import * as React from "react";
+import clsx from "clsx";
+import styles from "@desktop-ui/styles/src/{{dashCase componentName}}/{{dashCase componentName}}.module.css";
+
+export interface {{pascalCase componentName}}Props {
+  children: React.ReactNode;
+}
+
+export const {{pascalCase componentName}} = ({ children, ...props }: {{pascalCase componentName}}Props) => {
+  return (
+    <div
+      className={clsx(styles['{{dashCase componentName}}'])}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
