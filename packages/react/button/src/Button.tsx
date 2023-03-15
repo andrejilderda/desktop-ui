@@ -9,13 +9,19 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-export const Button = ({ children, variant, ...props }: ButtonProps) => {
-  return (
-    <button
-      className={clsx(styles.button, variant && styles[variant])}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    { children, variant, ...props }: ButtonProps,
+    forwardedRef: React.ForwardedRef<HTMLButtonElement>
+  ) {
+    return (
+      <button
+        className={clsx(styles.button, variant && styles[variant])}
+        ref={forwardedRef}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
