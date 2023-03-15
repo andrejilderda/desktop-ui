@@ -36,7 +36,7 @@
     display: flex;
     justify-content: flex-end;
 
-    .button {
+    > button {
       flex: 1 0 auto;
       max-width: 50%;
     }
@@ -44,14 +44,16 @@
 
   .windows & {
     --overlay: var(--dui-windows-background-fill_color-smoke-default);
-    --bg-base: var(--dui-windows-background-fill_color-solid_background-base);
-    --bg-content: var(--dui-windows-background-fill_color-layer-alt);
-    --outline-color: var(--dui-windows-stroke_color-surface_stroke-default);
-    --text: var(--dui-windows-fill_color-text-primary);
-    --bg-footer: var(--dui-windows-background-fill_color-mica_background-base);
-    --bg-footer-stroke: var(--dui-windows-stroke_color-card_stroke-default);
 
     &__content {
+      --bg-base: var(--dui-windows-background-fill_color-solid_background-base);
+      --bg-content: var(--dui-windows-background-fill_color-layer-alt);
+      --outline-color: var(--dui-windows-stroke_color-surface_stroke-default);
+      --text: var(--dui-windows-fill_color-text-primary);
+      --bg-footer: var(
+        --dui-windows-background-fill_color-mica_background-base
+      );
+      --bg-footer-stroke: var(--dui-windows-stroke_color-card_stroke-default);
       box-shadow: 0px 2px 21px 0px hsla(0, 0%, 0%, 0.15),
         0px 32px 64px 0px hsla(0, 0%, 0%, 0.19); /* TODO: check if there's a token for this */
       border-radius: 7px; /* TODO: use a variable */

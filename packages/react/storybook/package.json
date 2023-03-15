@@ -9,12 +9,13 @@
     "build:storybook": "storybook build"
   },
   "dependencies": {
+    "@storybook/client-api": "^6.5.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@desktop-ui/storybook-config": "workspace:*",
     "@desktop-ui/postcss-config": "workspace:*",
+    "@desktop-ui/storybook-config": "workspace:*",
     "@desktop-ui/styles": "workspace:*",
     "@desktop-ui/vite-config": "workspace:*",
     "@storybook/addon-essentials": "^7.0.0-rc.2",
