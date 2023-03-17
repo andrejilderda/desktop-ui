@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@desktop-ui/react-button": "workspace:*",
+    "@tailwindcss/typography": "^0.5.9",
     "next": "^13.1.1",
     "nextra": "^2.2.14",
     "nextra-theme-docs": "^2.2.14",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@desktop-ui/react-button": "workspace:*"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

@@ -10,13 +10,33 @@ export default function Landing() {
         }
       `}</style>
       <div className="content-container">
-        <h1>Desktop UI</h1>
-        {/* red text */}
-        <div className="text-red-600">Test</div>
-        <p>
-          Desktop UI is a style and component library with a native macOS
-          Ventura and Windows 11 look-and-feel. 🚧 Work in progress.
-        </p>
+        <div className="prose dark:prose-invert py-6">
+          <h1>Desktop UI</h1>
+          <p>
+            Desktop UI is a style and component library with a native macOS
+            Ventura and Windows 11 look-and-feel. 🚧 Work in progress.
+          </p>
+          <ul>
+            <li className="text-gray-400">
+              <a
+                className="text-blue-500 underline hover:no-underline"
+                href="https://desktop-ui-react.netlify.app/"
+              >
+                React Storybook
+              </a>{" "}
+              - contains the React components
+            </li>
+            <li className="text-gray-400">
+              <a
+                className="text-blue-500 underline hover:no-underline"
+                href="https://desktop-ui-styles.netlify.app/"
+              >
+                Styles Storybook
+              </a>{" "}
+              - contains the CSS-library
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
