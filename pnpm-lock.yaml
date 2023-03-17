@@ -275,6 +275,34 @@ importers:
       typescript: 4.9.5
       vite: 4.1.4
 
+  packages/react/progress:
+    specifiers:
+      '@desktop-ui/styles': workspace:*
+      '@desktop-ui/vite-config': workspace:*
+      '@radix-ui/react-progress': 1.0.2
+      '@types/react': ^18.0.27
+      '@types/react-dom': ^18.0.10
+      clsx: ^1.2.1
+      eslint: ^7.32.0
+      eslint-config-custom: workspace:*
+      react: ^18.2.0
+      tsconfig: workspace:*
+      typescript: ^4.9.3
+      vite: ^4.1.0
+    devDependencies:
+      '@desktop-ui/styles': link:../../styles
+      '@desktop-ui/vite-config': link:../../config/vite-config
+      '@radix-ui/react-progress': 1.0.2_biqbaboplfbrettd7655fr4n2y
+      '@types/react': 18.0.28
+      '@types/react-dom': 18.0.11
+      clsx: 1.2.1
+      eslint: 7.32.0
+      eslint-config-custom: link:../../config/eslint-config-custom
+      react: 18.2.0
+      tsconfig: link:../../config/tsconfig
+      typescript: 4.9.5
+      vite: 4.1.4
+
   packages/react/radio-group:
     specifiers:
       '@desktop-ui/react-label': workspace:*
@@ -355,35 +383,6 @@ importers:
       clsx: 1.2.1
       prop-types: 15.8.1
       storybook: 7.0.0-rc.2
-      tsconfig: link:../../config/tsconfig
-      typescript: 4.9.5
-      vite: 4.1.4
-
-  packages/react/use-id:
-    specifiers:
-      '@desktop-ui/styles': workspace:*
-      '@desktop-ui/vite-config': workspace:*
-      '@types/react': ^18.0.27
-      '@types/react-dom': ^18.0.10
-      clsx: ^1.2.1
-      eslint: ^7.32.0
-      eslint-config-custom: workspace:*
-      react: ^18.2.0
-      react-use: ^17.4.0
-      tsconfig: workspace:*
-      typescript: ^4.9.3
-      vite: ^4.1.0
-    dependencies:
-      react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
-    devDependencies:
-      '@desktop-ui/styles': link:../../styles
-      '@desktop-ui/vite-config': link:../../config/vite-config
-      '@types/react': 18.0.28
-      '@types/react-dom': 18.0.11
-      clsx: 1.2.1
-      eslint: 7.32.0
-      eslint-config-custom: link:../../config/eslint-config-custom
-      react: 18.2.0
       tsconfig: link:../../config/tsconfig
       typescript: 4.9.5
       vite: 4.1.4
@@ -2963,6 +2962,19 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@radix-ui/react-slot': 1.0.1_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: true
+
+  /@radix-ui/react-progress/1.0.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-c16RVM43ct2koRcMmPw4b47JWFNs89qe5p4Um9dwoPs0yi+d7It1MJ35EpsX+93o31Mqdwe4vQyu0SrHrygdCg==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@radix-ui/react-context': 1.0.0_react@18.2.0
+      '@radix-ui/react-primitive': 1.0.2_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
