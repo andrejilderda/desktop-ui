@@ -3,19 +3,15 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 import clsx from "clsx";
 import styles from "@desktop-ui/styles/src/progress/progress.module.css";
 
-export interface ProgressProps {
-  children: React.ReactNode;
-}
-
 export interface ProgressProps extends ProgressPrimitive.ProgressProps {
-  /** set to a null to make loader indeterminate */
+  /** set to null to make loader indeterminate */
   value: ProgressPrimitive.ProgressProps["value"];
   active?: boolean;
   variant?: "bar" | "ring";
   /** only applicable to ring */
   size?: 16 | 32 | 64;
   /** only applicable to ring */
-  state?: "default" | "paused" | "error";
+  state?: "loading" | "paused" | "error" | "indeterminate";
 }
 
 export const Progress = ({
@@ -25,8 +21,6 @@ export const Progress = ({
   active,
   state,
 }: ProgressProps) => {
-  const isIndeterminate = !value && value !== 0;
-
   if (active === false) return null;
 
   return (
@@ -36,7 +30,9 @@ export const Progress = ({
           <ProgressPrimitive.Indicator
             className={clsx(styles.progress__indicator)}
             data-state={state}
-            style={{ width: `${value}%` }}
+            {...(state !== "indeterminate" && {
+              style: { width: `${value}%` },
+            })}
           />
         </ProgressPrimitive.Root>
       ) : (
@@ -59,7 +55,7 @@ export const Progress = ({
                 cy="16"
                 r="16"
                 strokeDasharray={
-                  !isIndeterminate ? `${value}px 100px` : undefined
+                  state !== "indeterminate" ? `${value}px 100px` : undefined
                 }
               ></circle>
             </ProgressPrimitive.Indicator>

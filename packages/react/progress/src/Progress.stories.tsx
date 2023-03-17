@@ -38,8 +38,57 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const BarDefault: Story = {
   args: {
-    value: 50,
+    value: 33,
+    variant: "bar",
+  },
+};
+
+export const BarPaused: Story = {
+  args: {
+    ...BarDefault.args,
+    state: "paused",
+  },
+};
+
+export const BarError: Story = {
+  args: {
+    ...BarDefault.args,
+    state: "error",
+  },
+};
+
+// TODO: add conditional type for indeterminate state
+// When state is indeterminate, value should be nullable
+export const BarIndeterminate: Story = {
+  args: {
+    variant: "bar",
+    state: "indeterminate",
+  },
+};
+
+export const RingDefault: Story = {
+  args: {
+    variant: "ring",
+    value: 66,
+  },
+};
+
+// TODO: add conditional type for indeterminate state
+// When state is indeterminate, value should be nullable
+export const RingIndeterminate: Story = {
+  args: {
+    variant: "ring",
+    state: "indeterminate",
+  },
+};
+
+// SIZES
+export const RingSizes: Story = {
+  args: {
+    variant: "ring",
+    state: "indeterminate",
+    size: 64,
   },
 };
