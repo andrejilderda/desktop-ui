@@ -6,7 +6,7 @@ The planned features for this library are:
 
 - a React component library built on top of [Radix UI](https://www.radix-ui.com/),
 - a separate (framework-agnostic) CSS-library which adheres to the [Human Interface Guidelines for macOS](https://developer.apple.com/design/human-interface-guidelines/macos/overview/themes/) & the [Windows 11 design principles](https://docs.microsoft.com/en-us/windows/apps/design/signature-experiences/design-principles),
-- starter templates for [Electron](https://www.electronjs.org/) & [Tauri](https://tauri.studio/) for jump-starting your desktop app.
+- starter templates for [Electron](https://www.electronjs.org/) & [Tauri](https://tauri.app/) for jump-starting your desktop app.
 
 ## Current status
 
