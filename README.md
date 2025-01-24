@@ -10,7 +10,7 @@ The planned features for this library are:
 
 ## Current status
 
-🚧 In active development.
+~~🚧 In active development.~~ 🏚️ Abandoned
 
 You can follow the progress of this project in [this combined Storybook](https://desktop-ui-storybook.netlify.app/). For the best navigation experience it’s recommended to use the individal Storybooks:
 
